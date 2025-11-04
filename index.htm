@@ -250,16 +250,22 @@
                             <option value="rw" class="text-black">Kinyarwanda</option>
                         </select>
                     </div>
-                    <div class="flex space-x-4"><button onclick="showAuthSection()"
-                            class="btn-primary text-white px-6 py-3 rounded-lg font-semibold"> <i
-                                class="fas fa-sign-in-alt mr-2"></i><span data-translate="login">Login</span> </button>
-                        <button onclick="showAuthSection('signup')"
-                            class="glass-effect text-white px-6 py-3 rounded-lg font-semibold border border-white border-opacity-30 hover:bg-white hover:bg-opacity-20">
-                            <i class="fas fa-user-plus mr-2"></i><span data-translate="signup">Sign Up</span> </button>
-                    </div>
-                </div>
-            </div>
-        </header>
+                      <!-- Authentication Buttons -->
+        <div class="flex space-x-4">
+            <!-- Login Button -->
+            <button onclick="showAuthSection()" class="btn-primary text-white px-6 py-3 rounded-lg font-semibold">
+                <i class="fas fa-sign-in-alt mr-2"></i>
+                <span data-translate="login">Login</span>
+            </button>
+            <!-- Sign Up Button -->
+            <button onclick="showAuthSection('signup')" class="glass-effect text-white px-6 py-3 rounded-lg font-semibold border border-white border-opacity-30 hover:bg-white hover:bg-opacity-20">
+                <i class="fas fa-user-plus mr-2"></i>
+                <span data-translate="signup">Sign Up</span>
+            </button>
+        </div>
+     </div>
+    </div>
+   </header>
         <!-- Main Hero -->
         <div id="hero-section">
             <div class="max-w-7xl mx-auto px-6 py-20">
@@ -384,45 +390,42 @@
     </div>
    </footer>
   </div>
-    <div id="authSection">
-        <div>
-            <div><button onclick="showHomepage()"> <i class="fas fa-arrow-left"></i>Back to Homepage </button> <i
-                    class="fas fa-piggy-bank"></i>
-                <h2>Money Management System</h2>
-                <p>Secure your financial future</p>
-            </div>
-            <div id="loginForm">
-                <h3>Sign In</h3>
-                <form onsubmit="handleLogin(event)">
-                    <div>
-                        <div><label for="loginEmail">Email</label> <input type="email" id="loginEmail" required
-                                placeholder="Enter your email">
-                        </div>
-                        <div><label for="loginPassword">Password</label> <input type="password" id="loginPassword"
-                                required placeholder="Enter your password">
-                        </div>
-                        <div><label> <input type="checkbox"> <span>Remember me</span> </label> <button
-                                type="button">Forgot password?</button>
-                        </div><button type="submit"> Sign In </button>
-                    </div>
-                </form>
-                <div>
-                    <p>Don't have an account? <button onclick="showSignup()">Sign up</button></p>
-                </div>
-                <div>
-                    <div><i class="fas fa-crown"></i>
-                        <h4>Admin Management</h4>
-                        <p>Create or login to admin account</p>
-                    </div>
-                    <div><button onclick="createAdminAccount()"> <i class="fas fa-user-shield"></i>Create Admin Account
-                        </button>
-                        <div>
-                            <p>Default Admin Login:</p>
-                            <p>admin@system.com / admin123</p>
-                        </div><button onclick="loginAsAdmin()"> Quick Admin Login </button>
-                    </div>
-                </div>
-            </div>
+  <!-- Authentication Section -->
+  <div id="authSection" class="hidden min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+   <div class="max-w-md w-full space-y-8">
+    <div class="text-center"><button onclick="showHomepage()" class="text-white opacity-80 hover:opacity-100 mb-4"> <i class="fas fa-arrow-left mr-2"></i>Back to Homepage </button> <i class="fas fa-piggy-bank text-6xl text-white mb-4"></i>
+     <h2 class="text-3xl font-bold text-white">Money Management System</h2>
+     <p class="mt-2 text-lg text-white opacity-80">Secure your financial future</p>
+    </div><!-- Login Form -->
+    <div id="loginForm" class="glass-card rounded-xl p-8">
+     <h3 class="text-2xl font-bold text-white text-center mb-6">Sign In</h3>
+     <form onsubmit="handleLogin(event)">
+      <div class="space-y-4">
+       <div><label for="loginEmail" class="block text-sm font-medium text-white mb-2">Email</label> <input type="email" id="loginEmail" required class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50" placeholder="Enter your email">
+       </div>
+       <div><label for="loginPassword" class="block text-sm font-medium text-white mb-2">Password</label> <input type="password" id="loginPassword" required class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50" placeholder="Enter your password">
+       </div>
+       <div class="flex items-center justify-between"><label class="flex items-center text-white"> <input type="checkbox" class="mr-2"> <span class="text-sm">Remember me</span> </label> <button type="button" class="text-sm text-white opacity-80 hover:opacity-100">Forgot password?</button>
+       </div><button type="submit" class="w-full btn-primary text-white font-semibold py-3 px-4 rounded-lg"> Sign In </button>
+      </div>
+     </form>
+     <div class="mt-6 text-center">
+      <p class="text-white opacity-80">Don't have an account? <button onclick="showSignup()" class="text-white font-semibold hover:underline">Sign up</button></p>
+     </div><!-- Admin Registration Section -->
+     <div class="mt-8 p-4 glass-effect rounded-lg border-2 border-green-400 border-opacity-50">
+      <div class="text-center mb-4"><i class="fas fa-crown text-green-400 text-2xl mb-2"></i>
+       <h4 class="text-lg font-bold text-green-400">Admin Management</h4>
+       <p class="text-white opacity-80 text-sm">Create or login to admin account</p>
+      </div>
+      <div class="space-y-3"><button onclick="createAdminAccount()" class="w-full btn-warning text-white font-semibold py-3 px-4 rounded-lg"> <i class="fas fa-user-shield mr-2"></i>Create Admin Account </button>
+       <div class="text-center">
+        <p class="text-white opacity-70 text-sm">Default Admin Login:</p>
+        <p class="text-yellow-400 text-sm font-mono">admin@system.com / admin123</p>
+       </div><button onclick="loginAsAdmin()" class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-2 px-4 rounded-lg text-sm"> Quick Admin Login </button>
+      </div>
+     </div>
+    </div>
+            <!-- Signup Form -->
             <div id="signupForm" class="hidden">
                 <h3>Create Account</h3>
                 <form onsubmit="handleSignup(event)">
