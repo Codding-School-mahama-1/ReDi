@@ -1,16 +1,14 @@
 <!doctype html>
 <html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CB</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-<link 
-  rel="stylesheet" 
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
         body {
             box-sizing: border-box;
             height: 100%;
@@ -250,22 +248,24 @@
                             <option value="rw" class="text-black">Kinyarwanda</option>
                         </select>
                     </div>
-                      <!-- Authentication Buttons -->
-        <div class="flex space-x-4">
-            <!-- Login Button -->
-            <button onclick="showAuthSection()" class="btn-primary text-white px-6 py-3 rounded-lg font-semibold">
-                <i class="fas fa-sign-in-alt mr-2"></i>
-                <span data-translate="login">Login</span>
-            </button>
-            <!-- Sign Up Button -->
-            <button onclick="showAuthSection('signup')" class="glass-effect text-white px-6 py-3 rounded-lg font-semibold border border-white border-opacity-30 hover:bg-white hover:bg-opacity-20">
-                <i class="fas fa-user-plus mr-2"></i>
-                <span data-translate="signup">Sign Up</span>
-            </button>
-        </div>
-     </div>
-    </div>
-   </header>
+                    <!-- Authentication Buttons -->
+                    <div class="flex space-x-4">
+                        <!-- Login Button -->
+                        <button onclick="showAuthSection()"
+                            class="btn-primary text-white px-6 py-3 rounded-lg font-semibold">
+                            <i class="fas fa-sign-in-alt mr-2"></i>
+                            <span data-translate="login">Login</span>
+                        </button>
+                        <!-- Sign Up Button -->
+                        <button onclick="showAuthSection('signup')"
+                            class="glass-effect text-white px-6 py-3 rounded-lg font-semibold border border-white border-opacity-30 hover:bg-white hover:bg-opacity-20">
+                            <i class="fas fa-user-plus mr-2"></i>
+                            <span data-translate="signup">Sign Up</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
         <!-- Main Hero -->
         <div id="hero-section">
             <div class="max-w-7xl mx-auto px-6 py-20">
@@ -338,154 +338,221 @@
             </div>
         </div>
         <!-- Benefits -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
-     <div>
-      <h3 class="text-3xl font-bold text-white mb-8">Why Choose MoneyWise?</h3>
-      <div class="space-y-6">
-       <div class="flex items-start space-x-4"><i class="fas fa-check-circle text-green-400 text-xl mt-1"></i>
-        <div>
-         <h4 class="text-lg font-semibold text-white mb-2">Community-Driven</h4>
-         <p class="text-white opacity-80">Built by the community, for the community. Every member has a voice.</p>
-        </div>
-       </div>
-       <div class="flex items-start space-x-4"><i class="fas fa-check-circle text-green-400 text-xl mt-1"></i>
-        <div>
-         <h4 class="text-lg font-semibold text-white mb-2">Transparent Fees</h4>
-         <p class="text-white opacity-80">No hidden charges. Clear, upfront pricing for all services.</p>
-        </div>
-       </div>
-       <div class="flex items-start space-x-4"><i class="fas fa-check-circle text-green-400 text-xl mt-1"></i>
-        <div>
-         <h4 class="text-lg font-semibold text-white mb-2">Flexible Terms</h4>
-         <p class="text-white opacity-80">Customize your savings and loan terms to fit your lifestyle.</p>
-        </div>
-       </div>
-       <div class="flex items-start space-x-4"><i class="fas fa-check-circle text-green-400 text-xl mt-1"></i>
-        <div>
-         <h4 class="text-lg font-semibold text-white mb-2">24/7 Support</h4>
-         <p class="text-white opacity-80">Get help whenever you need it through our member chat system.</p>
-        </div>
-       </div>
-      </div>
-     </div>
-     <div class="glass-card p-8 rounded-xl" style="background-image: url(./1762244907845.jpg); opacity: 0.9; background-size: cover; background-position: center;">
-      <h4 class="text-2xl font-bold text-white mb-6">Ready to Get Started?</h4>
-      <p class="text-white opacity-90 mb-6">Join thousands of members who are already building their financial future with MoneyWise. Start with as little as $10 and watch your money grow.</p>
-      <div class="space-y-4"><button onclick="showAuthSection('signup')" class="w-full btn-success text-white py-4 rounded-lg font-semibold text-lg"> <i class="fas fa-user-plus mr-2"></i>Create Free Account </button> <button onclick="showAuthSection()" class="w-full glass-effect text-white py-3 rounded-lg font-semibold border border-white border-opacity-30"> <i class="fas fa-sign-in-alt mr-2"></i>Already a Member? Login </button>
-       
-      </div>
-     </div>
-    </div>
-   </div><!-- Footer -->
-   <footer class="glass-effect p-8 mt-20">
-    <div class="max-w-7xl mx-auto text-center">
-     <div class="flex items-center justify-center space-x-4 mb-4"><i class="fa-solid fa-hand-holding-dollar"
-                        style="color: #f7f6f9; font-size: 25px;"></i>
-      <h3 class="text-xl font-bold text-white">CB</h3>
-     </div>
-     <p class="text-white opacity-80 mb-4">Building financial futures together, one member at a time.</p>
-     <div class="flex justify-center space-x-6 text-white opacity-60"><a href="#" class="hover:opacity-100 transition-opacity">Privacy Policy</a> <a href="#" class="hover:opacity-100 transition-opacity">Terms of Service</a> <a href="#" class="hover:opacity-100 transition-opacity">Contact Us</a>
-     </div>
-     <p class="text-white opacity-60 text-sm mt-4">Copyrights © 2025 CB. All rights reserved.</p>
-    </div>
-   </footer>
-  </div>
-  <!-- Authentication Section -->
-  <div id="authSection" class="hidden min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-   <div class="max-w-md w-full space-y-8">
-    <div class="text-center"><button onclick="showHomepage()" class="text-white opacity-80 hover:opacity-100 mb-4"> <i class="fas fa-arrow-left mr-2"></i>Back to Homepage </button> <i class="fas fa-piggy-bank text-6xl text-white mb-4"></i>
-     <h2 class="text-3xl font-bold text-white">Money Management System</h2>
-     <p class="mt-2 text-lg text-white opacity-80">Secure your financial future</p>
-    </div><!-- Login Form -->
-    <div id="loginForm" class="glass-card rounded-xl p-8">
-     <h3 class="text-2xl font-bold text-white text-center mb-6">Sign In</h3>
-     <form onsubmit="handleLogin(event)">
-      <div class="space-y-4">
-       <div><label for="loginEmail" class="block text-sm font-medium text-white mb-2">Email</label> <input type="email" id="loginEmail" required class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50" placeholder="Enter your email">
-       </div>
-       <div><label for="loginPassword" class="block text-sm font-medium text-white mb-2">Password</label> <input type="password" id="loginPassword" required class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50" placeholder="Enter your password">
-       </div>
-       <div class="flex items-center justify-between"><label class="flex items-center text-white"> <input type="checkbox" class="mr-2"> <span class="text-sm">Remember me</span> </label> <button type="button" class="text-sm text-white opacity-80 hover:opacity-100">Forgot password?</button>
-       </div><button type="submit" class="w-full btn-primary text-white font-semibold py-3 px-4 rounded-lg"> Sign In </button>
-      </div>
-     </form>
-     <div class="mt-6 text-center">
-      <p class="text-white opacity-80">Don't have an account? <button onclick="showSignup()" class="text-white font-semibold hover:underline">Sign up</button></p>
-     </div><!-- Admin Registration Section -->
-     <div class="mt-8 p-4 glass-effect rounded-lg border-2 border-green-400 border-opacity-50">
-      <div class="text-center mb-4"><i class="fas fa-crown text-green-400 text-2xl mb-2"></i>
-       <h4 class="text-lg font-bold text-green-400">Admin Management</h4>
-       <p class="text-white opacity-80 text-sm">Create or login to admin account</p>
-      </div>
-      <div class="space-y-3"><button onclick="createAdminAccount()" class="w-full btn-warning text-white font-semibold py-3 px-4 rounded-lg"> <i class="fas fa-user-shield mr-2"></i>Create Admin Account </button>
-       <div class="text-center">
-        <p class="text-white opacity-70 text-sm">Default Admin Login:</p>
-        <p class="text-yellow-400 text-sm font-mono">admin@system.com / admin123</p>
-       </div><button onclick="loginAsAdmin()" class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-2 px-4 rounded-lg text-sm"> Quick Admin Login </button>
-      </div>
-     </div>
-    </div>
-            <!-- Signup Form -->
-            <div id="signupForm" class="hidden">
-                <h3>Create Account</h3>
-                <form onsubmit="handleSignup(event)">
-                    <div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+            <div>
+                <h3 class="text-3xl font-bold text-white mb-8">Why Choose MoneyWise?</h3>
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4"><i
+                            class="fas fa-check-circle text-green-400 text-xl mt-1"></i>
                         <div>
-                            <div><label for="firstName">First Name</label> <input type="text" id="firstName" required
+                            <h4 class="text-lg font-semibold text-white mb-2">Community-Driven</h4>
+                            <p class="text-white opacity-80">Built by the community, for the community. Every member has
+                                a voice.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4"><i
+                            class="fas fa-check-circle text-green-400 text-xl mt-1"></i>
+                        <div>
+                            <h4 class="text-lg font-semibold text-white mb-2">Transparent Fees</h4>
+                            <p class="text-white opacity-80">No hidden charges. Clear, upfront pricing for all services.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4"><i
+                            class="fas fa-check-circle text-green-400 text-xl mt-1"></i>
+                        <div>
+                            <h4 class="text-lg font-semibold text-white mb-2">Flexible Terms</h4>
+                            <p class="text-white opacity-80">Customize your savings and loan terms to fit your
+                                lifestyle.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4"><i
+                            class="fas fa-check-circle text-green-400 text-xl mt-1"></i>
+                        <div>
+                            <h4 class="text-lg font-semibold text-white mb-2">24/7 Support</h4>
+                            <p class="text-white opacity-80">Get help whenever you need it through our member chat
+                                system.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card p-8 rounded-xl"
+                style="background-image: url(./1762244907845.jpg); opacity: 0.9; background-size: cover; background-position: center;">
+                <h4 class="text-2xl font-bold text-white mb-6">Ready to Get Started?</h4>
+                <p class="text-white opacity-90 mb-6">Join thousands of members who are already building their financial
+                    future with MoneyWise. Start with as little as $10 and watch your money grow.</p>
+                <div class="space-y-4"><button onclick="showAuthSection('signup')"
+                        class="w-full btn-success text-white py-4 rounded-lg font-semibold text-lg"> <i
+                            class="fas fa-user-plus mr-2"></i>Create Free Account </button> <button
+                        onclick="showAuthSection()"
+                        class="w-full glass-effect text-white py-3 rounded-lg font-semibold border border-white border-opacity-30">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Already a Member? Login </button>
+
+                </div>
+            </div>
+        </div>
+    </div><!-- Footer -->
+    <footer class="glass-effect p-8 mt-20">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="flex items-center justify-center space-x-4 mb-4"><i class="fa-solid fa-hand-holding-dollar"
+                    style="color: #f7f6f9; font-size: 25px;"></i>
+                <h3 class="text-xl font-bold text-white">CB</h3>
+            </div>
+            <p class="text-white opacity-80 mb-4">Building financial futures together, one member at a time.</p>
+            <div class="flex justify-center space-x-6 text-white opacity-60"><a href="#"
+                    class="hover:opacity-100 transition-opacity">Privacy Policy</a> <a href="#"
+                    class="hover:opacity-100 transition-opacity">Terms of Service</a> <a href="#"
+                    class="hover:opacity-100 transition-opacity">Contact Us</a>
+            </div>
+            <p class="text-white opacity-60 text-sm mt-4">Copyrights © 2025 CB. All rights reserved.</p>
+        </div>
+    </footer>
+    </div>
+    <!-- Authentication Section -->
+    <div id="authSection" class="hidden min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8">
+            <div class="text-center"><button onclick="showHomepage()"
+                    class="text-white opacity-80 hover:opacity-100 mb-4"> <i class="fas fa-arrow-left mr-2"></i>Back to
+                    Homepage </button> <i class="fas fa-piggy-bank text-6xl text-white mb-4"></i>
+                <h2 class="text-3xl font-bold text-white">Money Management System</h2>
+                <p class="mt-2 text-lg text-white opacity-80">Secure your financial future</p>
+            </div><!-- Login Form -->
+            <div id="loginForm" class="glass-card rounded-xl p-8">
+                <h3 class="text-2xl font-bold text-white text-center mb-6">Sign In</h3>
+                <form onsubmit="handleLogin(event)">
+                    <div class="space-y-4">
+                        <div><label for="loginEmail" class="block text-sm font-medium text-white mb-2">Email</label>
+                            <input type="email" id="loginEmail" required
+                                class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+                                placeholder="Enter your email">
+                        </div>
+                        <div><label for="loginPassword"
+                                class="block text-sm font-medium text-white mb-2">Password</label> <input
+                                type="password" id="loginPassword" required
+                                class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+                                placeholder="Enter your password">
+                        </div>
+                        <div class="flex items-center justify-between"><label class="flex items-center text-white">
+                                <input type="checkbox" class="mr-2"> <span class="text-sm">Remember me</span> </label>
+                            <button type="button" class="text-sm text-white opacity-80 hover:opacity-100">Forgot
+                                password?</button>
+                        </div><button type="submit"
+                            class="w-full btn-primary text-white font-semibold py-3 px-4 rounded-lg"> Sign In </button>
+                    </div>
+                </form>
+                <div class="mt-6 text-center">
+                    <p class="text-white opacity-80">Don't have an account? <button onclick="showSignup()"
+                            class="text-white font-semibold hover:underline">Sign up</button></p>
+                </div><!-- Admin Registration Section -->
+                <div class="mt-8 p-4 glass-effect rounded-lg border-2 border-green-400 border-opacity-50">
+                    <div class="text-center mb-4"><i class="fas fa-crown text-green-400 text-2xl mb-2"></i>
+                        <h4 class="text-lg font-bold text-green-400">Admin Management</h4>
+                        <p class="text-white opacity-80 text-sm">Create or login to admin account</p>
+                    </div>
+                    <div class="space-y-3"><button onclick="createAdminAccount()"
+                            class="w-full btn-warning text-white font-semibold py-3 px-4 rounded-lg"> <i
+                                class="fas fa-user-shield mr-2"></i>Create Admin Account </button>
+                        <div class="text-center">
+                            <p class="text-white opacity-70 text-sm">Default Admin Login:</p>
+                            <p class="text-yellow-400 text-sm font-mono">admin@system.com / admin123</p>
+                        </div><button onclick="loginAsAdmin()"
+                            class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-2 px-4 rounded-lg text-sm">
+                            Quick Admin Login </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Signup Form -->
+            <div id="signupForm" class="glass-card rounded-xl p-8 hidden">
+                <h3 class="text-2xl font-bold text-white text-center mb-6">Create Account</h3>
+                <form onsubmit="handleSignup(event)">
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div><label for="firstName" class="block text-sm font-medium text-white mb-2">First
+                                    Name</label> <input type="text" id="firstName" required
+                                    class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
                                     placeholder="First name">
                             </div>
-                            <div><label for="lastName">Last Name</label> <input type="text" id="lastName" required
+                            <div><label for="lastName" class="block text-sm font-medium text-white mb-2">Last
+                                    Name</label> <input type="text" id="lastName" required
+                                    class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
                                     placeholder="Last name">
                             </div>
                         </div>
-                        <div><label for="signupEmail">Email</label> <input type="email" id="signupEmail" required
+                        <div><label for="signupEmail" class="block text-sm font-medium text-white mb-2">Email</label>
+                            <input type="email" id="signupEmail" required
+                                class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
                                 placeholder="Enter your email">
                         </div>
-                        <div><label for="signupPassword">Password</label> <input type="password" id="signupPassword"
-                                required placeholder="Create password">
+                        <div><label for="signupPassword"
+                                class="block text-sm font-medium text-white mb-2">Password</label> <input
+                                type="password" id="signupPassword" required
+                                class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+                                placeholder="Create password">
                         </div>
-                        <div><label for="confirmPassword">Confirm Password</label> <input type="password"
-                                id="confirmPassword" required placeholder="Confirm password">
-                        </div><button type="submit"> Create Account </button>
+                        <div><label for="confirmPassword" class="block text-sm font-medium text-white mb-2">Confirm
+                                Password</label> <input type="password" id="confirmPassword" required
+                                class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+                                placeholder="Confirm password">
+                        </div><button type="submit"
+                            class="w-full btn-primary text-white font-semibold py-3 px-4 rounded-lg"> Create Account
+                        </button>
                     </div>
                 </form>
-                <div>
-                    <p>Already have an account? <button onclick="showLogin()">Sign in</button></p>
+                <div class="mt-6 text-center">
+                    <p class="text-white opacity-80">Already have an account? <button onclick="showLogin()"
+                            class="text-white font-semibold hover:underline">Sign in</button></p>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="dashboard" class="hidden">
-        <header>
-            <div>
-                <div><i class="fas fa-piggy-bank"></i>
-                    <h1>Money Management</h1>
+    </div><!-- Main Dashboard -->
+    <div id="dashboard" class="hidden min-h-full"><!-- Header -->
+        <header class="glass-effect p-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4"><i class="fas fa-piggy-bank text-2xl text-white"></i>
+                    <h1 class="text-xl font-bold text-white">Money Management</h1>
                 </div>
-                <div><span id="userWelcome"></span> <button onclick="logout()"> <i class="fas fa-sign-out-alt"></i>
-                        Logout </button>
+                <div class="flex items-center space-x-4"><span id="userWelcome" class="text-white"></span> <button
+                        onclick="logout()" class="text-white hover:text-red-300 transition-colors"> <i
+                            class="fas fa-sign-out-alt"></i> Logout </button>
                 </div>
             </div>
         </header>
-        <div>
-            <div><button onclick="toggleMobileMenu()"> <i id="menuIcon" class="fas fa-bars"></i> </button>
-            </div>
-            <aside id="sidebar">
-                <div><button onclick="toggleMobileMenu()"> <i class="fas fa-times"></i> </button>
+        <div class="flex"><!-- Mobile Menu Button -->
+            <div class="lg:hidden fixed top-20 left-4 z-50"><button onclick="toggleMobileMenu()"
+                    class="glass-effect p-3 rounded-lg text-white shadow-lg"> <i id="menuIcon"
+                        class="fas fa-bars text-xl"></i> </button>
+            </div><!-- Sidebar -->
+            <aside id="sidebar"
+                class="fixed lg:relative top-0 left-0 w-64 glass-effect h-screen p-4 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-40 lg:z-auto">
+                <!-- Close button for mobile -->
+                <div class="lg:hidden flex justify-end mb-4"><button onclick="toggleMobileMenu()"
+                        class="text-white opacity-80 hover:opacity-100"> <i class="fas fa-times text-xl"></i> </button>
                 </div>
-                <nav><button onclick="showSection('overview')" class="nav-btn"> <i class="fas fa-chart-pie"></i>Overview
-                    </button> <button onclick="showSection('deposits')" class="nav-btn"> <i
-                            class="fas fa-coins"></i>Deposits </button> <button onclick="showSection('loans')"
-                        class="nav-btn"> <i class="fas fa-hand-holding-usd"></i>Loans </button>
-                    <div id="adminCashoutMenu" class="hidden"><button onclick="showSection('cashout')" class="nav-btn">
-                            <i class="fas fa-money-bill-wave"></i>Cashout Management </button>
-                    </div><button onclick="showSection('summary')" class="nav-btn"> <i class="fas fa-chart-line"></i>My
-                        Summary </button> <button onclick="showSection('chat')" class="nav-btn"> <i
-                            class="fas fa-comments"></i>Member Chat </button>
-                    <div id="adminMenu" class="hidden"><button onclick="showSection('audit')" class="nav-btn"> <i
-                                class="fas fa-search"></i>Audit Dashboard </button> <button
-                            onclick="showSection('reports')" class="nav-btn"> <i class="fas fa-file-alt"></i>Annual
-                            Reports </button> <button onclick="showSection('admin')" class="nav-btn"> <i
-                                class="fas fa-cog"></i>Admin Panel </button>
+                <nav class="space-y-2 mt-16 lg:mt-0"><button onclick="showSection('overview')"
+                        class="nav-btn w-full text-left px-4 py-3 rounded-lg text-white hover:bg-white hover:bg-opacity-20 transition-all">
+                        <i class="fas fa-chart-pie mr-3"></i>Overview </button> <button
+                        onclick="showSection('deposits')"
+                        class="nav-btn w-full text-left px-4 py-3 rounded-lg text-white hover:bg-white hover:bg-opacity-20 transition-all">
+                        <i class="fas fa-coins mr-3"></i>Deposits </button> <button onclick="showSection('loans')"
+                        class="nav-btn w-full text-left px-4 py-3 rounded-lg text-white hover:bg-white hover:bg-opacity-20 transition-all">
+                        <i class="fas fa-hand-holding-usd mr-3"></i>Loans </button>
+                    <div id="adminCashoutMenu" class="hidden"><button onclick="showSection('cashout')"
+                            class="nav-btn w-full text-left px-4 py-3 rounded-lg text-white hover:bg-white hover:bg-opacity-20 transition-all">
+                            <i class="fas fa-money-bill-wave mr-3"></i>Cashout Management </button>
+                    </div><button onclick="showSection('summary')"
+                        class="nav-btn w-full text-left px-4 py-3 rounded-lg text-white hover:bg-white hover:bg-opacity-20 transition-all">
+                        <i class="fas fa-chart-line mr-3"></i>My Summary </button> <button onclick="showSection('chat')"
+                        class="nav-btn w-full text-left px-4 py-3 rounded-lg text-white hover:bg-white hover:bg-opacity-20 transition-all">
+                        <i class="fas fa-comments mr-3"></i>Member Chat </button>
+                    <div id="adminMenu" class="hidden"><button onclick="showSection('audit')"
+                            class="nav-btn w-full text-left px-4 py-3 rounded-lg text-white hover:bg-white hover:bg-opacity-20 transition-all">
+                            <i class="fas fa-search mr-3"></i>Audit Dashboard </button> <button
+                            onclick="showSection('reports')"
+                            class="nav-btn w-full text-left px-4 py-3 rounded-lg text-white hover:bg-white hover:bg-opacity-20 transition-all">
+                            <i class="fas fa-file-alt mr-3"></i>Annual Reports </button> <button
+                            onclick="showSection('admin')"
+                            class="nav-btn w-full text-left px-4 py-3 rounded-lg text-white hover:bg-white hover:bg-opacity-20 transition-all">
+                            <i class="fas fa-cog mr-3"></i>Admin Panel </button>
                     </div>
                 </nav>
             </aside>
