@@ -597,76 +597,75 @@
                         </div>
                     </div>
                 </div>
-                <!-- Savings Section -->
-                <div id="savingsSection">
-                    <div>
-                        <h2>Savings Accounts</h2>
-                        <button onclick="showAddSavingsModal()">Add Savings Goal</button>
+               <!-- Savings Section -->
+                <div id="savingsSection" class="section hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-3xl font-bold text-white">Savings Accounts</h2><button
+                            onclick="showAddSavingsModal()"
+                            class="btn-success text-white px-6 py-3 rounded-lg font-semibold"> <i
+                                class="fas fa-plus mr-2"></i>Add Savings Goal </button>
                     </div>
-                    <div id="savingsList">
+                    <div id="savingsList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <!-- Savings cards will be populated here -->
                     </div>
-                </div>
-
-                <!-- Deposits Section -->
-                <div id="depositsSection">
-                    <div>
-                        <h2>Deposits</h2>
-                        <div id="memberDepositButton">
-                            <button onclick="showDepositModal()">Make Deposit</button>
+                </div><!-- Deposits Section -->
+                <div id="depositsSection" class="section hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-3xl font-bold text-white">Deposits</h2>
+                        <div id="memberDepositButton"><button onclick="showDepositModal()"
+                                class="btn-success text-white px-6 py-3 rounded-lg font-semibold"> <i
+                                    class="fas fa-plus mr-2"></i>Make Deposit </button>
                         </div>
-                        <div id="adminDepositButton">
-                            <button onclick="showDepositModal()">Register Deposit</button>
+                        <div id="adminDepositButton" class="hidden"><button onclick="showDepositModal()"
+                                class="btn-success text-white px-6 py-3 rounded-lg font-semibold"> <i
+                                    class="fas fa-plus mr-2"></i>Register Deposit </button>
                         </div>
-                    </div>
-
-                    <!-- Admin View: All Members' Deposits -->
-                    <div id="adminDepositsView">
-                        <div>
-                            <h3>All Member Deposits</h3>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Member Name</th>
-                                        <th>Phone Number</th>
-                                        <th>Amount</th>
-                                        <th>Description</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="adminDepositsTable">
-                                    <!-- Admin deposits table will be populated here -->
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <!-- Deposit Statistics -->
-                        <div>
-                            <div>
-                                <h4>Today's Deposits</h4>
-                                <p id="todayDeposits">$0.00</p>
-                                <p>From <span id="todayDepositCount">0</span> members</p>
+                    </div><!-- Admin View: All Members' Deposits -->
+                    <div id="adminDepositsView" class="hidden">
+                        <div class="glass-card p-6 rounded-xl mb-6">
+                            <h3 class="text-xl font-bold text-white mb-4">All Member Deposits</h3>
+                            <div class="overflow-x-auto">
+                                <table class="report-table text-white w-full">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Member Name</th>
+                                            <th>Phone Number</th>
+                                            <th>Amount</th>
+                                            <th>Description</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="adminDepositsTable"><!-- Admin deposits table will be populated here -->
+                                    </tbody>
+                                </table>
                             </div>
-                            <div>
-                                <h4>This Month</h4>
-                                <p id="monthDeposits">$0.00</p>
-                                <p>From <span id="monthDepositCount">0</span> deposits</p>
+                        </div><!-- Deposit Statistics -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="glass-card p-6 rounded-xl">
+                                <h4 class="text-lg font-semibold text-white mb-2">Today's Deposits</h4>
+                                <p id="todayDeposits" class="text-2xl font-bold text-green-400">$0.00</p>
+                                <p class="text-white opacity-60 text-sm">From <span id="todayDepositCount">0</span>
+                                    members</p>
                             </div>
-                            <div>
-                                <h4>Total This Year</h4>
-                                <p id="yearDeposits">$0.00</p>
-                                <p>From <span id="yearDepositCount">0</span> deposits</p>
+                            <div class="glass-card p-6 rounded-xl">
+                                <h4 class="text-lg font-semibold text-white mb-2">This Month</h4>
+                                <p id="monthDeposits" class="text-2xl font-bold text-blue-400">$0.00</p>
+                                <p class="text-white opacity-60 text-sm">From <span id="monthDepositCount">0</span>
+                                    deposits</p>
+                            </div>
+                            <div class="glass-card p-6 rounded-xl">
+                                <h4 class="text-lg font-semibold text-white mb-2">Total This Year</h4>
+                                <p id="yearDeposits" class="text-2xl font-bold text-purple-400">$0.00</p>
+                                <p class="text-white opacity-60 text-sm">From <span id="yearDepositCount">0</span>
+                                    deposits</p>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Member View: Personal Deposits -->
-                    <div id="memberDepositsView">
-                        <h3>My Deposits</h3>
-                        <div id="depositsList">
-                            <!-- Member deposits will be populated here -->
+                    </div><!-- Member View: Personal Deposits -->
+                    <div id="memberDepositsView" class="glass-card p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-white mb-4">My Deposits</h3>
+                        <div id="depositsList" class="space-y-4"><!-- Member deposits will be populated here -->
                         </div>
                     </div>
                 </div>
