@@ -556,84 +556,93 @@
                     </div>
                 </nav>
             </aside>
-            <div id="sidebarOverlay" onclick="toggleMobileMenu()"></div>
-            <main>
+            <!-- Overlay for mobile -->
+            <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden hidden"
+                onclick="toggleMobileMenu()"></div><!-- Main Content -->
+            <main class="flex-1 p-4 sm:p-6 lg:ml-0 min-h-screen"><!-- Overview Section -->
                 <div id="overviewSection" class="section">
-                    <h2>Financial Overview</h2>
-                    <div>
-                        <div>
-                            <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">Financial Overview</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
+                        <div class="glass-card p-4 sm:p-6 rounded-xl">
+                            <div class="flex items-center justify-between">
                                 <div>
-                                    <p>Total Balance</p>
-                                    <p id="totalBalance">$0.00</p>
-                                </div><i class="fas fa-wallet"></i>
+                                    <p class="text-white opacity-80 text-xs sm:text-sm">Total Balance</p>
+                                    <p id="totalBalance" class="text-lg sm:text-2xl font-bold text-white">$0.00</p>
+                                </div><i class="fas fa-wallet text-2xl sm:text-3xl text-green-400"></i>
                             </div>
                         </div>
-                        <div>
-                            <div>
+                        <div class="glass-card p-4 sm:p-6 rounded-xl">
+                            <div class="flex items-center justify-between">
                                 <div>
-                                    <p>Total Savings</p>
-                                    <p id="totalSavings">$0.00</p>
-                                </div><i class="fas fa-piggy-bank"></i>
+                                    <p class="text-white opacity-80 text-xs sm:text-sm">Total Savings</p>
+                                    <p id="totalSavings" class="text-lg sm:text-2xl font-bold text-white">$0.00</p>
+                                </div><i class="fas fa-piggy-bank text-2xl sm:text-3xl text-blue-400"></i>
                             </div>
                         </div>
-                        <div>
-                            <div>
+                        <div class="glass-card p-4 sm:p-6 rounded-xl">
+                            <div class="flex items-center justify-between">
                                 <div>
-                                    <p>Active Loans</p>
-                                    <p id="totalLoans">$0.00</p>
-                                </div><i class="fas fa-hand-holding-usd"></i>
+                                    <p class="text-white opacity-80 text-xs sm:text-sm">Active Loans</p>
+                                    <p id="totalLoans" class="text-lg sm:text-2xl font-bold text-white">$0.00</p>
+                                </div><i class="fas fa-hand-holding-usd text-2xl sm:text-3xl text-red-400"></i>
                             </div>
                         </div>
-                        <div>
-                            <div>
+                        <div class="glass-card p-4 sm:p-6 rounded-xl">
+                            <div class="flex items-center justify-between">
                                 <div>
-                                    <p>Annual Cashout</p>
-                                    <p id="annualCashout">$0.00</p>
-                                </div><i class="fas fa-calendar-check"></i>
+                                    <p class="text-white opacity-80 text-xs sm:text-sm">Annual Cashout</p>
+                                    <p id="annualCashout" class="text-lg sm:text-2xl font-bold text-white">$0.00</p>
+                                </div><i class="fas fa-calendar-check text-2xl sm:text-3xl text-purple-400"></i>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div id="savingsSection" class="section hidden">
+                <!-- Savings Section -->
+                <div id="savingsSection">
                     <div>
-                        <h2>Savings Accounts</h2><button onclick="showAddSavingsModal()"> <i class="fas fa-plus"></i>Add
-                            Savings Goal </button>
+                        <h2>Savings Accounts</h2>
+                        <button onclick="showAddSavingsModal()">Add Savings Goal</button>
                     </div>
                     <div id="savingsList">
+                        <!-- Savings cards will be populated here -->
                     </div>
                 </div>
-                <div id="depositsSection" class="section hidden">
+
+                <!-- Deposits Section -->
+                <div id="depositsSection">
                     <div>
                         <h2>Deposits</h2>
-                        <div id="memberDepositButton"><button onclick="showDepositModal()"> <i
-                                    class="fas fa-plus"></i>Make Deposit </button>
+                        <div id="memberDepositButton">
+                            <button onclick="showDepositModal()">Make Deposit</button>
                         </div>
-                        <div id="adminDepositButton" class="hidden"><button onclick="showDepositModal()"> <i
-                                    class="fas fa-plus"></i>Register Deposit </button>
+                        <div id="adminDepositButton">
+                            <button onclick="showDepositModal()">Register Deposit</button>
                         </div>
                     </div>
-                    <div id="adminDepositsView" class="hidden">
+
+                    <!-- Admin View: All Members' Deposits -->
+                    <div id="adminDepositsView">
                         <div>
                             <h3>All Member Deposits</h3>
-                            <div>
-                                <table class="report-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Date</th>
-                                            <th>Member Name</th>
-                                            <th>Phone Number</th>
-                                            <th>Amount</th>
-                                            <th>Description</th>
-                                            <th>Status</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="adminDepositsTable">
-                                    </tbody>
-                                </table>
-                            </div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Member Name</th>
+                                        <th>Phone Number</th>
+                                        <th>Amount</th>
+                                        <th>Description</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="adminDepositsTable">
+                                    <!-- Admin deposits table will be populated here -->
+                                </tbody>
+                            </table>
                         </div>
+
+                        <!-- Deposit Statistics -->
                         <div>
                             <div>
                                 <h4>Today's Deposits</h4>
@@ -652,946 +661,571 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Member View: Personal Deposits -->
                     <div id="memberDepositsView">
                         <h3>My Deposits</h3>
                         <div id="depositsList">
+                            <!-- Member deposits will be populated here -->
                         </div>
                     </div>
                 </div>
-                <div id="loansSection" class="section hidden">
+
+                <!-- Loans Section -->
+                <div id="loansSection">
                     <div>
                         <h2>Loans</h2>
-                        <div id="memberLoanButton"><button onclick="showLoanModal()"> <i class="fas fa-plus"></i>Apply
-                                for Loan </button>
+                        <div id="memberLoanButton">
+                            <button onclick="showLoanModal()">Apply for Loan</button>
                         </div>
                     </div>
                     <div id="loansList">
+                        <!-- Loans will be populated here -->
                     </div>
                 </div>
-                <div id="cashoutSection" class="section hidden">
+
+                <!-- Cashout Section -->
+                <div id="cashoutSection">
                     <div>
                         <h2>Annual Cashout</h2>
-                        <div><select id="cashoutYear" onchange="calculateAnnualCashout()">
+                        <div>
+                            <select id="cashoutYear" onchange="calculateAnnualCashout()">
                                 <option value="2024">2024</option>
                                 <option value="2023">2023</option>
                                 <option value="2022">2022</option>
-                            </select> <button onclick="processCashoutRequest()"> <i
-                                    class="fas fa-money-bill-wave"></i>Request Cashout </button>
+                            </select>
+                            <button onclick="processCashoutRequest()">Request Cashout</button>
                         </div>
                     </div>
+
                     <div>
+                        <!-- Cashout Calculation -->
                         <div>
                             <h3>Cashout Calculation</h3>
                             <div>
-                                <div><span>Total Savings:</span> <span id="totalSavingsAmount">$0.00</span>
-                                </div>
-                                <div><span>Total Deposits:</span> <span id="totalDepositsAmount">$0.00</span>
-                                </div>
-                                <div><span>Loan Payments Made:</span> <span id="loanPaymentsAmount">$0.00</span>
+                                <div>
+                                    <span>Total Savings:</span>
+                                    <span id="totalSavingsAmount">$0.00</span>
                                 </div>
                                 <div>
-                                    <div><span>Community Fund Share (5% of Total):</span> <span
-                                            id="communityFundShare">$0.00</span>
-                                    </div>
+                                    <span>Total Deposits:</span>
+                                    <span id="totalDepositsAmount">$0.00</span>
                                 </div>
                                 <div>
-                                    <div><span>Total Deductions/Fees:</span> <span
-                                            id="totalDeductionsAmount">$0.00</span>
-                                    </div>
+                                    <span>Loan Payments Made:</span>
+                                    <span id="loanPaymentsAmount">$0.00</span>
                                 </div>
                                 <div>
-                                    <div><span>Final Cashout Amount:</span> <span id="finalCashoutAmount">$0.00</span>
+                                    <div>
+                                        <span>Annual Cashout Total:</span>
+                                        <span id="annualCashoutTotal">$0.00</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Cashout Details -->
                         <div>
-                            <h3>Cashout History</h3>
-                            <div id="cashoutHistoryList">
+                            <h3>Cashout Breakdown</h3>
+                            <div>
                                 <div>
-                                    <div>
-                                        <p>2023 Annual Cashout</p>
-                                        <p>15 Dec 2023</p>
-                                    </div>
-                                    <div>
-                                        <p>$1,500.00</p><span class="text-xs">Paid</span>
-                                    </div>
+                                    <p>How it works:</p>
+                                    <ul>
+                                        <li>Your savings accumulate throughout the year</li>
+                                        <li>All deposits are added to your cashout</li>
+                                        <li>Loan payments you've made are included</li>
+                                        <li>Total is available for annual withdrawal</li>
+                                    </ul>
                                 </div>
                                 <div>
-                                    <div>
-                                        <p>2022 Annual Cashout</p>
-                                        <p>18 Dec 2022</p>
-                                    </div>
-                                    <div>
-                                        <p>$1,200.00</p><span class="text-xs">Paid</span>
-                                    </div>
+                                    <p>Payment Schedule:</p>
+                                    <p>Annual cashouts are processed at the end of each calendar year. You can request
+                                        your cashout starting December 1st.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Cashout History -->
+                    <div>
+                        <h3>Cashout History</h3>
+                        <div id="cashoutHistory">
+                            <!-- Cashout history will be populated here -->
+                        </div>
+                    </div>
                 </div>
-                <div id="summarySection" class="section hidden">
+
+                <!-- Member Summary Section -->
+                <div id="summarySection">
                     <h2>My Financial Summary</h2>
                     <div>
+                        <!-- Personal Stats -->
                         <div>
+                            <h3>Account Overview</h3>
                             <div>
-                                <h4>Net Worth Projection</h4>
-                                <p id="netWorth">$0.00</p>
-                            </div><i class="fas fa-chart-bar"></i>
+                                <div>
+                                    <span>Member Since:</span>
+                                    <span id="memberSince">-</span>
+                                </div>
+                                <div>
+                                    <span>Total Deposits:</span>
+                                    <span id="memberTotalDeposits">$0.00</span>
+                                </div>
+                                <div>
+                                    <span>Active Savings:</span>
+                                    <span id="memberActiveSavings">$0.00</span>
+                                </div>
+                                <div>
+                                    <span>Current Loans:</span>
+                                    <span id="memberCurrentLoans">$0.00</span>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- Recent Activity -->
                         <div>
-                            <div>
-                                <h4>Savings Rate</h4>
-                                <p id="savingsRate">0%</p>
-                            </div><i class="fas fa-percent"></i>
-                        </div>
-                        <div>
-                            <div>
-                                <h4>Loan Repayment Progress</h4>
-                                <p id="loanProgress">0%</p>
-                            </div><i class="fas fa-sync-alt"></i>
-                        </div>
-                        <div>
-                            <div>
-                                <h4>Goal Completion</h4>
-                                <p id="goalCompletion">0/0</p>
-                            </div><i class="fas fa-bullseye"></i>
+                            <h3>Recent Activity</h3>
+                            <div id="recentActivity">
+                                <!-- Recent activity will be populated here -->
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Quick Actions -->
                     <div>
-                        <h3>Detailed Reports</h3>
-                        <div><button onclick="generatePdfReport()"> <i class="fas fa-file-pdf"></i>Download Full Report
-                                (PDF) </button> <button onclick="printReport()"> <i class="fas fa-print"></i>Print
-                                Summary </button>
+                        <h3>Quick Actions</h3>
+                        <div>
+                            <button onclick="showDepositModal()">Make Deposit</button>
+                            <button onclick="showAddSavingsModal()">New Savings Goal</button>
+                            <button onclick="showLoanModal()">Apply for Loan</button>
                         </div>
                     </div>
                 </div>
-                <div id="chatSection" class="section hidden">
-                    <h2>Member Chat Support</h2>
+
+                <!-- Annual Reports Section -->
+                <div id="reportsSection">
                     <div>
-                        <div id="chatBox">
+                        <h2>Annual Financial Reports</h2>
+                        <div>
+                            <select id="reportYear">
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                            </select>
+                            <button onclick="generateReport()">Generate Report</button>
                         </div>
-                        <form onsubmit="sendChatMessage(event)">
-                            <div><input type="text" id="chatInput" placeholder="Type your message..." required> <button
-                                    type="submit"> <i class="fas fa-paper-plane"></i> </button>
-                                <div><button type="button" onclick="startRecording()"> <i class="fas fa-microphone"></i>
-                                    </button>
+                    </div>
+
+                    <div id="reportContent">
+                        <div>
+                            <h3>Financial Summary Report</h3>
+                            <div>
+                                <button onclick="downloadPDF()">Download PDF</button>
+                                <button onclick="printReport()">Print Report</button>
+                            </div>
+                        </div>
+
+                        <div id="reportData">
+                            <div>
+                                <div>
+                                    <h4>Total Deposits</h4>
+                                    <p id="reportTotalDeposits">$0.00</p>
+                                </div>
+                                <div>
+                                    <h4>Total Loans</h4>
+                                    <p id="reportTotalLoans">$0.00</p>
+                                </div>
+                                <div>
+                                    <h4>Interest Earned</h4>
+                                    <p id="reportInterestEarned">$0.00</p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4>Deposit History</h4>
+                                <table>
+                                    <thead id="depositsTableHeader">
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Amount</th>
+                                            <th>Description</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="reportDepositsTable">
+                                        <!-- Deposit data will be populated here -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div>
+                                <h4>Loan History</h4>
+                                <table>
+                                    <thead id="loansTableHeader">
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Amount</th>
+                                            <th>Interest Rate</th>
+                                            <th>Term</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="reportLoansTable">
+                                        <!-- Loan data will be populated here -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div>
+                                <h4>Cashout History</h4>
+                                <table>
+                                    <thead id="cashoutsTableHeader">
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Amount</th>
+                                            <th>Method</th>
+                                            <th>Fee</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="reportCashoutsTable">
+                                        <!-- Cashout data will be populated here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Audit Dashboard Section -->
+                <div id="auditSection">
+                    <div>
+                        <h2>Audit Dashboard</h2>
+                        <div>
+                            <select id="auditTimeframe" onchange="loadAuditData()">
+                                <option value="today">Today</option>
+                                <option value="week">This Week</option>
+                                <option value="month">This Month</option>
+                                <option value="year">This Year</option>
+                                <option value="all">All Time</option>
+                            </select>
+                            <button onclick="exportAuditData()">Export Data</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Key Metrics -->
+                <div>
+                    <div>
+                        <div>
+                            <div>
+                                <div>
+                                    <p>Total Members</p>
+                                    <p id="auditTotalMembers">0</p>
+                                </div>
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <p id="auditMembersChange">+0 this period</p>
+                        </div>
+
+                        <div>
+                            <div>
+                                <div>
+                                    <p>Total Deposits</p>
+                                    <p id="auditTotalDeposits">$0.00</p>
+                                </div>
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <p id="auditDepositsChange">+$0 this period</p>
+                        </div>
+
+                        <div>
+                            <div>
+                                <div>
+                                    <p>Active Loans</p>
+                                    <p id="auditActiveLoans">$0.00</p>
+                                </div>
+                                <i class="fas fa-hand-holding-usd"></i>
+                            </div>
+                            <p id="auditLoansChange">0 active loans</p>
+                        </div>
+
+                        <div>
+                            <div>
+                                <div>
+                                    <p>System Health</p>
+                                    <p id="auditSystemHealth">Excellent</p>
+                                </div>
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <p>All systems operational</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity Timeline -->
+                <div>
+                    <div>
+                        <h3>Recent Activity</h3>
+                        <div id="auditActivityTimeline">
+                            <!-- Activity timeline will be populated here -->
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3>Risk Assessment</h3>
+                        <div>
+                            <div>
+                                <div>
+                                    <span>Loan Default Risk</span>
+                                    <span id="auditDefaultRisk">Low</span>
+                                </div>
+                                <div>
+                                    <div id="auditDefaultRiskBar" style="width: 15%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div>
+                                    <span>Liquidity Risk</span>
+                                    <span id="auditLiquidityRisk">Low</span>
+                                </div>
+                                <div>
+                                    <div id="auditLiquidityRiskBar" style="width: 20%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div>
+                                    <span>Member Satisfaction</span>
+                                    <span id="auditSatisfaction">High</span>
+                                </div>
+                                <div>
+                                    <div id="auditSatisfactionBar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Analytics -->
+                <div>
+                    <h3>Detailed Analytics</h3>
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Member</th>
+                                    <th>Total Deposits</th>
+                                    <th>Active Loans</th>
+                                    <th>Payment History</th>
+                                    <th>Risk Score</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="auditMembersTable">
+                                <!-- Member analytics will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Chat Section -->
+                <div id="chatSection">
+                    <div>
+                        <h2>Member Chat</h2>
+                        <div>
+                            <span>
+                                <i class="fas fa-users"></i>
+                                <span id="onlineCount">0</span> members online
+                            </span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <!-- Chat Messages -->
+                        <div>
+                            <div>
+                                <div>
+                                    <h3>General Chat</h3>
+                                    <p>Connect with all members</p>
+                                </div>
+
+                                <div id="messagesContainer">
+                                    <!-- Messages will be populated here -->
+                                </div>
+
+                                <div>
+                                    <form onsubmit="sendMessage(event)">
+                                        <input type="text" id="messageInput" placeholder="Type your message..."
+                                            maxlength="500">
+                                        <button type="button" id="voiceBtn" onclick="toggleVoiceRecording()">
+                                            <i class="fas fa-microphone"></i>
+                                        </button>
+                                        <button type="submit">Send</button>
+                                    </form>
+
+                                    <div id="recordingIndicator">
+                                        <span>
+                                            <i class="fas fa-circle"></i> Recording... Click to stop
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Online Members -->
+                        <div>
+                            <h4>Online Members</h4>
+                            <div id="onlineMembers">
+                                <!-- Online members will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Section -->
+                <div id="adminSection">
+                    <h2>Admin Panel</h2>
+
+                    <div>
+                        <div>
+                            <h3>System Stats</h3>
+                            <div>
+                                <p>Total Users: <span id="totalUsers">0</span></p>
+                                <p>Total Deposits: <span id="adminTotalDeposits">$0.00</span></p>
+                                <p>Total Loans: <span id="adminTotalLoans">$0.00</span></p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3>Interest Rates</h3>
+                            <div>
+                                <div>
+                                    <label>Loan Interest Rate (%)</label>
+                                    <input type="number" id="loanInterestRate" value="5" min="0" max="50" step="0.1">
+                                </div>
+                                <button onclick="updateInterestRates()">Update Rates</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3>User Management</h3>
+                        <div id="usersList">
+                            <!-- Users list will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Savings Modal -->
+                <div id="addSavingsModal">
+                    <div>
+                        <h3>Add Savings Goal</h3>
+                        <form onsubmit="addSavingsGoal(event)">
+                            <div>
+                                <div>
+                                    <label>Goal Name</label>
+                                    <input type="text" id="savingsName" required>
+                                </div>
+                                <div>
+                                    <label>Target Amount ($)</label>
+                                    <input type="number" id="savingsTarget" required min="1" step="0.01">
+                                </div>
+                                <div>
+                                    <label>Initial Deposit ($)</label>
+                                    <input type="number" id="savingsInitial" min="0" step="0.01">
+                                </div>
+                                <div>
+                                    <button type="submit">Create Goal</button>
+                                    <button type="button" onclick="closeModal('addSavingsModal')">Cancel</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div id="auditSection" class="section hidden">
-                    <h2>Audit Dashboard</h2>
+                <!-- Deposit Modal -->
+                <div id="depositModal">
                     <div>
-                        <div>
-                            <h3>Recent Transactions &amp; Events</h3>
+                        <h3 id="depositModalTitle">Make Deposit</h3>
+                        <form onsubmit="makeDeposit(event)">
                             <div>
-                                <table class="report-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Timestamp</th>
-                                            <th>User</th>
-                                            <th>Type</th>
-                                            <th>Amount</th>
-                                            <th>Details</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="auditLogTable">
-                                    </tbody>
-                                </table>
+                                <!-- Admin: Select Member -->
+                                <div id="adminMemberSelect">
+                                    <label>Select Member</label>
+                                    <select id="depositMemberId">
+                                        <option value="">Choose a member...</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label>Amount ($)</label>
+                                    <input type="number" id="depositAmount" required min="1" step="0.01">
+                                </div>
+
+                                <div>
+                                    <label>Description</label>
+                                    <input type="text" id="depositDescription">
+                                </div>
+
+                                <!-- Admin: Phone Number -->
+                                <div id="adminPhoneInput">
+                                    <label>Member Phone Number</label>
+                                    <input type="tel" id="depositPhone" placeholder="Enter phone number">
+                                </div>
+
+                                <div>
+                                    <button type="submit" id="depositSubmitBtn">Deposit</button>
+                                    <button type="button" onclick="closeModal('depositModal')">Cancel</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
-                <div id="reportsSection" class="section hidden">
-                    <h2>Annual Reports</h2>
+
+                <!-- Loan Modal -->
+                <div id="loanModal">
                     <div>
-                        <div>
-                            <h3>Community Financial Health</h3>
+                        <h3>Apply for Loan</h3>
+                        <form onsubmit="applyForLoan(event)">
                             <div>
                                 <div>
-                                    <h4>Total Community Fund</h4>
-                                    <p id="communityFundTotal">$0.00</p>
+                                    <label>Loan Amount ($)</label>
+                                    <input type="number" id="loanAmount" required min="100" step="0.01"
+                                        oninput="updateLoanPreview()">
                                 </div>
+
                                 <div>
-                                    <h4>Total Loans Granted</h4>
-                                    <p id="loansGrantedTotal">$0.00</p>
+                                    <label>Loan Term (months)</label>
+                                    <select id="loanTerm" required onchange="updateLoanPreview()">
+                                        <option value="6">6 months</option>
+                                        <option value="12">12 months</option>
+                                        <option value="24">24 months</option>
+                                        <option value="36">36 months</option>
+                                    </select>
                                 </div>
+
                                 <div>
-                                    <h4>Total Members</h4>
-                                    <p id="totalMembers">0</p>
+                                    <label>Purpose</label>
+                                    <input type="text" id="loanPurpose" required>
                                 </div>
-                            </div>
-                        </div>
-                        <div>
-                            <h3>Generate Community Report</h3><select id="reportYear">
-                                <option value="2024">2024</option>
-                                <option value="2023">2023</option>
-                                <option value="2022">2022</option>
-                            </select> <button onclick="generateCommunityReport()"> <i
-                                    class="fas fa-chart-bar"></i>Generate Report </button>
-                        </div>
-                    </div>
-                </div>
-                <div id="adminSection" class="section hidden">
-                    <h2>Admin Panel</h2>
-                    <div>
-                        <div>
-                            <h3>User Management</h3>
-                            <div>
-                                <table class="report-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Balance</th>
-                                            <th>Loans Due</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="userManagementTable">
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div>
-                            <h3>System Settings</h3>
-                            <div>
-                                <div><label for="interestRate">Loan Interest Rate (%)</label> <input type="number"
-                                        id="interestRate" value="5" min="0" max="100">
+
+                                <div id="loanPreview">
+                                    <p>Interest Rate: <span id="previewRate">5%</span></p>
+                                    <p>Monthly Payment: <span id="previewPayment">$0.00</span></p>
+                                    <p>Total Repayment: <span id="previewTotal">$0.00</span></p>
                                 </div>
-                                <div><label for="cashoutRate">Annual Cashout Rate (%)</label> <input type="number"
-                                        id="cashoutRate" value="5" min="0" max="100">
-                                </div><button onclick="saveSettings()">Save Settings</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </div>
-    </div>
-    <div id="notification" class="hidden"></div>
 
-    <script>
-        // --- Data Management and State ---
-        const MOCK_ADMIN = { email: 'admin@system.com', password: 'admin123', is_admin: true, name: 'Admin User' };
-        let users = JSON.parse(localStorage.getItem('moneyWiseUsers')) || [MOCK_ADMIN];
-        let currentUser = JSON.parse(localStorage.getItem('moneyWiseCurrentUser')) || null;
-        let transactions = JSON.parse(localStorage.getItem('moneyWiseTransactions')) || [];
-        let loans = JSON.parse(localStorage.getItem('moneyWiseLoans')) || [];
-        let chatMessages = JSON.parse(localStorage.getItem('moneyWiseChat')) || [];
-
-        const saveState = () => {
-            localStorage.setItem('moneyWiseUsers', JSON.stringify(users));
-            localStorage.setItem('moneyWiseTransactions', JSON.stringify(transactions));
-            localStorage.setItem('moneyWiseLoans', JSON.stringify(loans));
-            localStorage.setItem('moneyWiseCurrentUser', JSON.stringify(currentUser));
-            localStorage.setItem('moneyWiseChat', JSON.stringify(chatMessages));
-        };
-
-        // --- Utility Functions ---
-
-        /**
-         * Shows a transient notification message.
-         * @param {string} message - The message content.
-         * @param {('success'|'error')} type - The type of notification.
-         */
-        const showNotification = (message, type) => {
-            let notification = document.getElementById('notification');
-            if (!notification) {
-                notification = document.createElement('div');
-                notification.id = 'notification';
-                document.body.appendChild(notification);
-            }
-            notification.className = `notification ${type}`;
-            notification.textContent = message;
-            setTimeout(() => notification.classList.add('show'), 10);
-            setTimeout(() => notification.classList.remove('show'), 3000);
-        };
-
-        const formatCurrency = (amount) => {
-            return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
-        };
-
-        const getMemberNameById = (userId) => {
-            const user = users.find(u => u.email === userId);
-            return user ? `${user.firstName} ${user.lastName}` : 'System User';
-        };
-
-        // --- Authentication and Navigation ---
-
-        const showHomepage = () => {
-            document.getElementById('homepageSection').classList.remove('hidden');
-            document.getElementById('authSection').classList.add('hidden');
-            document.getElementById('dashboard').classList.add('hidden');
-        };
-
-        const showAuthSection = (mode = 'login') => {
-            document.getElementById('homepageSection').classList.add('hidden');
-            document.getElementById('authSection').classList.remove('hidden');
-            showLogin();
-            if (mode === 'signup') {
-                showSignup();
-            }
-        };
-
-        const showLogin = () => {
-            document.getElementById('loginForm').classList.remove('hidden');
-            document.getElementById('signupForm').classList.add('hidden');
-        };
-
-        const showSignup = () => {
-            document.getElementById('loginForm').classList.add('hidden');
-            document.getElementById('signupForm').classList.remove('hidden');
-        };
-
-        const loginUser = (user) => {
-            currentUser = user;
-            localStorage.setItem('moneyWiseCurrentUser', JSON.stringify(currentUser));
-            document.getElementById('authSection').classList.add('hidden');
-            document.getElementById('dashboard').classList.remove('hidden');
-            document.getElementById('userWelcome').textContent = `Welcome, ${currentUser.firstName || currentUser.name}!`;
-            initializeDashboard();
-            showSection('overview');
-        };
-
-        const handleLogin = (event) => {
-            event.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-
-            const user = users.find(u => u.email === email && u.password === password);
-
-            if (user) {
-                loginUser(user);
-                showNotification('Login successful!', 'success');
-            } else {
-                showNotification('Invalid email or password.', 'error');
-            }
-        };
-
-        const handleSignup = (event) => {
-            event.preventDefault();
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const email = document.getElementById('signupEmail').value;
-            const password = document.getElementById('signupPassword').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-
-            if (password !== confirmPassword) {
-                showNotification('Passwords do not match.', 'error');
-                return;
-            }
-
-            if (users.some(u => u.email === email)) {
-                showNotification('An account with this email already exists.', 'error');
-                return;
-            }
-
-            const newUser = {
-                id: Date.now(),
-                firstName,
-                lastName,
-                email,
-                password,
-                is_admin: false,
-                balance: 0,
-                savings: 0,
-                loans_due: 0,
-                loan_applications: [],
-                deposits: [],
-                savings_goals: []
-            };
-
-            users.push(newUser);
-            saveState();
-            showNotification('Account created successfully! Please sign in.', 'success');
-            showLogin();
-        };
-
-        const loginAsAdmin = () => {
-            const adminUser = users.find(u => u.email === MOCK_ADMIN.email && u.password === MOCK_ADMIN.password);
-            if (adminUser) {
-                loginUser(adminUser);
-                showNotification('Logged in as Admin.', 'success');
-            } else {
-                // Should not happen if MOCK_ADMIN is correctly initialized
-                showNotification('Admin account not found.', 'error');
-            }
-        };
-
-        const createAdminAccount = () => {
-            if (!users.some(u => u.email === MOCK_ADMIN.email)) {
-                users.push(MOCK_ADMIN);
-                saveState();
-                showNotification('Admin account created successfully.', 'success');
-            } else {
-                showNotification('Admin account already exists.', 'error');
-            }
-        };
-
-        const logout = () => {
-            currentUser = null;
-            localStorage.removeItem('moneyWiseCurrentUser');
-            showHomepage();
-            showNotification('Logged out successfully.', 'success');
-        };
-
-        // --- Dashboard Navigation and Initialization ---
-
-        const toggleMobileMenu = () => {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebarOverlay');
-            const menuIcon = document.getElementById('menuIcon');
-
-            if (sidebar.classList.contains('-translate-x-full')) {
-                sidebar.classList.remove('-translate-x-full');
-                overlay.classList.remove('hidden');
-                menuIcon.classList.remove('fa-bars');
-                menuIcon.classList.add('fa-times');
-            } else {
-                sidebar.classList.add('-translate-x-full');
-                overlay.classList.add('hidden');
-                menuIcon.classList.remove('fa-times');
-                menuIcon.classList.add('fa-bars');
-            }
-        };
-
-        const showSection = (sectionId) => {
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.add('hidden');
-            });
-
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-
-            const targetSection = document.getElementById(`${sectionId}Section`);
-            if (targetSection) {
-                targetSection.classList.remove('hidden');
-                // Set active class on the button
-                const activeBtn = document.querySelector(`[onclick="showSection('${sectionId}')"]`);
-                if (activeBtn) activeBtn.classList.add('active');
-            }
-
-            // Hide mobile menu after selection
-            if (window.innerWidth < 1024) {
-                toggleMobileMenu();
-            }
-
-            // Call specific update function for the section
-            switch (sectionId) {
-                case 'overview':
-                    updateOverview();
-                    break;
-                case 'deposits':
-                    updateDepositsSection();
-                    break;
-                case 'loans':
-                    updateLoansSection();
-                    break;
-                case 'cashout':
-                    calculateAnnualCashout(); // Default to current year
-                    break;
-                case 'summary':
-                    // updateSummary();
-                    break;
-                case 'chat':
-                    loadChatMessages();
-                    break;
-                case 'audit':
-                    // updateAuditDashboard();
-                    break;
-                case 'reports':
-                    // updateReports();
-                    break;
-                case 'admin':
-                    // updateAdminPanel();
-                    break;
-            }
-        };
-
-        const initializeDashboard = () => {
-            // Show/Hide Admin menu items
-            const isAdmin = currentUser.is_admin;
-            document.getElementById('adminMenu').classList.toggle('hidden', !isAdmin);
-            document.getElementById('adminCashoutMenu').classList.toggle('hidden', !isAdmin);
-
-            // Deposits section specific elements
-            document.getElementById('memberDepositButton').classList.toggle('hidden', isAdmin);
-            document.getElementById('adminDepositButton').classList.toggle('hidden', !isAdmin);
-            document.getElementById('adminDepositsView').classList.toggle('hidden', !isAdmin);
-            document.getElementById('memberDepositsView').classList.toggle('hidden', isAdmin);
-
-            // Update display name
-            document.getElementById('userWelcome').textContent = `Welcome, ${currentUser.firstName || currentUser.name}!`;
-
-            // Load initial data
-            updateOverview();
-        };
-
-        // --- Overview Logic ---
-
-        const updateOverview = () => {
-            if (!currentUser) return;
-
-            // Recalculate balances from transactions (mock for simplicity)
-            const userTransactions = transactions.filter(t => t.userId === currentUser.email);
-            const totalDeposits = userTransactions.filter(t => t.type === 'deposit').reduce((sum, t) => sum + t.amount, 0);
-            const totalLoanPayments = userTransactions.filter(t => t.type === 'loan_payment').reduce((sum, t) => sum + t.amount, 0);
-
-            // Mock Savings Goal calculation (Total deposits for now)
-            const totalSavings = totalDeposits;
-
-            // Mock Loan calculation (Total active loan amount)
-            const activeLoans = loans.filter(l => l.userId === currentUser.email && l.status === 'approved');
-            const totalLoansDue = activeLoans.reduce((sum, l) => sum + l.amount - l.paid, 0);
-
-            currentUser.balance = totalDeposits - totalLoansDue;
-            currentUser.savings = totalSavings;
-            currentUser.loans_due = totalLoansDue;
-
-            // Mock Annual Cashout (2% of total savings + deposits)
-            const mockCashout = (totalSavings * 0.02) + (totalDeposits * 0.02);
-
-            document.getElementById('totalBalance').textContent = formatCurrency(currentUser.balance);
-            document.getElementById('totalSavings').textContent = formatCurrency(currentUser.savings);
-            document.getElementById('totalLoans').textContent = formatCurrency(currentUser.loans_due);
-            document.getElementById('annualCashout').textContent = formatCurrency(mockCashout);
-
-            saveState();
-        };
-
-        // --- Deposits Logic ---
-
-        const showDepositModal = (isEditing = false, transaction = null) => {
-            // Implementation for the modal to add/register a deposit (omitted for brevity)
-            // This function would typically display a hidden modal and populate it with form data.
-            showNotification('Deposit modal opened. (Implementation required for full form functionality)', 'success');
-        };
-
-        const updateDepositsSection = () => {
-            if (!currentUser) return;
-
-            if (currentUser.is_admin) {
-                // Admin View: All deposits
-                const adminTableBody = document.getElementById('adminDepositsTable');
-                adminTableBody.innerHTML = '';
-
-                const allDeposits = transactions.filter(t => t.type === 'deposit').sort((a, b) => new Date(b.date) - new Date(a.date));
-
-                let todayTotal = 0;
-                let thisMonthTotal = 0;
-                let thisYearTotal = 0;
-                let todayCount = 0;
-                let monthCount = 0;
-                let yearCount = 0;
-                const now = new Date();
-
-                allDeposits.forEach(deposit => {
-                    const depositDate = new Date(deposit.date);
-
-                    if (depositDate.toDateString() === now.toDateString()) {
-                        todayTotal += deposit.amount;
-                        todayCount++;
-                    }
-                    if (depositDate.getMonth() === now.getMonth() && depositDate.getFullYear() === now.getFullYear()) {
-                        thisMonthTotal += deposit.amount;
-                        monthCount++;
-                    }
-                    if (depositDate.getFullYear() === now.getFullYear()) {
-                        thisYearTotal += deposit.amount;
-                        yearCount++;
-                    }
-
-                    const memberName = getMemberNameById(deposit.userId);
-                    const phoneNumber = users.find(u => u.email === deposit.userId)?.phoneNumber || 'N/A'; // Mock phone number
-
-                    adminTableBody.innerHTML += `
-                    <tr>
-                        <td>${deposit.date}</td>
-                        <td>${memberName}</td>
-                        <td>${phoneNumber}</td>
-                        <td class="${deposit.type === 'loan_payment' ? 'text-orange-300' : 'text-green-300'}">${formatCurrency(deposit.amount)}</td>
-                        <td>${deposit.description}</td>
-                        <td><span class="px-2 py-1 text-xs font-semibold rounded-full ${deposit.status === 'Confirmed' ? 'bg-green-600' : 'bg-yellow-600'} text-white">${deposit.status}</span></td>
-                        <td>
-                            <button onclick="approveDeposit('${deposit.id}')" class="text-green-400 hover:text-green-300 mr-2"><i class="fas fa-check"></i></button>
-                            <button onclick="deleteTransaction('${deposit.id}')" class="text-red-400 hover:text-red-300"><i class="fas fa-trash"></i></button>
-                        </td>
-                    </tr>
-                `;
-                });
-
-                document.getElementById('todayDeposits').textContent = formatCurrency(todayTotal);
-                document.getElementById('todayDepositCount').textContent = todayCount;
-                document.getElementById('monthDeposits').textContent = formatCurrency(thisMonthTotal);
-                document.getElementById('monthDepositCount').textContent = monthCount;
-                document.getElementById('yearDeposits').textContent = formatCurrency(thisYearTotal);
-                document.getElementById('yearDepositCount').textContent = yearCount;
-
-            } else {
-                // Member View: Personal deposits
-                const depositsList = document.getElementById('depositsList');
-                depositsList.innerHTML = '';
-
-                const personalDeposits = transactions
-                    .filter(t => t.userId === currentUser.email && t.type === 'deposit')
-                    .sort((a, b) => new Date(b.date) - new Date(a.date));
-
-                if (personalDeposits.length === 0) {
-                    depositsList.innerHTML = '<p class="text-white opacity-80 p-4 text-center">No deposits found. Make your first deposit!</p>';
-                } else {
-                    personalDeposits.forEach(deposit => {
-                        depositsList.innerHTML += `
-                        <div class="glass-effect p-4 rounded-xl flex justify-between items-center transition-all hover:bg-opacity-20 fade-in">
-                            <div class="flex items-center space-x-4">
-                                <i class="fas fa-money-bill-wave text-2xl ${deposit.status === 'Confirmed' ? 'text-green-400' : 'text-yellow-400'}"></i>
                                 <div>
-                                    <p class="text-white font-semibold">${deposit.description}</p>
-                                    <p class="text-white opacity-60 text-sm">${deposit.date}</p>
+                                    <button type="submit">Apply</button>
+                                    <button type="button" onclick="closeModal('loanModal')">Cancel</button>
                                 </div>
                             </div>
-                            <div class="text-right">
-                                <p class="text-lg font-bold ${deposit.status === 'Confirmed' ? 'text-green-400' : 'text-yellow-400'}">${formatCurrency(deposit.amount)}</p>
-                                <span class="text-xs font-semibold px-2 py-0.5 rounded-full ${deposit.status === 'Confirmed' ? 'bg-green-600' : 'bg-yellow-600'} text-white">${deposit.status}</span>
-                            </div>
-                        </div>
-                    `;
-                    });
-                }
-            }
-        };
-
-        const approveDeposit = (id) => {
-            const depositIndex = transactions.findIndex(t => t.id === id);
-            if (depositIndex !== -1) {
-                transactions[depositIndex].status = 'Confirmed';
-                saveState();
-                updateDepositsSection();
-                updateOverview(); // Recalculate balance
-                showNotification('Deposit approved and confirmed.', 'success');
-            }
-        };
-
-        const deleteTransaction = (id) => {
-            transactions = transactions.filter(t => t.id !== id);
-            saveState();
-            updateDepositsSection();
-            updateOverview();
-            showNotification('Transaction deleted.', 'error');
-        };
-
-        // Mock function to add a deposit from a user
-        const mockAddDeposit = (userId, amount, description = 'Regular Monthly Deposit') => {
-            transactions.push({
-                id: Date.now().toString(),
-                userId: userId,
-                type: 'deposit',
-                amount: amount,
-                description: description,
-                date: new Date().toLocaleDateString('en-US'),
-                status: 'Pending'
-            });
-            saveState();
-            updateOverview();
-        };
-
-        // --- Loans Logic ---
-
-        const showLoanModal = () => {
-            // Implementation for the modal to apply for a loan (omitted for brevity)
-            showNotification('Loan application modal opened. (Implementation required for full form functionality)', 'success');
-        };
-
-        const updateLoansSection = () => {
-            if (!currentUser) return;
-
-            const loansList = document.getElementById('loansList');
-            loansList.innerHTML = '';
-
-            const personalLoans = loans.filter(l => l.userId === currentUser.email).sort((a, b) => new Date(b.date) - new Date(a.date));
-
-            if (personalLoans.length === 0) {
-                loansList.innerHTML = '<p class="text-white opacity-80 p-4 text-center">No loan applications found. Apply for a loan today!</p>';
-                return;
-            }
-
-            personalLoans.forEach(loan => {
-                const statusColor = loan.status === 'approved' ? 'bg-green-600' : (loan.status === 'pending' ? 'bg-yellow-600' : 'bg-red-600');
-                const totalDue = loan.amount - loan.paid;
-
-                loansList.innerHTML += `
-                <div class="glass-card p-6 rounded-xl flex flex-col md:flex-row justify-between items-start md:items-center transition-all hover:bg-opacity-20 fade-in">
-                    <div class="space-y-2 mb-4 md:mb-0">
-                        <p class="text-xl font-bold text-white">Loan for: ${loan.purpose}</p>
-                        <p class="text-white opacity-80 text-sm">Amount: ${formatCurrency(loan.amount)} | Date: ${loan.date}</p>
-                        <p class="text-white opacity-80 text-sm">Repayment Term: ${loan.term} months</p>
-                    </div>
-                    <div class="text-right space-y-2">
-                        <p class="text-lg font-bold text-orange-400">Balance Due: ${formatCurrency(totalDue)}</p>
-                        <span class="text-xs font-semibold px-2 py-0.5 rounded-full ${statusColor} text-white">${loan.status.toUpperCase()}</span>
-                        <div class="mt-2">
-                            ${loan.status === 'approved' ? `<button onclick="showPaymentModal('${loan.id}')" class="btn-primary text-white text-sm px-3 py-1 rounded-lg">Make Payment</button>` : ''}
-                        </div>
+                        </form>
                     </div>
                 </div>
-            `;
-            });
-        };
-
-        const showPaymentModal = (loanId) => {
-            // Implementation for loan payment modal (omitted for brevity)
-            showNotification(`Payment modal for Loan ID: ${loanId} opened. (Implementation required for full payment logic)`, 'success');
-        };
-
-        // Mock function to add a loan application
-        const mockAddLoan = (userId, amount, purpose, term) => {
-            loans.push({
-                id: Date.now().toString(),
-                userId: userId,
-                amount: amount,
-                purpose: purpose,
-                term: term,
-                date: new Date().toLocaleDateString('en-US'),
-                status: 'pending', // 'pending', 'approved', 'rejected'
-                paid: 0 // Amount paid back
-            });
-            saveState();
-            updateLoansSection();
-        };
-
-        // --- Cashout Logic ---
-
-        const calculateAnnualCashout = () => {
-            if (!currentUser) return;
-
-            const year = document.getElementById('cashoutYear').value;
-
-            // Filter transactions for the selected year and current user (mocked for simplicity)
-            const userTransactions = transactions.filter(t => t.userId === currentUser.email && new Date(t.date).getFullYear() == year && t.status === 'Confirmed');
-
-            const totalSavings = userTransactions.filter(t => t.type === 'deposit').reduce((sum, t) => sum + t.amount, 0);
-            const totalDeposits = totalSavings; // Simplified: all deposits count as savings/deposits
-            const loanPayments = userTransactions.filter(t => t.type === 'loan_payment').reduce((sum, t) => sum + t.amount, 0);
-
-            // Mock Calculation: 5% return on total savings/deposits
-            const communityFundShare = (totalSavings + totalDeposits) * 0.05;
-            const totalDeductions = loanPayments; // Use loan payments as an example deduction
-
-            const finalCashout = communityFundShare - totalDeductions;
-
-            // Update the Cashout Section UI
-            document.getElementById('totalSavingsAmount').textContent = formatCurrency(totalSavings);
-            document.getElementById('totalDepositsAmount').textContent = formatCurrency(totalDeposits);
-            document.getElementById('loanPaymentsAmount').textContent = formatCurrency(loanPayments);
-            document.getElementById('communityFundShare').textContent = formatCurrency(communityFundShare);
-            document.getElementById('totalDeductionsAmount').textContent = formatCurrency(totalDeductions);
-            document.getElementById('finalCashoutAmount').textContent = formatCurrency(Math.max(0, finalCashout));
-
-            // Store the calculated cashout value (useful for the request button)
-            currentUser.calculatedCashout = Math.max(0, finalCashout);
-            saveState();
-        };
-
-        const processCashoutRequest = () => {
-            if (!currentUser) return;
-
-            if (currentUser.calculatedCashout && currentUser.calculatedCashout > 0) {
-                // In a real system, this would send a request to the backend for approval
-                showNotification(`Cashout request for ${formatCurrency(currentUser.calculatedCashout)} submitted for approval.`, 'success');
-            } else {
-                showNotification('No cashout amount to request or calculation error.', 'error');
-            }
-        };
-
-        // --- Chat Logic ---
-
-        const loadChatMessages = () => {
-            const chatBox = document.getElementById('chatBox');
-            if (!chatBox) return;
-
-            chatBox.innerHTML = '';
-            chatMessages.forEach(msg => {
-                const isSent = msg.userId === currentUser.email;
-                const messageClass = isSent ? 'sent' : 'received';
-                const senderName = isSent ? 'You' : getMemberNameById(msg.userId);
-
-                chatBox.innerHTML += `
-                <div class="message ${messageClass} fade-in">
-                    <p class="font-bold text-sm mb-1">${senderName}</p>
-                    <p>${msg.content}</p>
-                    <p class="message-time text-right">${msg.time}</p>
-                </div>
-            
-        });
-        // Scroll to the bottom of the chat box
-        chatBox.scrollTop = chatBox.scrollHeight;
-    };
-
-    const sendChatMessage = (event) => {
-        event.preventDefault();
-        const chatInput = document.getElementById('chatInput');
-        const content = chatInput.value.trim();
-
-        if (content === '') return;
-
-        const newMessage = {
-            id: Date.now().toString(),
-            userId: currentUser.email,
-            content: content,
-            time: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })
-        };
-
-        chatMessages.push(newMessage);
-        saveState();
-        loadChatMessages(); // Reload and scroll
-        chatInput.value = ''; // Clear input
-
-        // Mock a system response for a more interactive experience
-        setTimeout(mockSystemResponse, 1500);
-    };
-
-    const mockSystemResponse = () => {
-        const systemMessage = {
-            id: Date.now().toString() + '_sys',
-            userId: 'system@moneywise.com',
-            content: "Thank you for your message. A community moderator will respond shortly.",
-            time: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })
-        };
-
-        chatMessages.push(systemMessage);
-        saveState();
-        loadChatMessages();
-    };
 
 
-    // --- Initialization and Mock Data ---
-    
-    const initializeApp = () => {
-        // Ensure admin user exists
-        if (!users.some(u => u.email === MOCK_ADMIN.email)) {
-             users.push(MOCK_ADMIN);
-             saveState();
-        }
-        
-        // Add a mock member if none exist besides admin
-        if (!users.some(u => u.email === 'member@example.com')) {
-            users.push({
-                id: Date.now() + 1,
-                firstName: 'Jane',
-                lastName: 'Doe',
-                email: 'member@example.com',
-                password: 'password123',
-                is_admin: false,
-                balance: 0,
-                savings: 0,
-                loans_due: 0,
-                phoneNumber: '555-1234'
-            });
-            saveState();
-        }
 
-        // Mock some initial transactions for the member
-        if (transactions.length === 0) {
-            mockAddDeposit('member@example.com', 100, 'Initial Deposit');
-            mockAddDeposit('member@example.com', 50, 'Monthly Savings');
-            mockAddDeposit('member@example.com', 200, 'Bonus Payment');
-            
-            // Ensure some mock transactions are confirmed for cashout calculation
-            transactions.forEach(t => t.status = 'Confirmed');
-            
-            // Add a mock loan
-            mockAddLoan('member@example.com', 1000, 'Home Renovation', 12);
-            // Approve the loan and set a paid amount
-            const loan = loans.find(l => l.userId === 'member@example.com');
-            if (loan) {
-                loan.status = 'approved';
-                loan.paid = 250;
-                transactions.push({
-                    id: Date.now() + 2,
-                    userId: 'member@example.com',
-                    type: 'loan_payment',
-                    amount: 250,
-                    description: 'First Loan Repayment',
-                    date: new Date().toLocaleDateString('en-US'),
-                    status: 'Confirmed'
-                });
-            }
-            saveState();
-        }
-
-        // Show the correct initial view
-        if (currentUser) {
-            loginUser(currentUser);
-        } else {
-            showHomepage();
-        }
-    };
-    
-    // --- Language Selector Stub (for completeness) ---
-    const translations = {
-        en: { login: 'Login', signup: 'Sign Up' },
-        ar: { login: 'تسجيل الدخول', signup: 'التسجيل' },
-        sw: { login: 'Ingia', signup: 'Jisajili' },
-        rw: { login: 'Injira', signup: 'Iyandikishe' }
-    };
-
-    const changeLanguage = () => {
-        const lang = document.getElementById('languageSelector').value;
-        document.querySelectorAll('[data-translate]').forEach(element => {
-            const key = element.getAttribute('data-translate');
-            element.textContent = translations[lang][key] || key;
-        });
-    };
-    
-    // --- PDF Report Functionality (Stub) ---
-    const generatePdfReport = () => {
-        showNotification('PDF Report generation initiated. (Requires jspdf library implementation)', 'success');
-        // Actual jspdf implementation would go here, using window.jspdf.jsPDF
-    };
-    
-    // Initialize the app on page load
-    window.onload = initializeApp;
-
-    // Expose functions globally for HTML calls
-    window.showHomepage = showHomepage;
-    window.showAuthSection = showAuthSection;
-    window.showLogin = showLogin;
-    window.showSignup = showSignup;
-    window.handleLogin = handleLogin;
-    window.handleSignup = handleSignup;
-    window.logout = logout;
-    window.showSection = showSection;
-    window.toggleMobileMenu = toggleMobileMenu;
-    window.loginAsAdmin = loginAsAdmin;
-    window.createAdminAccount = createAdminAccount;
-    window.showDepositModal = showDepositModal;
-    window.showLoanModal = showLoanModal;
-    window.calculateAnnualCashout = calculateAnnualCashout;
-    window.processCashoutRequest = processCashoutRequest;
-    window.sendChatMessage = sendChatMessage;
-    window.approveDeposit = approveDeposit;
-    window.deleteTransaction = deleteTransaction;
-    window.changeLanguage = changeLanguage;
-    window.generatePdfReport = generatePdfReport;
-
-    // Mock Modal functions for Savings (not fully implemented in HTML provided)
-    window.showAddSavingsModal = () => showNotification('Add Savings Goal modal opened. (Implementation required)', 'success');
-    </script>
-</body>
-
-</html>
-</form>
-</div>
-</div>
-<div id="notification" class="notification">
-</div>
-<script>
-        // All JavaScript functions (showAuthSection, handleLogin, showSection, etc.)
-        // will go here to control the view and application state.here
-</script>
 </body>
 
 </html>
