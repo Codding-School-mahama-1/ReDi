@@ -814,428 +814,434 @@
                         </div>
                     </div>
 
-                    <!-- Annual Reports Section -->
-                    <div id="reportsSection">
-                        <div>
-                            <h2>Annual Financial Reports</h2>
-                            <div>
-                                <select id="reportYear">
-                                    <option value="2024">2024</option>
-                                    <option value="2023">2023</option>
-                                    <option value="2022">2022</option>
-                                </select>
-                                <button onclick="generateReport()">Generate Report</button>
-                            </div>
-                        </div>
-
-                        <div id="reportContent">
-                            <div>
-                                <h3>Financial Summary Report</h3>
-                                <div>
-                                    <button onclick="downloadPDF()">Download PDF</button>
-                                    <button onclick="printReport()">Print Report</button>
+                    <<!-- Annual Reports Section -->
+                        <div id="reportsSection" class="section hidden">
+                            <div class="flex justify-between items-center mb-6">
+                                <h2 class="text-3xl font-bold text-white">Annual Financial Reports</h2>
+                                <div class="flex space-x-4"><select id="reportYear"
+                                        class="px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white">
+                                        <option value="2024">2024</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2022">2022</option>
+                                    </select> <button onclick="generateReport()"
+                                        class="btn-primary text-white px-6 py-3 rounded-lg font-semibold"> <i
+                                            class="fas fa-chart-bar mr-2"></i>Generate Report </button>
                                 </div>
                             </div>
-
-                            <div id="reportData">
-                                <div>
-                                    <div>
-                                        <h4>Total Deposits</h4>
-                                        <p id="reportTotalDeposits">$0.00</p>
-                                    </div>
-                                    <div>
-                                        <h4>Total Loans</h4>
-                                        <p id="reportTotalLoans">$0.00</p>
-                                    </div>
-                                    <div>
-                                        <h4>Interest Earned</h4>
-                                        <p id="reportInterestEarned">$0.00</p>
+                            <div id="reportContent" class="glass-card p-6 rounded-xl">
+                                <div class="flex justify-between items-center mb-6 no-print">
+                                    <h3 class="text-2xl font-bold text-white">Financial Summary Report</h3>
+                                    <div class="flex space-x-4"><button onclick="downloadPDF()"
+                                            class="btn-success text-white px-4 py-2 rounded-lg"> <i
+                                                class="fas fa-download mr-2"></i>Download PDF </button> <button
+                                            onclick="printReport()" class="btn-warning text-white px-4 py-2 rounded-lg">
+                                            <i class="fas fa-print mr-2"></i>Print Report </button>
                                     </div>
                                 </div>
-
-                                <div>
-                                    <h4>Deposit History</h4>
-                                    <table>
-                                        <thead id="depositsTableHeader">
-                                            <tr>
-                                                <th>Date</th>
-                                                <th>Amount</th>
-                                                <th>Description</th>
-                                                <th>Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="reportDepositsTable">
-                                            <!-- Deposit data will be populated here -->
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div>
-                                    <h4>Loan History</h4>
-                                    <table>
-                                        <thead id="loansTableHeader">
-                                            <tr>
-                                                <th>Date</th>
-                                                <th>Amount</th>
-                                                <th>Interest Rate</th>
-                                                <th>Term</th>
-                                                <th>Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="reportLoansTable">
-                                            <!-- Loan data will be populated here -->
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div>
-                                    <h4>Cashout History</h4>
-                                    <table>
-                                        <thead id="cashoutsTableHeader">
-                                            <tr>
-                                                <th>Date</th>
-                                                <th>Amount</th>
-                                                <th>Method</th>
-                                                <th>Fee</th>
-                                                <th>Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="reportCashoutsTable">
-                                            <!-- Cashout data will be populated here -->
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Audit Dashboard Section -->
-                    <div id="auditSection">
-                        <div>
-                            <h2>Audit Dashboard</h2>
-                            <div>
-                                <select id="auditTimeframe" onchange="loadAuditData()">
-                                    <option value="today">Today</option>
-                                    <option value="week">This Week</option>
-                                    <option value="month">This Month</option>
-                                    <option value="year">This Year</option>
-                                    <option value="all">All Time</option>
-                                </select>
-                                <button onclick="exportAuditData()">Export Data</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Key Metrics -->
-                    <div>
-                        <div>
-                            <div>
-                                <div>
-                                    <div>
-                                        <p>Total Members</p>
-                                        <p id="auditTotalMembers">0</p>
+                                <div id="reportData">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                                        <div class="glass-effect p-4 rounded-lg">
+                                            <h4 class="text-lg font-semibold text-white mb-2">Total Deposits</h4>
+                                            <p id="reportTotalDeposits" class="text-2xl font-bold text-green-400">$0.00
+                                            </p>
+                                        </div>
+                                        <div class="glass-effect p-4 rounded-lg">
+                                            <h4 class="text-lg font-semibold text-white mb-2">Total Loans</h4>
+                                            <p id="reportTotalLoans" class="text-2xl font-bold text-red-400">$0.00</p>
+                                        </div>
+                                        <div class="glass-effect p-4 rounded-lg">
+                                            <h4 class="text-lg font-semibold text-white mb-2">Interest Earned</h4>
+                                            <p id="reportInterestEarned" class="text-2xl font-bold text-blue-400">$0.00
+                                            </p>
+                                        </div>
                                     </div>
-                                    <i class="fas fa-users"></i>
-                                </div>
-                                <p id="auditMembersChange">+0 this period</p>
-                            </div>
-
-                            <div>
-                                <div>
-                                    <div>
-                                        <p>Total Deposits</p>
-                                        <p id="auditTotalDeposits">$0.00</p>
+                                    <div class="mb-8">
+                                        <h4 class="text-xl font-bold text-white mb-4">Deposit History</h4>
+                                        <div class="overflow-x-auto">
+                                            <table class="report-table text-white">
+                                                <thead id="depositsTableHeader">
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Amount</th>
+                                                        <th>Description</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="reportDepositsTable">
+                                                    <!-- Deposit data will be populated here -->
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
-                                    <i class="fas fa-coins"></i>
-                                </div>
-                                <p id="auditDepositsChange">+$0 this period</p>
-                            </div>
-
-                            <div>
-                                <div>
-                                    <div>
-                                        <p>Active Loans</p>
-                                        <p id="auditActiveLoans">$0.00</p>
-                                    </div>
-                                    <i class="fas fa-hand-holding-usd"></i>
-                                </div>
-                                <p id="auditLoansChange">0 active loans</p>
-                            </div>
-
-                            <div>
-                                <div>
-                                    <div>
-                                        <p>System Health</p>
-                                        <p id="auditSystemHealth">Excellent</p>
-                                    </div>
-                                    <i class="fas fa-heartbeat"></i>
-                                </div>
-                                <p>All systems operational</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Activity Timeline -->
-                    <div>
-                        <div>
-                            <h3>Recent Activity</h3>
-                            <div id="auditActivityTimeline">
-                                <!-- Activity timeline will be populated here -->
-                            </div>
-                        </div>
-
-                        <div>
-                            <h3>Risk Assessment</h3>
-                            <div>
-                                <div>
-                                    <div>
-                                        <span>Loan Default Risk</span>
-                                        <span id="auditDefaultRisk">Low</span>
+                                    <div class="mb-8">
+                                        <h4 class="text-xl font-bold text-white mb-4">Loan History</h4>
+                                        <div class="overflow-x-auto">
+                                            <table class="report-table text-white">
+                                                <thead id="loansTableHeader">
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Amount</th>
+                                                        <th>Interest Rate</th>
+                                                        <th>Term</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="reportLoansTable"><!-- Loan data will be populated here -->
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                     <div>
-                                        <div id="auditDefaultRiskBar" style="width: 15%"></div>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <div>
-                                        <span>Liquidity Risk</span>
-                                        <span id="auditLiquidityRisk">Low</span>
-                                    </div>
-                                    <div>
-                                        <div id="auditLiquidityRiskBar" style="width: 20%"></div>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <div>
-                                        <span>Member Satisfaction</span>
-                                        <span id="auditSatisfaction">High</span>
-                                    </div>
-                                    <div>
-                                        <div id="auditSatisfactionBar" style="width: 85%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Detailed Analytics -->
-                    <div>
-                        <h3>Detailed Analytics</h3>
-                        <div>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Member</th>
-                                        <th>Total Deposits</th>
-                                        <th>Active Loans</th>
-                                        <th>Payment History</th>
-                                        <th>Risk Score</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="auditMembersTable">
-                                    <!-- Member analytics will be populated here -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- Chat Section -->
-                    <div id="chatSection">
-                        <div>
-                            <h2>Member Chat</h2>
-                            <div>
-                                <span>
-                                    <i class="fas fa-users"></i>
-                                    <span id="onlineCount">0</span> members online
-                                </span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <!-- Chat Messages -->
-                            <div>
-                                <div>
-                                    <div>
-                                        <h3>General Chat</h3>
-                                        <p>Connect with all members</p>
-                                    </div>
-
-                                    <div id="messagesContainer">
-                                        <!-- Messages will be populated here -->
-                                    </div>
-
-                                    <div>
-                                        <form onsubmit="sendMessage(event)">
-                                            <input type="text" id="messageInput" placeholder="Type your message..."
-                                                maxlength="500">
-                                            <button type="button" id="voiceBtn" onclick="toggleVoiceRecording()">
-                                                <i class="fas fa-microphone"></i>
-                                            </button>
-                                            <button type="submit">Send</button>
-                                        </form>
-
-                                        <div id="recordingIndicator">
-                                            <span>
-                                                <i class="fas fa-circle"></i> Recording... Click to stop
-                                            </span>
+                                        <h4 class="text-xl font-bold text-white mb-4">Cashout History</h4>
+                                        <div class="overflow-x-auto">
+                                            <table class="report-table text-white">
+                                                <thead id="cashoutsTableHeader">
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Amount</th>
+                                                        <th>Method</th>
+                                                        <th>Fee</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="reportCashoutsTable">
+                                                    <!-- Cashout data will be populated here -->
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- Online Members -->
+                        <!-- Audit Dashboard Section -->
+                        <div id="auditSection">
                             <div>
-                                <h4>Online Members</h4>
-                                <div id="onlineMembers">
-                                    <!-- Online members will be populated here -->
+                                <h2>Audit Dashboard</h2>
+                                <div>
+                                    <select id="auditTimeframe" onchange="loadAuditData()">
+                                        <option value="today">Today</option>
+                                        <option value="week">This Week</option>
+                                        <option value="month">This Month</option>
+                                        <option value="year">This Year</option>
+                                        <option value="all">All Time</option>
+                                    </select>
+                                    <button onclick="exportAuditData()">Export Data</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Admin Section -->
-                    <div id="adminSection">
-                        <h2>Admin Panel</h2>
-
+                        <!-- Key Metrics -->
                         <div>
                             <div>
-                                <h3>System Stats</h3>
                                 <div>
-                                    <p>Total Users: <span id="totalUsers">0</span></p>
-                                    <p>Total Deposits: <span id="adminTotalDeposits">$0.00</span></p>
-                                    <p>Total Loans: <span id="adminTotalLoans">$0.00</span></p>
+                                    <div>
+                                        <div>
+                                            <p>Total Members</p>
+                                            <p id="auditTotalMembers">0</p>
+                                        </div>
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <p id="auditMembersChange">+0 this period</p>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <div>
+                                            <p>Total Deposits</p>
+                                            <p id="auditTotalDeposits">$0.00</p>
+                                        </div>
+                                        <i class="fas fa-coins"></i>
+                                    </div>
+                                    <p id="auditDepositsChange">+$0 this period</p>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <div>
+                                            <p>Active Loans</p>
+                                            <p id="auditActiveLoans">$0.00</p>
+                                        </div>
+                                        <i class="fas fa-hand-holding-usd"></i>
+                                    </div>
+                                    <p id="auditLoansChange">0 active loans</p>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <div>
+                                            <p>System Health</p>
+                                            <p id="auditSystemHealth">Excellent</p>
+                                        </div>
+                                        <i class="fas fa-heartbeat"></i>
+                                    </div>
+                                    <p>All systems operational</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Activity Timeline -->
+                        <div>
+                            <div>
+                                <h3>Recent Activity</h3>
+                                <div id="auditActivityTimeline">
+                                    <!-- Activity timeline will be populated here -->
                                 </div>
                             </div>
 
                             <div>
-                                <h3>Interest Rates</h3>
+                                <h3>Risk Assessment</h3>
                                 <div>
                                     <div>
-                                        <label>Loan Interest Rate (%)</label>
-                                        <input type="number" id="loanInterestRate" value="5" min="0" max="50"
-                                            step="0.1">
+                                        <div>
+                                            <span>Loan Default Risk</span>
+                                            <span id="auditDefaultRisk">Low</span>
+                                        </div>
+                                        <div>
+                                            <div id="auditDefaultRiskBar" style="width: 15%"></div>
+                                        </div>
                                     </div>
-                                    <button onclick="updateInterestRates()">Update Rates</button>
+
+                                    <div>
+                                        <div>
+                                            <span>Liquidity Risk</span>
+                                            <span id="auditLiquidityRisk">Low</span>
+                                        </div>
+                                        <div>
+                                            <div id="auditLiquidityRiskBar" style="width: 20%"></div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div>
+                                            <span>Member Satisfaction</span>
+                                            <span id="auditSatisfaction">High</span>
+                                        </div>
+                                        <div>
+                                            <div id="auditSatisfactionBar" style="width: 85%"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Detailed Analytics -->
                         <div>
-                            <h3>User Management</h3>
-                            <div id="usersList">
-                                <!-- Users list will be populated here -->
+                            <h3>Detailed Analytics</h3>
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Member</th>
+                                            <th>Total Deposits</th>
+                                            <th>Active Loans</th>
+                                            <th>Payment History</th>
+                                            <th>Risk Score</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="auditMembersTable">
+                                        <!-- Member analytics will be populated here -->
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Add Savings Modal -->
-                    <div id="addSavingsModal">
-                        <div>
-                            <h3>Add Savings Goal</h3>
-                            <form onsubmit="addSavingsGoal(event)">
+                        <!-- Chat Section -->
+                        <div id="chatSection">
+                            <div>
+                                <h2>Member Chat</h2>
+                                <div>
+                                    <span>
+                                        <i class="fas fa-users"></i>
+                                        <span id="onlineCount">0</span> members online
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <!-- Chat Messages -->
                                 <div>
                                     <div>
-                                        <label>Goal Name</label>
-                                        <input type="text" id="savingsName" required>
-                                    </div>
-                                    <div>
-                                        <label>Target Amount ($)</label>
-                                        <input type="number" id="savingsTarget" required min="1" step="0.01">
-                                    </div>
-                                    <div>
-                                        <label>Initial Deposit ($)</label>
-                                        <input type="number" id="savingsInitial" min="0" step="0.01">
-                                    </div>
-                                    <div>
-                                        <button type="submit">Create Goal</button>
-                                        <button type="button" onclick="closeModal('addSavingsModal')">Cancel</button>
+                                        <div>
+                                            <h3>General Chat</h3>
+                                            <p>Connect with all members</p>
+                                        </div>
+
+                                        <div id="messagesContainer">
+                                            <!-- Messages will be populated here -->
+                                        </div>
+
+                                        <div>
+                                            <form onsubmit="sendMessage(event)">
+                                                <input type="text" id="messageInput" placeholder="Type your message..."
+                                                    maxlength="500">
+                                                <button type="button" id="voiceBtn" onclick="toggleVoiceRecording()">
+                                                    <i class="fas fa-microphone"></i>
+                                                </button>
+                                                <button type="submit">Send</button>
+                                            </form>
+
+                                            <div id="recordingIndicator">
+                                                <span>
+                                                    <i class="fas fa-circle"></i> Recording... Click to stop
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- Deposit Modal -->
-                    <div id="depositModal">
-                        <div>
-                            <h3 id="depositModalTitle">Make Deposit</h3>
-                            <form onsubmit="makeDeposit(event)">
+
+                                <!-- Online Members -->
                                 <div>
-                                    <!-- Admin: Select Member -->
-                                    <div id="adminMemberSelect">
-                                        <label>Select Member</label>
-                                        <select id="depositMemberId">
-                                            <option value="">Choose a member...</option>
-                                        </select>
-                                    </div>
-
-                                    <div>
-                                        <label>Amount ($)</label>
-                                        <input type="number" id="depositAmount" required min="1" step="0.01">
-                                    </div>
-
-                                    <div>
-                                        <label>Description</label>
-                                        <input type="text" id="depositDescription">
-                                    </div>
-
-                                    <!-- Admin: Phone Number -->
-                                    <div id="adminPhoneInput">
-                                        <label>Member Phone Number</label>
-                                        <input type="tel" id="depositPhone" placeholder="Enter phone number">
-                                    </div>
-
-                                    <div>
-                                        <button type="submit" id="depositSubmitBtn">Deposit</button>
-                                        <button type="button" onclick="closeModal('depositModal')">Cancel</button>
+                                    <h4>Online Members</h4>
+                                    <div id="onlineMembers">
+                                        <!-- Online members will be populated here -->
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Loan Modal -->
-                    <div id="loanModal">
-                        <div>
-                            <h3>Apply for Loan</h3>
-                            <form onsubmit="applyForLoan(event)">
+                        <!-- Admin Section -->
+                        <div id="adminSection">
+                            <h2>Admin Panel</h2>
+
+                            <div>
                                 <div>
+                                    <h3>System Stats</h3>
                                     <div>
-                                        <label>Loan Amount ($)</label>
-                                        <input type="number" id="loanAmount" required min="100" step="0.01"
-                                            oninput="updateLoanPreview()">
-                                    </div>
-
-                                    <div>
-                                        <label>Loan Term (months)</label>
-                                        <select id="loanTerm" required onchange="updateLoanPreview()">
-                                            <option value="6">6 months</option>
-                                            <option value="12">12 months</option>
-                                            <option value="24">24 months</option>
-                                            <option value="36">36 months</option>
-                                        </select>
-                                    </div>
-
-                                    <div>
-                                        <label>Purpose</label>
-                                        <input type="text" id="loanPurpose" required>
-                                    </div>
-
-                                    <div id="loanPreview">
-                                        <p>Interest Rate: <span id="previewRate">5%</span></p>
-                                        <p>Monthly Payment: <span id="previewPayment">$0.00</span></p>
-                                        <p>Total Repayment: <span id="previewTotal">$0.00</span></p>
-                                    </div>
-
-                                    <div>
-                                        <button type="submit">Apply</button>
-                                        <button type="button" onclick="closeModal('loanModal')">Cancel</button>
+                                        <p>Total Users: <span id="totalUsers">0</span></p>
+                                        <p>Total Deposits: <span id="adminTotalDeposits">$0.00</span></p>
+                                        <p>Total Loans: <span id="adminTotalLoans">$0.00</span></p>
                                     </div>
                                 </div>
-                            </form>
+
+                                <div>
+                                    <h3>Interest Rates</h3>
+                                    <div>
+                                        <div>
+                                            <label>Loan Interest Rate (%)</label>
+                                            <input type="number" id="loanInterestRate" value="5" min="0" max="50"
+                                                step="0.1">
+                                        </div>
+                                        <button onclick="updateInterestRates()">Update Rates</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3>User Management</h3>
+                                <div id="usersList">
+                                    <!-- Users list will be populated here -->
+                                </div>
+                            </div>
                         </div>
-                    </div>
+
+                        <!-- Add Savings Modal -->
+                        <div id="addSavingsModal">
+                            <div>
+                                <h3>Add Savings Goal</h3>
+                                <form onsubmit="addSavingsGoal(event)">
+                                    <div>
+                                        <div>
+                                            <label>Goal Name</label>
+                                            <input type="text" id="savingsName" required>
+                                        </div>
+                                        <div>
+                                            <label>Target Amount ($)</label>
+                                            <input type="number" id="savingsTarget" required min="1" step="0.01">
+                                        </div>
+                                        <div>
+                                            <label>Initial Deposit ($)</label>
+                                            <input type="number" id="savingsInitial" min="0" step="0.01">
+                                        </div>
+                                        <div>
+                                            <button type="submit">Create Goal</button>
+                                            <button type="button"
+                                                onclick="closeModal('addSavingsModal')">Cancel</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Deposit Modal -->
+                        <div id="depositModal">
+                            <div>
+                                <h3 id="depositModalTitle">Make Deposit</h3>
+                                <form onsubmit="makeDeposit(event)">
+                                    <div>
+                                        <!-- Admin: Select Member -->
+                                        <div id="adminMemberSelect">
+                                            <label>Select Member</label>
+                                            <select id="depositMemberId">
+                                                <option value="">Choose a member...</option>
+                                            </select>
+                                        </div>
+
+                                        <div>
+                                            <label>Amount ($)</label>
+                                            <input type="number" id="depositAmount" required min="1" step="0.01">
+                                        </div>
+
+                                        <div>
+                                            <label>Description</label>
+                                            <input type="text" id="depositDescription">
+                                        </div>
+
+                                        <!-- Admin: Phone Number -->
+                                        <div id="adminPhoneInput">
+                                            <label>Member Phone Number</label>
+                                            <input type="tel" id="depositPhone" placeholder="Enter phone number">
+                                        </div>
+
+                                        <div>
+                                            <button type="submit" id="depositSubmitBtn">Deposit</button>
+                                            <button type="button" onclick="closeModal('depositModal')">Cancel</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Loan Modal -->
+                        <div id="loanModal">
+                            <div>
+                                <h3>Apply for Loan</h3>
+                                <form onsubmit="applyForLoan(event)">
+                                    <div>
+                                        <div>
+                                            <label>Loan Amount ($)</label>
+                                            <input type="number" id="loanAmount" required min="100" step="0.01"
+                                                oninput="updateLoanPreview()">
+                                        </div>
+
+                                        <div>
+                                            <label>Loan Term (months)</label>
+                                            <select id="loanTerm" required onchange="updateLoanPreview()">
+                                                <option value="6">6 months</option>
+                                                <option value="12">12 months</option>
+                                                <option value="24">24 months</option>
+                                                <option value="36">36 months</option>
+                                            </select>
+                                        </div>
+
+                                        <div>
+                                            <label>Purpose</label>
+                                            <input type="text" id="loanPurpose" required>
+                                        </div>
+
+                                        <div id="loanPreview">
+                                            <p>Interest Rate: <span id="previewRate">5%</span></p>
+                                            <p>Monthly Payment: <span id="previewPayment">$0.00</span></p>
+                                            <p>Total Repayment: <span id="previewTotal">$0.00</span></p>
+                                        </div>
+
+                                        <div>
+                                            <button type="submit">Apply</button>
+                                            <button type="button" onclick="closeModal('loanModal')">Cancel</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
 
 
 
