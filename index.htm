@@ -399,8 +399,13 @@
                 <h3 class="text-xl font-bold text-white">CB</h3>
             </div>
             <p class="text-white opacity-80 mb-4">Building financial futures together, one member at a time.</p>
-            <div class="flex justify-center space-x-6 text-white opacity-60"><a href="#"
-                    class="hover:opacity-100 transition-opacity">Privacy Policy</a> <a href="#"
+            <div class="flex justify-center space-x-6 text-white opacity-60"><a href="#" <i
+                    class="fas fa-sign-in-alt mr-2"></i>Already a Member? Login </button>
+
+            </div>
+        </div>
+        </div>
+        </div><!--      class="hover:opacity-100 transition-opacity">Privacy Policy</a> <a href="#"
                     class="hover:opacity-100 transition-opacity">Terms of Service</a> <a href="#"
                     class="hover:opacity-100 transition-opacity">Contact Us</a>
             </div>
@@ -409,101 +414,102 @@
     </footer>
     </div>
     <!-- Authentication Section -->
-    <div id="authSection" class="hidden min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-md w-full space-y-8">
-            <div class="text-center"><button onclick="showHomepage()"
-                    class="text-white opacity-80 hover:opacity-100 mb-4"> <i class="fas fa-arrow-left mr-2"></i>Back to
-                    Homepage </button> <i class="fas fa-piggy-bank text-6xl text-white mb-4"></i>
-                <h2 class="text-3xl font-bold text-white">Money Management System</h2>
-                <p class="mt-2 text-lg text-white opacity-80">Secure your financial future</p>
-            </div><!-- Login Form -->
-            <div id="loginForm" class="glass-card rounded-xl p-8">
-                <h3 class="text-2xl font-bold text-white text-center mb-6">Sign In</h3>
-                <form onsubmit="handleLogin(event)">
-                    <div class="space-y-4">
-                        <div><label for="loginEmail" class="block text-sm font-medium text-white mb-2">Email</label>
-                            <input type="email" id="loginEmail" required
-                                class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
-                                placeholder="Enter your email">
-                        </div>
-                        <div><label for="loginPassword"
-                                class="block text-sm font-medium text-white mb-2">Password</label> <input
-                                type="password" id="loginPassword" required
-                                class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
-                                placeholder="Enter your password">
-                        </div>
-                        <div class="flex items-center justify-between"><label class="flex items-center text-white">
-                                <input type="checkbox" class="mr-2"> <span class="text-sm">Remember me</span> </label>
-                            <button type="button" class="text-sm text-white opacity-80 hover:opacity-100">Forgot
-                                password?</button>
-                        </div><button type="submit"
-                            class="w-full btn-primary text-white font-semibold py-3 px-4 rounded-lg"> Sign In </button>
+        <div id="auclass=" text-white opacity-60 text-sm mt-4">Copyrights © 2025 CB. All rights reserved.</p>
+        </div>
+    </footer>
+    </div>thSection" class="hidden min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+        <div class="text-center"><button onclick="showHomepage()" class="text-white opacity-80 hover:opacity-100 mb-4">
+                <i class="fas fa-arrow-left mr-2"></i>Back to
+                Homepage </button> <i class="fas fa-piggy-bank text-6xl text-white mb-4"></i>
+            <h2 class="text-3xl font-bold text-white">Money Management System</h2>
+            <p class="mt-2 text-lg text-white opacity-80">Secure your financial future</p>
+        </div><!-- Login Form -->
+        <div id="loginForm" class="glass-card rounded-xl p-8">
+            <h3 class="text-2xl font-bold text-white text-center mb-6">Sign In</h3>
+            <form onsubmit="handleLogin(event)">
+                <div class="space-y-4">
+                    <div><label for="loginEmail" class="block text-sm font-medium text-white mb-2">Email</label>
+                        <input type="email" id="loginEmail" required
+                            class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+                            placeholder="Enter your email">
                     </div>
-                </form>
-                <div class="mt-6 text-center">
-                    <p class="text-white opacity-80">Don't have an account? <button onclick="showSignup()"
-                            class="text-white font-semibold hover:underline">Sign up</button></p>
-                </div><!-- Admin Registration Section -->
-                <div class="mt-8 p-4 glass-effect rounded-lg border-2 border-green-400 border-opacity-50">
-                    <div class="text-center mb-4"><i class="fas fa-crown text-green-400 text-2xl mb-2"></i>
-                        <h4 class="text-lg font-bold text-green-400">Admin Management</h4>
-                        <p class="text-white opacity-80 text-sm">Create or login to admin account</p>
+                    <div><label for="loginPassword" class="block text-sm font-medium text-white mb-2">Password</label>
+                        <input type="password" id="loginPassword" required
+                            class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+                            placeholder="Enter your password">
                     </div>
-                    <div class="space-y-3"><button onclick="createAdminAccount()"
-                            class="w-full btn-warning text-white font-semibold py-3 px-4 rounded-lg"> <i
-                                class="fas fa-user-shield mr-2"></i>Create Admin Account </button>
-                        <div class="text-center">
-                            <p class="text-white opacity-70 text-sm">Default Admin Login:</p>
-                            <p class="text-yellow-400 text-sm font-mono">admin@system.com / admin123</p>
-                        </div><button onclick="loginAsAdmin()"
-                            class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-2 px-4 rounded-lg text-sm">
-                            Quick Admin Login </button>
-                    </div>
+                    <div class="flex items-center justify-between"><label class="flex items-center text-white">
+                            <input type="checkbox" class="mr-2"> <span class="text-sm">Remember me</span> </label>
+                        <button type="button" class="text-sm text-white opacity-80 hover:opacity-100">Forgot
+                            password?</button>
+                    </div><button type="submit"
+                        class="w-full btn-primary text-white font-semibold py-3 px-4 rounded-lg"> Sign In </button>
                 </div>
-            </div>
-            <!-- Signup Form -->
-            <div id="signupForm" class="glass-card rounded-xl p-8 hidden">
-                <h3 class="text-2xl font-bold text-white text-center mb-6">Create Account</h3>
-                <form onsubmit="handleSignup(event)">
-                    <div class="space-y-4">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div><label for="firstName" class="block text-sm font-medium text-white mb-2">First
-                                    Name</label> <input type="text" id="firstName" required
-                                    class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
-                                    placeholder="First name">
-                            </div>
-                            <div><label for="lastName" class="block text-sm font-medium text-white mb-2">Last
-                                    Name</label> <input type="text" id="lastName" required
-                                    class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
-                                    placeholder="Last name">
-                            </div>
-                        </div>
-                        <div><label for="signupEmail" class="block text-sm font-medium text-white mb-2">Email</label>
-                            <input type="email" id="signupEmail" required
-                                class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
-                                placeholder="Enter your email">
-                        </div>
-                        <div><label for="signupPassword"
-                                class="block text-sm font-medium text-white mb-2">Password</label> <input
-                                type="password" id="signupPassword" required
-                                class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
-                                placeholder="Create password">
-                        </div>
-                        <div><label for="confirmPassword" class="block text-sm font-medium text-white mb-2">Confirm
-                                Password</label> <input type="password" id="confirmPassword" required
-                                class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
-                                placeholder="Confirm password">
-                        </div><button type="submit"
-                            class="w-full btn-primary text-white font-semibold py-3 px-4 rounded-lg"> Create Account
-                        </button>
-                    </div>
-                </form>
-                <div class="mt-6 text-center">
-                    <p class="text-white opacity-80">Already have an account? <button onclick="showLogin()"
-                            class="text-white font-semibold hover:underline">Sign in</button></p>
+            </form>
+            <div class="mt-6 text-center">
+                <p class="text-white opacity-80">Don't have an account? <button onclick="showSignup()"
+                        class="text-white font-semibold hover:underline">Sign up</button></p>
+            </div><!-- Admin Registration Section -->
+            <div class="mt-8 p-4 glass-effect rounded-lg border-2 border-green-400 border-opacity-50">
+                <div class="text-center mb-4"><i class="fas fa-crown text-green-400 text-2xl mb-2"></i>
+                    <h4 class="text-lg font-bold text-green-400">Admin Management</h4>
+                    <p class="text-white opacity-80 text-sm">Create or login to admin account</p>
+                </div>
+                <div class="space-y-3"><button onclick="createAdminAccount()"
+                        class="w-full btn-warning text-white font-semibold py-3 px-4 rounded-lg"> <i
+                            class="fas fa-user-shield mr-2"></i>Create Admin Account </button>
+                    <div class="text-center">
+                        <p class="text-white opacity-70 text-sm">Default Admin Login:</p>
+                        <p class="text-yellow-400 text-sm font-mono">admin@system.com / admin123</p>
+                    </div><button onclick="loginAsAdmin()"
+                        class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-2 px-4 rounded-lg text-sm">
+                        Quick Admin Login </button>
                 </div>
             </div>
         </div>
+        <!-- Signup Form -->
+        <div id="signupForm" class="glass-card rounded-xl p-8 hidden">
+            <h3 class="text-2xl font-bold text-white text-center mb-6">Create Account</h3>
+            <form onsubmit="handleSignup(event)">
+                <div class="space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div><label for="firstName" class="block text-sm font-medium text-white mb-2">First
+                                Name</label> <input type="text" id="firstName" required
+                                class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+                                placeholder="First name">
+                        </div>
+                        <div><label for="lastName" class="block text-sm font-medium text-white mb-2">Last
+                                Name</label> <input type="text" id="lastName" required
+                                class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+                                placeholder="Last name">
+                        </div>
+                    </div>
+                    <div><label for="signupEmail" class="block text-sm font-medium text-white mb-2">Email</label>
+                        <input type="email" id="signupEmail" required
+                            class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+                            placeholder="Enter your email">
+                    </div>
+                    <div><label for="signupPassword" class="block text-sm font-medium text-white mb-2">Password</label>
+                        <input type="password" id="signupPassword" required
+                            class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+                            placeholder="Create password">
+                    </div>
+                    <div><label for="confirmPassword" class="block text-sm font-medium text-white mb-2">Confirm
+                            Password</label> <input type="password" id="confirmPassword" required
+                            class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+                            placeholder="Confirm password">
+                    </div><button type="submit"
+                        class="w-full btn-primary text-white font-semibold py-3 px-4 rounded-lg"> Create Account
+                    </button>
+                </div>
+            </form>
+            <div class="mt-6 text-center">
+                <p class="text-white opacity-80">Already have an account? <button onclick="showLogin()"
+                        class="text-white font-semibold hover:underline">Sign in</button></p>
+            </div>
+        </div>
+    </div>
     </div><!-- Main Dashboard -->
     <div id="dashboard" class="hidden min-h-full"><!-- Header -->
         <header class="glass-effect p-4">
@@ -515,7 +521,18 @@
                         onclick="logout()" class="text-white hover:text-red-300 transition-colors"> <i
                             class="fas fa-sign-out-alt"></i> Logout </button>
                 </div>
+                < placeholder="Enter your email">
             </div>
+            <div><label for="signupPassword" class="block text-sm font-medium text-white mb-2">Password</label> <input
+                    type="password" id="signupPassword" required
+                    class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+                    placeholder="Create password">
+            </div>
+            <div><label for="confirmPassword" class="block text-sm font-medium text-white mb-2">Confirm
+                    Password</label> <input type="password" id="confirmPassword" required
+                    class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+                    placeholder="Confirm password">
+            </div><button type="submit" /div>
         </header>
         <div class="flex"><!-- Mobile Menu Button -->
             <div class="lg:hidden fixed top-20 left-4 z-50"><button onclick="toggleMobileMenu()"
@@ -752,473 +769,473 @@
                 </div>
 
                 <!-- Member Summary Section -->
-                <div id="summarySection">
-                    <h2>My Financial Summary</h2>
-                    <div>
-                        <!-- Personal Stats -->
-                        <div>
-                            <h3>Account Overview</h3>
-                            <div>
-                                <div>
-                                    <span>Member Since:</span>
-                                    <span id="memberSince">-</span>
+                <div id="summarySection" class="section hidden">
+                    <h2 class="text-3xl font-bold text-white mb-6">My Financial Summary</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"><!-- Personal Stats -->
+                        <div class="glass-card p-6 rounded-xl">
+                            <h3 class="text-xl font-bold text-white mb-4">Account Overview</h3>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center p-3 glass-effect rounded-lg"><span
+                                        class="text-white opacity-80">Member Since:</span> <span id="memberSince"
+                                        class="text-white font-bold">-</span>
                                 </div>
-                                <div>
-                                    <span>Total Deposits:</span>
-                                    <span id="memberTotalDeposits">$0.00</span>
+                                <div class="flex justify-between items-center p-3 glass-effect rounded-lg"><span
+                                        class="text-white opacity-80">Total Deposits:</span> <span
+                                        id="memberTotalDeposits" class="text-white font-bold">$0.00</span>
                                 </div>
-                                <div>
-                                    <span>Active Savings:</span>
-                                    <span id="memberActiveSavings">$0.00</span>
+                                <div class="flex justify-between items-center p-3 glass-effect rounded-lg"><span
+                                        class="text-white opacity-80">Active Savings:</span> <span
+                                        id="memberActiveSavings" class="text-white font-bold">$0.00</span>
                                 </div>
-                                <div>
-                                    <span>Current Loans:</span>
-                                    <span id="memberCurrentLoans">$0.00</span>
+                                <div class="flex justify-between items-center p-3 glass-effect rounded-lg"><span
+                                        class="text-white opacity-80">Current Loans:</span> <span
+                                        id="memberCurrentLoans" class="text-white font-bold">$0.00</span>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- Recent Activity -->
-                        <div>
-                            <h3>Recent Activity</h3>
-                            <div id="recentActivity">
+                        </div><!-- Recent Activity -->
+                        <div class="glass-card p-6 rounded-xl">
+                            <h3 class="text-xl font-bold text-white mb-4">Recent Activity</h3>
+                            <div id="recentActivity" class="space-y-3 max-h-64 overflow-y-auto">
                                 <!-- Recent activity will be populated here -->
                             </div>
                         </div>
+                    </div><!-- Quick Actions -->
+                    <div class="glass-card p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-white mb-4">Quick Actions</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4"><button onclick="showDepositModal()"
+                                class="btn-success text-white px-6 py-4 rounded-lg font-semibold"> <i
+                                    class="fas fa-plus-circle mr-2"></i>Make Deposit </button> <button
+                                onclick="showAddSavingsModal()"
+                                class="btn-primary text-white px-6 py-4 rounded-lg font-semibold"> <i
+                                    class="fas fa-piggy-bank mr-2"></i>New Savings Goal </button> <button
+                                onclick="showLoanModal()"
+                                class="btn-warning text-white px-6 py-4 rounded-lg font-semibold"> <i
+                                    class="fas fa-hand-holding-usd mr-2"></i>Apply for Loan </button>
+                        </div>
                     </div>
 
-                    <!-- Quick Actions -->
+                    <!-- Annual Reports Section -->
+                    <div id="reportsSection">
+                        <div>
+                            <h2>Annual Financial Reports</h2>
+                            <div>
+                                <select id="reportYear">
+                                    <option value="2024">2024</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2022">2022</option>
+                                </select>
+                                <button onclick="generateReport()">Generate Report</button>
+                            </div>
+                        </div>
+
+                        <div id="reportContent">
+                            <div>
+                                <h3>Financial Summary Report</h3>
+                                <div>
+                                    <button onclick="downloadPDF()">Download PDF</button>
+                                    <button onclick="printReport()">Print Report</button>
+                                </div>
+                            </div>
+
+                            <div id="reportData">
+                                <div>
+                                    <div>
+                                        <h4>Total Deposits</h4>
+                                        <p id="reportTotalDeposits">$0.00</p>
+                                    </div>
+                                    <div>
+                                        <h4>Total Loans</h4>
+                                        <p id="reportTotalLoans">$0.00</p>
+                                    </div>
+                                    <div>
+                                        <h4>Interest Earned</h4>
+                                        <p id="reportInterestEarned">$0.00</p>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h4>Deposit History</h4>
+                                    <table>
+                                        <thead id="depositsTableHeader">
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Amount</th>
+                                                <th>Description</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="reportDepositsTable">
+                                            <!-- Deposit data will be populated here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div>
+                                    <h4>Loan History</h4>
+                                    <table>
+                                        <thead id="loansTableHeader">
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Amount</th>
+                                                <th>Interest Rate</th>
+                                                <th>Term</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="reportLoansTable">
+                                            <!-- Loan data will be populated here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div>
+                                    <h4>Cashout History</h4>
+                                    <table>
+                                        <thead id="cashoutsTableHeader">
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Amount</th>
+                                                <th>Method</th>
+                                                <th>Fee</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="reportCashoutsTable">
+                                            <!-- Cashout data will be populated here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Audit Dashboard Section -->
+                    <div id="auditSection">
+                        <div>
+                            <h2>Audit Dashboard</h2>
+                            <div>
+                                <select id="auditTimeframe" onchange="loadAuditData()">
+                                    <option value="today">Today</option>
+                                    <option value="week">This Week</option>
+                                    <option value="month">This Month</option>
+                                    <option value="year">This Year</option>
+                                    <option value="all">All Time</option>
+                                </select>
+                                <button onclick="exportAuditData()">Export Data</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Key Metrics -->
                     <div>
-                        <h3>Quick Actions</h3>
                         <div>
-                            <button onclick="showDepositModal()">Make Deposit</button>
-                            <button onclick="showAddSavingsModal()">New Savings Goal</button>
-                            <button onclick="showLoanModal()">Apply for Loan</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Annual Reports Section -->
-                <div id="reportsSection">
-                    <div>
-                        <h2>Annual Financial Reports</h2>
-                        <div>
-                            <select id="reportYear">
-                                <option value="2024">2024</option>
-                                <option value="2023">2023</option>
-                                <option value="2022">2022</option>
-                            </select>
-                            <button onclick="generateReport()">Generate Report</button>
-                        </div>
-                    </div>
-
-                    <div id="reportContent">
-                        <div>
-                            <h3>Financial Summary Report</h3>
-                            <div>
-                                <button onclick="downloadPDF()">Download PDF</button>
-                                <button onclick="printReport()">Print Report</button>
-                            </div>
-                        </div>
-
-                        <div id="reportData">
                             <div>
                                 <div>
-                                    <h4>Total Deposits</h4>
-                                    <p id="reportTotalDeposits">$0.00</p>
+                                    <div>
+                                        <p>Total Members</p>
+                                        <p id="auditTotalMembers">0</p>
+                                    </div>
+                                    <i class="fas fa-users"></i>
                                 </div>
+                                <p id="auditMembersChange">+0 this period</p>
+                            </div>
+
+                            <div>
                                 <div>
-                                    <h4>Total Loans</h4>
-                                    <p id="reportTotalLoans">$0.00</p>
+                                    <div>
+                                        <p>Total Deposits</p>
+                                        <p id="auditTotalDeposits">$0.00</p>
+                                    </div>
+                                    <i class="fas fa-coins"></i>
                                 </div>
+                                <p id="auditDepositsChange">+$0 this period</p>
+                            </div>
+
+                            <div>
                                 <div>
-                                    <h4>Interest Earned</h4>
-                                    <p id="reportInterestEarned">$0.00</p>
+                                    <div>
+                                        <p>Active Loans</p>
+                                        <p id="auditActiveLoans">$0.00</p>
+                                    </div>
+                                    <i class="fas fa-hand-holding-usd"></i>
                                 </div>
+                                <p id="auditLoansChange">0 active loans</p>
                             </div>
 
                             <div>
-                                <h4>Deposit History</h4>
-                                <table>
-                                    <thead id="depositsTableHeader">
-                                        <tr>
-                                            <th>Date</th>
-                                            <th>Amount</th>
-                                            <th>Description</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="reportDepositsTable">
-                                        <!-- Deposit data will be populated here -->
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div>
-                                <h4>Loan History</h4>
-                                <table>
-                                    <thead id="loansTableHeader">
-                                        <tr>
-                                            <th>Date</th>
-                                            <th>Amount</th>
-                                            <th>Interest Rate</th>
-                                            <th>Term</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="reportLoansTable">
-                                        <!-- Loan data will be populated here -->
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div>
-                                <h4>Cashout History</h4>
-                                <table>
-                                    <thead id="cashoutsTableHeader">
-                                        <tr>
-                                            <th>Date</th>
-                                            <th>Amount</th>
-                                            <th>Method</th>
-                                            <th>Fee</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="reportCashoutsTable">
-                                        <!-- Cashout data will be populated here -->
-                                    </tbody>
-                                </table>
+                                <div>
+                                    <div>
+                                        <p>System Health</p>
+                                        <p id="auditSystemHealth">Excellent</p>
+                                    </div>
+                                    <i class="fas fa-heartbeat"></i>
+                                </div>
+                                <p>All systems operational</p>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Audit Dashboard Section -->
-                <div id="auditSection">
-                    <div>
-                        <h2>Audit Dashboard</h2>
-                        <div>
-                            <select id="auditTimeframe" onchange="loadAuditData()">
-                                <option value="today">Today</option>
-                                <option value="week">This Week</option>
-                                <option value="month">This Month</option>
-                                <option value="year">This Year</option>
-                                <option value="all">All Time</option>
-                            </select>
-                            <button onclick="exportAuditData()">Export Data</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Key Metrics -->
-                <div>
+                    <!-- Activity Timeline -->
                     <div>
                         <div>
-                            <div>
-                                <div>
-                                    <p>Total Members</p>
-                                    <p id="auditTotalMembers">0</p>
-                                </div>
-                                <i class="fas fa-users"></i>
+                            <h3>Recent Activity</h3>
+                            <div id="auditActivityTimeline">
+                                <!-- Activity timeline will be populated here -->
                             </div>
-                            <p id="auditMembersChange">+0 this period</p>
                         </div>
 
                         <div>
+                            <h3>Risk Assessment</h3>
                             <div>
                                 <div>
-                                    <p>Total Deposits</p>
-                                    <p id="auditTotalDeposits">$0.00</p>
-                                </div>
-                                <i class="fas fa-coins"></i>
-                            </div>
-                            <p id="auditDepositsChange">+$0 this period</p>
-                        </div>
-
-                        <div>
-                            <div>
-                                <div>
-                                    <p>Active Loans</p>
-                                    <p id="auditActiveLoans">$0.00</p>
-                                </div>
-                                <i class="fas fa-hand-holding-usd"></i>
-                            </div>
-                            <p id="auditLoansChange">0 active loans</p>
-                        </div>
-
-                        <div>
-                            <div>
-                                <div>
-                                    <p>System Health</p>
-                                    <p id="auditSystemHealth">Excellent</p>
-                                </div>
-                                <i class="fas fa-heartbeat"></i>
-                            </div>
-                            <p>All systems operational</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Activity Timeline -->
-                <div>
-                    <div>
-                        <h3>Recent Activity</h3>
-                        <div id="auditActivityTimeline">
-                            <!-- Activity timeline will be populated here -->
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3>Risk Assessment</h3>
-                        <div>
-                            <div>
-                                <div>
-                                    <span>Loan Default Risk</span>
-                                    <span id="auditDefaultRisk">Low</span>
-                                </div>
-                                <div>
-                                    <div id="auditDefaultRiskBar" style="width: 15%"></div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div>
-                                    <span>Liquidity Risk</span>
-                                    <span id="auditLiquidityRisk">Low</span>
-                                </div>
-                                <div>
-                                    <div id="auditLiquidityRiskBar" style="width: 20%"></div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div>
-                                    <span>Member Satisfaction</span>
-                                    <span id="auditSatisfaction">High</span>
-                                </div>
-                                <div>
-                                    <div id="auditSatisfactionBar" style="width: 85%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Detailed Analytics -->
-                <div>
-                    <h3>Detailed Analytics</h3>
-                    <div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Member</th>
-                                    <th>Total Deposits</th>
-                                    <th>Active Loans</th>
-                                    <th>Payment History</th>
-                                    <th>Risk Score</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody id="auditMembersTable">
-                                <!-- Member analytics will be populated here -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Chat Section -->
-                <div id="chatSection">
-                    <div>
-                        <h2>Member Chat</h2>
-                        <div>
-                            <span>
-                                <i class="fas fa-users"></i>
-                                <span id="onlineCount">0</span> members online
-                            </span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <!-- Chat Messages -->
-                        <div>
-                            <div>
-                                <div>
-                                    <h3>General Chat</h3>
-                                    <p>Connect with all members</p>
-                                </div>
-
-                                <div id="messagesContainer">
-                                    <!-- Messages will be populated here -->
+                                    <div>
+                                        <span>Loan Default Risk</span>
+                                        <span id="auditDefaultRisk">Low</span>
+                                    </div>
+                                    <div>
+                                        <div id="auditDefaultRiskBar" style="width: 15%"></div>
+                                    </div>
                                 </div>
 
                                 <div>
-                                    <form onsubmit="sendMessage(event)">
-                                        <input type="text" id="messageInput" placeholder="Type your message..."
-                                            maxlength="500">
-                                        <button type="button" id="voiceBtn" onclick="toggleVoiceRecording()">
-                                            <i class="fas fa-microphone"></i>
-                                        </button>
-                                        <button type="submit">Send</button>
-                                    </form>
+                                    <div>
+                                        <span>Liquidity Risk</span>
+                                        <span id="auditLiquidityRisk">Low</span>
+                                    </div>
+                                    <div>
+                                        <div id="auditLiquidityRiskBar" style="width: 20%"></div>
+                                    </div>
+                                </div>
 
-                                    <div id="recordingIndicator">
-                                        <span>
-                                            <i class="fas fa-circle"></i> Recording... Click to stop
-                                        </span>
+                                <div>
+                                    <div>
+                                        <span>Member Satisfaction</span>
+                                        <span id="auditSatisfaction">High</span>
+                                    </div>
+                                    <div>
+                                        <div id="auditSatisfactionBar" style="width: 85%"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Online Members -->
+                    <!-- Detailed Analytics -->
+                    <div>
+                        <h3>Detailed Analytics</h3>
                         <div>
-                            <h4>Online Members</h4>
-                            <div id="onlineMembers">
-                                <!-- Online members will be populated here -->
-                            </div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Member</th>
+                                        <th>Total Deposits</th>
+                                        <th>Active Loans</th>
+                                        <th>Payment History</th>
+                                        <th>Risk Score</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="auditMembersTable">
+                                    <!-- Member analytics will be populated here -->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                </div>
 
-                <!-- Admin Section -->
-                <div id="adminSection">
-                    <h2>Admin Panel</h2>
-
-                    <div>
+                    <!-- Chat Section -->
+                    <div id="chatSection">
                         <div>
-                            <h3>System Stats</h3>
+                            <h2>Member Chat</h2>
                             <div>
-                                <p>Total Users: <span id="totalUsers">0</span></p>
-                                <p>Total Deposits: <span id="adminTotalDeposits">$0.00</span></p>
-                                <p>Total Loans: <span id="adminTotalLoans">$0.00</span></p>
+                                <span>
+                                    <i class="fas fa-users"></i>
+                                    <span id="onlineCount">0</span> members online
+                                </span>
                             </div>
                         </div>
 
                         <div>
-                            <h3>Interest Rates</h3>
+                            <!-- Chat Messages -->
                             <div>
                                 <div>
-                                    <label>Loan Interest Rate (%)</label>
-                                    <input type="number" id="loanInterestRate" value="5" min="0" max="50" step="0.1">
+                                    <div>
+                                        <h3>General Chat</h3>
+                                        <p>Connect with all members</p>
+                                    </div>
+
+                                    <div id="messagesContainer">
+                                        <!-- Messages will be populated here -->
+                                    </div>
+
+                                    <div>
+                                        <form onsubmit="sendMessage(event)">
+                                            <input type="text" id="messageInput" placeholder="Type your message..."
+                                                maxlength="500">
+                                            <button type="button" id="voiceBtn" onclick="toggleVoiceRecording()">
+                                                <i class="fas fa-microphone"></i>
+                                            </button>
+                                            <button type="submit">Send</button>
+                                        </form>
+
+                                        <div id="recordingIndicator">
+                                            <span>
+                                                <i class="fas fa-circle"></i> Recording... Click to stop
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <button onclick="updateInterestRates()">Update Rates</button>
+                            </div>
+
+                            <!-- Online Members -->
+                            <div>
+                                <h4>Online Members</h4>
+                                <div id="onlineMembers">
+                                    <!-- Online members will be populated here -->
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div>
-                        <h3>User Management</h3>
-                        <div id="usersList">
-                            <!-- Users list will be populated here -->
+                    <!-- Admin Section -->
+                    <div id="adminSection">
+                        <h2>Admin Panel</h2>
+
+                        <div>
+                            <div>
+                                <h3>System Stats</h3>
+                                <div>
+                                    <p>Total Users: <span id="totalUsers">0</span></p>
+                                    <p>Total Deposits: <span id="adminTotalDeposits">$0.00</span></p>
+                                    <p>Total Loans: <span id="adminTotalLoans">$0.00</span></p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3>Interest Rates</h3>
+                                <div>
+                                    <div>
+                                        <label>Loan Interest Rate (%)</label>
+                                        <input type="number" id="loanInterestRate" value="5" min="0" max="50"
+                                            step="0.1">
+                                    </div>
+                                    <button onclick="updateInterestRates()">Update Rates</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3>User Management</h3>
+                            <div id="usersList">
+                                <!-- Users list will be populated here -->
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Add Savings Modal -->
-                <div id="addSavingsModal">
-                    <div>
-                        <h3>Add Savings Goal</h3>
-                        <form onsubmit="addSavingsGoal(event)">
-                            <div>
+                    <!-- Add Savings Modal -->
+                    <div id="addSavingsModal">
+                        <div>
+                            <h3>Add Savings Goal</h3>
+                            <form onsubmit="addSavingsGoal(event)">
                                 <div>
-                                    <label>Goal Name</label>
-                                    <input type="text" id="savingsName" required>
+                                    <div>
+                                        <label>Goal Name</label>
+                                        <input type="text" id="savingsName" required>
+                                    </div>
+                                    <div>
+                                        <label>Target Amount ($)</label>
+                                        <input type="number" id="savingsTarget" required min="1" step="0.01">
+                                    </div>
+                                    <div>
+                                        <label>Initial Deposit ($)</label>
+                                        <input type="number" id="savingsInitial" min="0" step="0.01">
+                                    </div>
+                                    <div>
+                                        <button type="submit">Create Goal</button>
+                                        <button type="button" onclick="closeModal('addSavingsModal')">Cancel</button>
+                                    </div>
                                 </div>
-                                <div>
-                                    <label>Target Amount ($)</label>
-                                    <input type="number" id="savingsTarget" required min="1" step="0.01">
-                                </div>
-                                <div>
-                                    <label>Initial Deposit ($)</label>
-                                    <input type="number" id="savingsInitial" min="0" step="0.01">
-                                </div>
-                                <div>
-                                    <button type="submit">Create Goal</button>
-                                    <button type="button" onclick="closeModal('addSavingsModal')">Cancel</button>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
-                </div>
-                <!-- Deposit Modal -->
-                <div id="depositModal">
-                    <div>
-                        <h3 id="depositModalTitle">Make Deposit</h3>
-                        <form onsubmit="makeDeposit(event)">
-                            <div>
-                                <!-- Admin: Select Member -->
-                                <div id="adminMemberSelect">
-                                    <label>Select Member</label>
-                                    <select id="depositMemberId">
-                                        <option value="">Choose a member...</option>
-                                    </select>
-                                </div>
-
+                    <!-- Deposit Modal -->
+                    <div id="depositModal">
+                        <div>
+                            <h3 id="depositModalTitle">Make Deposit</h3>
+                            <form onsubmit="makeDeposit(event)">
                                 <div>
-                                    <label>Amount ($)</label>
-                                    <input type="number" id="depositAmount" required min="1" step="0.01">
-                                </div>
+                                    <!-- Admin: Select Member -->
+                                    <div id="adminMemberSelect">
+                                        <label>Select Member</label>
+                                        <select id="depositMemberId">
+                                            <option value="">Choose a member...</option>
+                                        </select>
+                                    </div>
 
-                                <div>
-                                    <label>Description</label>
-                                    <input type="text" id="depositDescription">
-                                </div>
+                                    <div>
+                                        <label>Amount ($)</label>
+                                        <input type="number" id="depositAmount" required min="1" step="0.01">
+                                    </div>
 
-                                <!-- Admin: Phone Number -->
-                                <div id="adminPhoneInput">
-                                    <label>Member Phone Number</label>
-                                    <input type="tel" id="depositPhone" placeholder="Enter phone number">
-                                </div>
+                                    <div>
+                                        <label>Description</label>
+                                        <input type="text" id="depositDescription">
+                                    </div>
 
-                                <div>
-                                    <button type="submit" id="depositSubmitBtn">Deposit</button>
-                                    <button type="button" onclick="closeModal('depositModal')">Cancel</button>
+                                    <!-- Admin: Phone Number -->
+                                    <div id="adminPhoneInput">
+                                        <label>Member Phone Number</label>
+                                        <input type="tel" id="depositPhone" placeholder="Enter phone number">
+                                    </div>
+
+                                    <div>
+                                        <button type="submit" id="depositSubmitBtn">Deposit</button>
+                                        <button type="button" onclick="closeModal('depositModal')">Cancel</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Loan Modal -->
-                <div id="loanModal">
-                    <div>
-                        <h3>Apply for Loan</h3>
-                        <form onsubmit="applyForLoan(event)">
-                            <div>
+                    <!-- Loan Modal -->
+                    <div id="loanModal">
+                        <div>
+                            <h3>Apply for Loan</h3>
+                            <form onsubmit="applyForLoan(event)">
                                 <div>
-                                    <label>Loan Amount ($)</label>
-                                    <input type="number" id="loanAmount" required min="100" step="0.01"
-                                        oninput="updateLoanPreview()">
-                                </div>
+                                    <div>
+                                        <label>Loan Amount ($)</label>
+                                        <input type="number" id="loanAmount" required min="100" step="0.01"
+                                            oninput="updateLoanPreview()">
+                                    </div>
 
-                                <div>
-                                    <label>Loan Term (months)</label>
-                                    <select id="loanTerm" required onchange="updateLoanPreview()">
-                                        <option value="6">6 months</option>
-                                        <option value="12">12 months</option>
-                                        <option value="24">24 months</option>
-                                        <option value="36">36 months</option>
-                                    </select>
-                                </div>
+                                    <div>
+                                        <label>Loan Term (months)</label>
+                                        <select id="loanTerm" required onchange="updateLoanPreview()">
+                                            <option value="6">6 months</option>
+                                            <option value="12">12 months</option>
+                                            <option value="24">24 months</option>
+                                            <option value="36">36 months</option>
+                                        </select>
+                                    </div>
 
-                                <div>
-                                    <label>Purpose</label>
-                                    <input type="text" id="loanPurpose" required>
-                                </div>
+                                    <div>
+                                        <label>Purpose</label>
+                                        <input type="text" id="loanPurpose" required>
+                                    </div>
 
-                                <div id="loanPreview">
-                                    <p>Interest Rate: <span id="previewRate">5%</span></p>
-                                    <p>Monthly Payment: <span id="previewPayment">$0.00</span></p>
-                                    <p>Total Repayment: <span id="previewTotal">$0.00</span></p>
-                                </div>
+                                    <div id="loanPreview">
+                                        <p>Interest Rate: <span id="previewRate">5%</span></p>
+                                        <p>Monthly Payment: <span id="previewPayment">$0.00</span></p>
+                                        <p>Total Repayment: <span id="previewTotal">$0.00</span></p>
+                                    </div>
 
-                                <div>
-                                    <button type="submit">Apply</button>
-                                    <button type="button" onclick="closeModal('loanModal')">Cancel</button>
+                                    <div>
+                                        <button type="submit">Apply</button>
+                                        <button type="button" onclick="closeModal('loanModal')">Cancel</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
-                </div>
 
 
 
