@@ -1,0 +1,1916 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Savings Platform</title>
+    <link rel="stylesheet" href="./test.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        .chat-message {
+            animation: slideIn 0.3s ease-out;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .rtl { direction: rtl; }
+        .print-only { display: none; }
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+        }
+    </style>
+</head>
+<body class="h-full bg-gradient-to-br from-blue-50 to-indigo-100 font-sans">
+    <div id="app" class="h-full">
+        <!-- Language Selector -->
+        <div id="languageBar" class="bg-white shadow-sm border-b p-2 flex justify-end">
+            <select id="languageSelect" class="px-3 py-1 border rounded-md text-sm">
+                <option value="en">English</option>
+                <option value="ar">العربية</option>
+                <option value="sw">Kiswahili</option>
+                <option value="rw">Kinyarwanda</option>
+            </select>
+        </div>
+
+        <!-- Home Page -->
+        <div id="homeScreen" class="min-h-full">
+            <!-- Navigation Bar -->
+            <nav class="bg-white shadow-lg sticky top-0 z-40">
+                <div  class="max-w-7xl mx-auto px-4">
+                    <div class="flex justify-between items-center h-16">
+                        <!-- Logo and Brand -->
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-700 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h1 class="text-xl font-bold text-indigo-600">Community Savings</h1>
+                                <p class="text-xs text-gray-500">Financial Growth Together</p>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Links -->
+                        <div class="hidden md:flex items-center space-x-8">
+                            <a href="#features" class="text-gray-700 hover:text-indigo-600 transition duration-200 font-medium">Features</a>
+                            <a href="#how-it-works" class="text-gray-700 hover:text-indigo-600 transition duration-200 font-medium">How It Works</a>
+                            <a href="#rates" class="text-gray-700 hover:text-indigo-600 transition duration-200 font-medium">Rates</a>
+                            <a href="#contact" class="text-gray-700 hover:text-indigo-600 transition duration-200 font-medium">Contact</a>
+                        </div>
+
+                        <!-- Auth Buttons -->
+                        <div class="flex items-center space-x-3">
+                            <button id="navLoginBtn" class="text-indigo-600 hover:text-indigo-800 font-medium px-4 py-2 rounded-md hover:bg-indigo-50 transition duration-200">Login</button>
+                            <button id="navSignupBtn" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-200 font-medium">Sign Up</button>
+                        </div>
+
+                        <!-- Mobile Menu Button -->
+                        <div class="md:hidden">
+                            <button id="mobileMenuBtn" class="text-gray-700 hover:text-indigo-600 focus:outline-none">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu -->
+                    <div id="mobileMenu" class="md:hidden hidden border-t border-gray-200">
+                        <div class="px-2 pt-2 pb-3 space-y-1">
+                            <a href="#features" class="block px-3 py-2 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md font-medium">Features</a>
+                            <a href="#how-it-works" class="block px-3 py-2 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md font-medium">How It Works</a>
+                            <a href="#rates" class="block px-3 py-2 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md font-medium">Rates</a>
+                            <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md font-medium">Contact</a>
+                            <div class="border-t border-gray-200 pt-3 mt-3">
+                                <button id="mobileLoginBtn" class="block w-full text-left px-3 py-2 text-indigo-600 hover:bg-indigo-50 rounded-md font-medium">Login</button>
+                                <button id="mobileSignupBtn" class="block w-full text-left px-3 py-2 bg-indigo-600 text-white hover:bg-indigo-700 rounded-md font-medium mt-2">Sign Up</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Hero Section -->
+            <div id="first" class="bg-gradient-to-r from-indigo-600 to-purple-700 text-white">
+                <div class="max-w-7xl mx-auto px-4 py-16">
+                    <div class="text-center">
+                        <h1 class="text-5xl font-bold mb-6 ">Community Savings Platform</h1>
+                        <p class="text-xl mb-8 max-w-3xl mx-auto ">Empowering communities through collaborative savings, transparent lending, and financial growth. Join our trusted network of savers and borrowers.</p>
+                        <div class="space-x-4">
+                            <button id="getStartedBtn" class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-200">Get Started</button>
+                            <button id="learnMoreBtn" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition duration-200">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div id="features" class="py-16 bg-white">
+                <div class="max-w-7xl mx-auto px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Choose Community Savings?</h2>
+                        <p class="text-lg text-gray-600">Our platform provides secure, transparent, and community-driven financial services</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 bg-gray-300 rounded-lg">
+                        <div class="text-center p-6">
+                            <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">Secure Savings</h3>
+                            <p class="text-gray-600">Your deposits are tracked transparently with admin approval for maximum security and trust.</p>
+                        </div>
+                        <div class="text-center p-6">
+                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">Fair Lending</h3>
+                            <p class="text-gray-600">Access loans with transparent interest rates and community-backed approval process.</p>
+                        </div>
+                        <div class="text-center p-6">
+                            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">Community Driven</h3>
+                            <p class="text-gray-600">Connect with fellow members through our integrated chat system and collaborative decision making.</p>
+                        </div>
+                        <div class="text-center p-6">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">Transparent Reports</h3>
+                            <p class="text-gray-600">Access detailed financial reports and audit trails for complete transparency and accountability.</p>
+                        </div>
+                        <div class="text-center p-6">
+                            <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">Multi-Language</h3>
+                            <p class="text-gray-600">Available in English, Arabic, Kiswahili, and Kinyarwanda to serve diverse communities.</p>
+                        </div>
+                        <div class="text-center p-6">
+                            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 109.75 9.75A9.75 9.75 0 0012 2.25z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">Admin Control</h3>
+                            <p class="text-gray-600">Robust admin panel with user management, interest rate control, and comprehensive oversight tools.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How It Works Section -->
+            <div id="how-it-works" class="py-16 bg-gray-70">
+                <div class="max-w-7xl mx-auto px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">How It Works</h2>
+                        <p class="text-lg text-gray-600">Simple steps to start your savings and lending journey</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 ">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-indigo-700 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+                            <h3 class="text-lg font-semibold mb-2">Sign Up</h3>
+                            <p class="text-gray-600">Create your account as a member or admin and join our community</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+                            <h3 class="text-lg font-semibold mb-2">Make Deposits</h3>
+                            <p class="text-gray-600">Upload payment proof and submit deposits for admin approval</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-indigo-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+                            <h3 class="text-lg font-semibold mb-2">Apply for Loans</h3>
+                            <p class="text-gray-600">Request loans with transparent interest rates and quick approval process</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-indigo-400 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
+                            <h3 class="text-lg font-semibold mb-2">Track Progress</h3>
+                            <p class="text-gray-600">Monitor your savings growth and loan repayments through detailed reports</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interest Rates Section -->
+            <div id="rates" class="py-16 bg-white">
+                <div class="max-w-4xl mx-auto px-4 text-center">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-8">Transparent Interest Rates</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-lg">
+                            <h3 class="text-2xl font-bold text-green-700 mb-4">Standard Loans</h3>
+                            <div class="text-4xl font-bold text-green-600 mb-2">10%</div>
+                            <p class="text-green-700 mb-4">For loans up to 100 RF</p>
+                            <ul class="text-left text-green-600 space-y-2">
+                                <li>✓ Quick approval process</li>
+                                <li>✓ Flexible repayment terms</li>
+                                <li>✓ Community-backed support</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-lg">
+                            <h3 class="text-2xl font-bold text-blue-700 mb-4">Large Loans</h3>
+                            <div class="text-4xl font-bold text-blue-600 mb-2">20%</div>
+                            <p class="text-blue-700 mb-4">For loans above 100 RF</p>
+                            <ul class="text-left text-blue-600 space-y-2">
+                                <li>✓ Higher loan amounts</li>
+                                <li>✓ Extended repayment period</li>
+                                <li>✓ Priority admin review</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mt-8 p-6 bg-yellow-50 border border-yellow-200 rounded-lg">
+                        <p class="text-yellow-800"><strong>Note:</strong> Maximum of 30 active loans allowed at any time. Interest rates are set by community admins and may be adjusted based on community needs.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div id="join" class="py-16  text-white">
+                <div class="max-w-4xl mx-auto px-4 text-center">
+                    <h2 class="text-3xl font-bold mb-4 text-indigo-600">Ready to Start Your Financial Journey?</h2>
+                    <p class="text-xl mb-8 text-indigo-600">Join thousands of community members who trust our platform <br>for their savings and lending needs.</p>
+                    <button id="joinNowBtn" class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-200 text-lg">Join Our Community</button>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div id="contact" class="py-16 bg-gray-50">
+                <div class="max-w-4xl mx-auto px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Contact Us</h2>
+                        <p class="text-lg text-gray-600">Have questions or need support? We're here to help!</p>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <!-- Contact Information -->
+                        <div class="bg-gradient-to-br from-green-50 to-green-200 rounded-lg shadow-md p-8 ">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h3>
+                            <div class="space-y-6">
+                                <div class="flex items-start space-x-4 ">
+                                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-gray-900 mb-1">Email Support</h4>
+                                        <p class="text-gray-600">abakarabdalsalam@gmail.com</p>
+                                        <p class="text-sm text-gray-500 mt-1">We typically respond within 24 hours</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-gray-900 mb-1">Support Hours</h4>
+                                        <p class="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                                        <p class="text-gray-600">Saturday: 10:00 AM - 4:00 PM</p>
+                                        <p class="text-sm text-gray-500 mt-1">Closed on Sundays and holidays</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2v-6a2 2 0 012-2h8z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-gray-900 mb-1">Community Support</h4>
+                                        <p class="text-gray-600">Join our member chat for peer support</p>
+                                        <p class="text-sm text-gray-500 mt-1">Available 24/7 for registered members</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Form -->
+                        <div class="bg-gradient-to-br from-blue-50 to-blue-200 rounded-lg shadow-md p-8">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h3>
+                            <form id="contactForm" class="space-y-6">
+                                <div>
+                                    <label for="contactName" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                                    <input type="text" id="contactName" required class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label for="contactEmail" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                                    <input type="email" id="contactEmail" required class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label for="contactSubject" class="block text-sm font-medium text-gray-700 mb-2">Subject *</label>
+                                    <select id="contactSubject" required class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                                        <option value="">Select a subject</option>
+                                        <option value="general_inquiry">General Inquiry</option>
+                                        <option value="technical_support">Technical Support</option>
+                                        <option value="account_help">Account Help</option>
+                                        <option value="deposit_issue">Deposit Issue</option>
+                                        <option value="loan_question">Loan Question</option>
+                                        <option value="bug_report">Bug Report</option>
+                                        <option value="feature_request">Feature Request</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="contactMessage" class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+                                    <textarea id="contactMessage" required rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="Please describe your question or issue in detail..."></textarea>
+                                </div>
+                                <div class="flex items-start">
+                                    <input type="checkbox" id="contactConsent" required class="mt-1 mr-3">
+                                    <label for="contactConsent" class="text-sm text-gray-600">I agree to be contacted via email regarding my inquiry and understand that my information will be handled according to our privacy policy. *</label>
+                                </div>
+                                <button type="submit" id="contactSubmitBtn" class="w-full bg-indigo-600 text-white py-3 px-6 rounded-md hover:bg-indigo-700 transition duration-200 font-semibold">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="bg-gray-900 text-white py-12">
+                <div class="max-w-7xl mx-auto px-4">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        <div>
+                            <h3 class="text-xl font-bold mb-4">Community Savings</h3>
+                            <p class="text-gray-400">Empowering communities through collaborative financial services and transparent lending practices.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4">Services</h4>
+                            <ul class="space-y-2 text-gray-400">
+                                <li>Secure Deposits</li>
+                                <li>Community Loans</li>
+                                <li>Financial Reports</li>
+                                <li>Member Chat</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4">Support</h4>
+                            <ul class="space-y-2 text-gray-400">
+                                <li>Help Center</li>
+                                <li>Contact Admin</li>
+                                <li>Community Guidelines</li>
+                                <li>Privacy Policy</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4">Languages</h4>
+                            <ul class="space-y-2 text-gray-400">
+                                <li>English</li>
+                                <li>العربية (Arabic)</li>
+                                <li>Kiswahili</li>
+                                <li>Kinyarwanda</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                        <p>© 2024 Community Savings Platform. All rights reserved.</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Login/Signup Screen -->
+        <div id="authScreen" class="hidden flex items-center justify-center min-h-full p-4">
+            <!-- Back to Home Arrow -->
+            <button id="backToHomeBtn" class="absolute top-6 left-6 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition duration-200 z-10">
+                <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+            </button>
+            <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
+                <div class="text-center mb-8">
+                    <h1 id="platformTitle" class="text-3xl font-bold text-indigo-600 mb-2">Community Savings</h1>
+                    <p id="welcomeText" class="text-gray-600">Welcome to our savings community</p>
+                </div>
+
+                <!-- Login Form -->
+                <div id="loginForm">
+                    <h2 id="loginTitle" class="text-2xl font-semibold mb-6 text-center">Login</h2>
+                    <form id="loginFormElement" class="space-y-4">
+                        <div>
+                            <label for="loginEmail" id="emailLabel" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="loginEmail" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div>
+                            <label for="loginPassword" id="passwordLabel" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                            <input type="password" id="loginPassword" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="isAdmin" class="mr-2">
+                            <label for="isAdmin" id="adminLabel" class="text-sm text-gray-600">Login as Admin</label>
+                        </div>
+                        <button type="submit" id="loginBtn" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition duration-200">Login</button>
+                    </form>
+                    <p class="mt-4 text-center text-sm text-gray-600">
+                        <span id="noAccountText">Don't have an account?</span>
+                        <button id="showSignup" class="text-indigo-600 hover:text-indigo-500 ml-1">Sign up</button>
+                    </p>
+                </div>
+
+                <!-- Signup Form -->
+                <div id="signupForm" class="hidden">
+                    <h2 id="signupTitle" class="text-2xl font-semibold mb-6 text-center">Sign Up</h2>
+                    <form id="signupFormElement" class="space-y-4">
+                        <div>
+                            <label for="signupUsername" id="usernameLabel" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                            <input type="text" id="signupUsername" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div>
+                            <label for="signupEmail" id="signupEmailLabel" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="signupEmail" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div>
+                            <label for="signupPassword" id="signupPasswordLabel" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                            <input type="password" id="signupPassword" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="signupAsAdmin" class="mr-2">
+                            <label for="signupAsAdmin" id="signupAdminLabel" class="text-sm text-gray-600">Sign up as Admin</label>
+                        </div>
+                        <button type="submit" id="signupBtn" class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200">Sign Up</button>
+                    </form>
+                    <p class="mt-4 text-center text-sm text-gray-600">
+                        <span id="haveAccountText">Already have an account?</span>
+                        <button id="showLogin" class="text-indigo-600 hover:text-indigo-500 ml-1">Login</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard -->
+        <div id="dashboard" class="hidden h-full flex flex-col">
+            <!-- Header -->
+            <header class="bg-white shadow-sm border-b">
+                <div class="px-6 py-4 flex justify-between items-center">
+                    <div class="flex items-center space-x-4">
+                        <h1 id="dashboardTitle" class="text-2xl font-bold text-indigo-600">Community Savings</h1>
+                        <span id="userWelcome" class="text-gray-600"></span>
+                    </div>
+                    <button id="logoutBtn" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition duration-200">Logout</button>
+                </div>
+            </header>
+
+            <!-- Navigation -->
+            <nav class="bg-indigo-600 text-white">
+                <div class="px-6 py-3">
+                    <div class="flex space-x-6 overflow-x-auto">
+                        <button class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200" data-section="overview">Financial Overview</button>
+                        <button class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200" data-section="deposits">Deposits</button>
+                        <button class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200" data-section="loans">Loans</button>
+                        <button class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200" data-section="repayments">Repayments</button>
+                        <button class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200" data-section="chat">Member Chat</button>
+                        <button class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200" data-section="audit">Audit Dashboard</button>
+                        <button class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200" data-section="report">Annual Report</button>
+                        <button id="adminPanelBtn" class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200 hidden" data-section="admin">Admin Panel</button>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Content Area -->
+            <main class="flex-1 overflow-auto p-6">
+                <!-- Financial Overview Section -->
+                <div id="overviewSection" class="section">
+                    <h2 class="text-2xl font-bold mb-6">Financial Overview</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-2">Total Balance</h3>
+                            <p id="totalBalance" class="text-3xl font-bold text-green-600">0 RF</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-2">Total Savings</h3>
+                            <p id="totalSavings" class="text-3xl font-bold text-blue-600">0 RF</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-2">Active Loans</h3>
+                            <p id="activeLoans" class="text-3xl font-bold text-orange-600">0</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-2">Annual Cashout</h3>
+                            <p id="annualCashout" class="text-3xl font-bold text-purple-600">0 RF</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-semibold mb-4">Member Financial Summary</h3>
+                        <div id="memberSummary" class="overflow-x-auto">
+                            <table class="w-full table-auto">
+                                <thead>
+                                    <tr class="bg-gray-50">
+                                        <th class="px-4 py-2 text-left">Member</th>
+                                        <th class="px-4 py-2 text-left">Balance</th>
+                                        <th class="px-4 py-2 text-left">Savings</th>
+                                        <th class="px-4 py-2 text-left">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="memberSummaryBody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deposits Section -->
+                <div id="depositsSection" class="section hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold">Deposits</h2>
+                        <button id="makeDepositBtn" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200">Make Deposit</button>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <div id="depositsList" class="space-y-4">
+                        </div>
+                    </div>
+
+                    <!-- Make Deposit Modal -->
+                    <div id="depositModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+                        <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full mx-4">
+                            <h3 class="text-xl font-semibold mb-4">Make Deposit</h3>
+                            <form id="depositForm">
+                                <div class="mb-4">
+                                    <label for="depositAmount" class="block text-sm font-medium text-gray-700 mb-1">Amount (RF)</label>
+                                    <input type="number" id="depositAmount" required min="1" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="depositDescription" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                                    <textarea id="depositDescription" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" rows="3"></textarea>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="paymentProof" class="block text-sm font-medium text-gray-700 mb-1">Payment Proof</label>
+                                    <input type="file" id="paymentProof" accept="image/*,.pdf" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                    <p class="text-xs text-gray-500 mt-1">Upload receipt, bank statement, or payment confirmation (Image or PDF)</p>
+                                </div>
+                                <div class="flex space-x-3">
+                                    <button type="submit" class="flex-1 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200">Submit Deposit</button>
+                                    <button type="button" id="cancelDeposit" class="flex-1 bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 transition duration-200">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loans Section -->
+                <div id="loansSection" class="section hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold">Loans</h2>
+                        <button id="applyLoanBtn" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">Apply for Loan</button>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h3 class="text-xl font-semibold mb-4">Active Loans</h3>
+                            <div id="activeLoanslist" class="space-y-4">
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h3 class="text-xl font-semibold mb-4">Loan Applications</h3>
+                            <div id="loanApplicationsList" class="space-y-4">
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h3 class="text-xl font-semibold mb-4">Loan Repayments</h3>
+                            <div id="loanRepaymentsList" class="space-y-4">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Apply for Loan Modal -->
+                    <div id="loanModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+                        <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full mx-4">
+                            <h3 class="text-xl font-semibold mb-4">Apply for Loan</h3>
+                            <div class="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-md">
+                                <p class="text-sm text-yellow-800">Interest Rate: 10% per 100RF (doubles for amounts over 100RF)</p>
+                                <p class="text-sm text-yellow-800">Maximum 30 active loans allowed</p>
+                            </div>
+                            <form id="loanForm">
+                                <div class="mb-4">
+                                    <label for="loanAmount" class="block text-sm font-medium text-gray-700 mb-1">Loan Amount (RF)</label>
+                                    <input type="number" id="loanAmount" required min="1" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="loanPurpose" class="block text-sm font-medium text-gray-700 mb-1">Purpose</label>
+                                    <textarea id="loanPurpose" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" rows="3"></textarea>
+                                </div>
+                                <div id="loanCalculation" class="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-md hidden">
+                                    <p class="text-sm text-blue-800">Interest: <span id="calculatedInterest">0</span> RF</p>
+                                    <p class="text-sm text-blue-800">Total Repayment: <span id="totalRepayment">0</span> RF</p>
+                                </div>
+                                <div class="flex space-x-3">
+                                    <button type="submit" class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200">Apply</button>
+                                    <button type="button" id="cancelLoan" class="flex-1 bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 transition duration-200">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loan Repayments Section -->
+                <div id="repaymentsSection" class="section hidden">
+                    <h2 class="text-2xl font-bold mb-6">Loan Repayments</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- My Active Loans -->
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h3 class="text-xl font-semibold mb-4">My Active Loans</h3>
+                            <div id="myActiveLoans" class="space-y-4">
+                            </div>
+                        </div>
+                        <!-- My Repayment History -->
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h3 class="text-xl font-semibold mb-4">My Repayment History</h3>
+                            <div id="myRepaymentHistory" class="space-y-4">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Repayment Summary -->
+                    <div class="mt-6 bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-semibold mb-4">Repayment Summary</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                            <div class="text-center p-4 border rounded-lg">
+                                <h4 class="font-semibold text-gray-700">Total Borrowed</h4>
+                                <p id="totalBorrowed" class="text-2xl font-bold text-blue-600">0 RF</p>
+                            </div>
+                            <div class="text-center p-4 border rounded-lg">
+                                <h4 class="font-semibold text-gray-700">Total Repaid</h4>
+                                <p id="totalRepaid" class="text-2xl font-bold text-green-600">0 RF</p>
+                            </div>
+                            <div class="text-center p-4 border rounded-lg">
+                                <h4 class="font-semibold text-gray-700">Outstanding Balance</h4>
+                                <p id="outstandingBalance" class="text-2xl font-bold text-red-600">0 RF</p>
+                            </div>
+                            <div class="text-center p-4 border rounded-lg">
+                                <h4 class="font-semibold text-gray-700">Interest Paid</h4>
+                                <p id="interestPaid" class="text-2xl font-bold text-purple-600">0 RF</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Member Chat Section -->
+                <div id="chatSection" class="section hidden">
+                    <div class="bg-white rounded-lg shadow-md h-96 flex flex-col">
+                        <div class="p-4 border-b">
+                            <h2 class="text-2xl font-bold">Member Chat</h2>
+                        </div>
+                        <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-3">
+                        </div>
+                        <div class="p-4 border-t">
+                            <form id="chatForm" class="flex space-x-2">
+                                <input type="text" id="chatInput" placeholder="Type your message..." class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-200">Send</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Audit Dashboard Section -->
+                <div id="auditSection" class="section hidden">
+                    <h2 class="text-2xl font-bold mb-6">Audit Dashboard</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h3 class="text-xl font-semibold mb-4">Recent Transactions</h3>
+                            <div id="recentTransactions" class="space-y-3">
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h3 class="text-xl font-semibold mb-4">System Activity</h3>
+                            <div id="systemActivity" class="space-y-3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Annual Report Section -->
+                <div id="reportSection" class="section hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold">Annual Report</h2>
+                        <div class="space-x-3">
+                            <button id="downloadPdfBtn" class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition duration-200">Download PDF</button>
+                            <button id="printReportBtn" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200">Print Report</button>
+                        </div>
+                    </div>
+                    <div id="reportContent" class="bg-white rounded-lg shadow-md p-6">
+                        <div class="text-center mb-8">
+                            <h3 class="text-3xl font-bold text-indigo-600 mb-2">Community Savings</h3>
+                            <p class="text-xl text-gray-600">Annual Financial Report</p>
+                            <p class="text-gray-500" id="reportYear"></p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                            <div class="text-center p-4 border rounded-lg">
+                                <h4 class="font-semibold text-gray-700">Total Members</h4>
+                                <p id="reportTotalMembers" class="text-2xl font-bold text-indigo-600">0</p>
+                            </div>
+                            <div class="text-center p-4 border rounded-lg">
+                                <h4 class="font-semibold text-gray-700">Total Savings</h4>
+                                <p id="reportTotalSavings" class="text-2xl font-bold text-green-600">0 RF</p>
+                            </div>
+                            <div class="text-center p-4 border rounded-lg">
+                                <h4 class="font-semibold text-gray-700">Total Loans</h4>
+                                <p id="reportTotalLoans" class="text-2xl font-bold text-orange-600">0 RF</p>
+                            </div>
+                            <div class="text-center p-4 border rounded-lg">
+                                <h4 class="font-semibold text-gray-700">Interest Earned</h4>
+                                <p id="reportInterestEarned" class="text-2xl font-bold text-purple-600">0 RF</p>
+                            </div>
+                        </div>
+                        <div class="mb-8">
+                            <h4 class="text-xl font-semibold mb-4">Member Summary</h4>
+                            <div id="reportMemberSummary" class="overflow-x-auto">
+                                <table class="w-full table-auto border-collapse border border-gray-300">
+                                    <thead>
+                                        <tr class="bg-gray-50">
+                                            <th class="border border-gray-300 px-4 py-2 text-left">Member</th>
+                                            <th class="border border-gray-300 px-4 py-2 text-left">Total Deposits</th>
+                                            <th class="border border-gray-300 px-4 py-2 text-left">Current Balance</th>
+                                            <th class="border border-gray-300 px-4 py-2 text-left">Loans Taken</th>
+                                            <th class="border border-gray-300 px-4 py-2 text-left">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="reportMemberSummaryBody">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Panel Section -->
+                <div id="adminSection" class="section hidden">
+                    <h2 class="text-2xl font-bold mb-6">Admin Panel</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h3 class="text-xl font-semibold mb-4">System Stats</h3>
+                            <div class="space-y-3">
+                                <div class="flex justify-between">
+                                    <span>Total Members:</span>
+                                    <span id="adminTotalMembers" class="font-semibold">0</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Active Admins:</span>
+                                    <span id="adminActiveAdmins" class="font-semibold">0/3</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Pending Deposits:</span>
+                                    <span id="adminPendingDeposits" class="font-semibold">0</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Pending Loans:</span>
+                                    <span id="adminPendingLoans" class="font-semibold">0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h3 class="text-xl font-semibold mb-4">Interest Rate</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Current Rate</label>
+                                    <input type="number" id="interestRate" value="10" min="1" max="50" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                    <p class="text-xs text-gray-500 mt-1">% per 100RF</p>
+                                </div>
+                                <button id="updateInterestBtn" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition duration-200">Update Rate</button>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h3 class="text-xl font-semibold mb-4">Quick Actions</h3>
+                            <div class="space-y-3">
+                                <button id="exportDataBtn" class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200">Export Data</button>
+                                <button id="systemBackupBtn" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200">System Backup</button>
+                                <button id="clearLogsBtn" class="w-full bg-yellow-600 text-white py-2 px-4 rounded-md hover:bg-yellow-700 transition duration-200">Clear Logs</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-semibold mb-4">User Management</h3>
+                        <div id="userManagementList" class="space-y-4">
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
+                <p class="text-gray-600">Loading...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let currentUser = null;
+        let currentLanguage = 'en';
+        let allData = [];
+        let currentRecordCount = 0;
+
+        // Translations
+        const translations = {
+            en: {
+                platformName: "Community Savings",
+                welcomeMessage: "Welcome to our savings community",
+                login: "Login",
+                signup: "Sign Up",
+                email: "Email",
+                password: "Password",
+                username: "Username",
+                loginAsAdmin: "Login as Admin",
+                signupAsAdmin: "Sign up as Admin",
+                noAccount: "Don't have an account?",
+                haveAccount: "Already have an account?",
+                logout: "Logout",
+                financialOverview: "Financial Overview",
+                deposits: "Deposits",
+                loans: "Loans",
+                memberChat: "Member Chat",
+                auditDashboard: "Audit Dashboard",
+                annualReport: "Annual Report",
+                adminPanel: "Admin Panel"
+            },
+            ar: {
+                platformName: "مدخرات المجتمع",
+                welcomeMessage: "مرحباً بكم في مجتمع المدخرات",
+                login: "تسجيل الدخول",
+                signup: "إنشاء حساب",
+                email: "البريد الإلكتروني",
+                password: "كلمة المرور",
+                username: "اسم المستخدم",
+                loginAsAdmin: "تسجيل دخول كمدير",
+                signupAsAdmin: "إنشاء حساب كمدير",
+                noAccount: "ليس لديك حساب؟",
+                haveAccount: "لديك حساب بالفعل؟",
+                logout: "تسجيل الخروج",
+                financialOverview: "النظرة المالية العامة",
+                deposits: "الودائع",
+                loans: "القروض",
+                memberChat: "محادثة الأعضاء",
+                auditDashboard: "لوحة المراجعة",
+                annualReport: "التقرير السنوي",
+                adminPanel: "لوحة الإدارة"
+            },
+            sw: {
+                platformName: "Akiba ya Jamii",
+                welcomeMessage: "Karibu kwenye jamii yetu ya akiba",
+                login: "Ingia",
+                signup: "Jisajili",
+                email: "Barua pepe",
+                password: "Nywila",
+                username: "Jina la mtumiaji",
+                loginAsAdmin: "Ingia kama Msimamizi",
+                signupAsAdmin: "Jisajili kama Msimamizi",
+                noAccount: "Huna akaunti?",
+                haveAccount: "Una akaunti tayari?",
+                logout: "Toka",
+                financialOverview: "Muhtasari wa Kifedha",
+                deposits: "Amana",
+                loans: "Mikopo",
+                memberChat: "Mazungumzo ya Wanachama",
+                auditDashboard: "Dashibodi ya Ukaguzi",
+                annualReport: "Ripoti ya Kila Mwaka",
+                adminPanel: "Paneli ya Msimamizi"
+            },
+            rw: {
+                platformName: "Ikigega cy'Umuryango",
+                welcomeMessage: "Murakaza neza mu muryango wacu w'ikigega",
+                login: "Kwinjira",
+                signup: "Kwiyandikisha",
+                email: "Imeyili",
+                password: "Ijambo ry'ibanga",
+                username: "Izina ry'ukoresha",
+                loginAsAdmin: "Kwinjira nk'umuyobozi",
+                signupAsAdmin: "Kwiyandikisha nk'umuyobozi",
+                noAccount: "Ntufite konti?",
+                haveAccount: "Ufite konti?",
+                logout: "Gusohoka",
+                financialOverview: "Incamake y'Imari",
+                deposits: "Amafaranga yashyizwe",
+                loans: "Inguzanyo",
+                memberChat: "Ibiganiro by'Abanyamuryango",
+                auditDashboard: "Ikibaho cy'Ubugenzuzi",
+                annualReport: "Raporo y'Umwaka",
+                adminPanel: "Ikibaho cy'Ubuyobozi"
+            }
+        };
+
+        // Language functions
+        function updateLanguage() {
+            const lang = translations[currentLanguage];
+            if (!lang) return;
+
+            // Update text content
+            const elements = {
+                'platformTitle': 'platformName',
+                'dashboardTitle': 'platformName',
+                'welcomeText': 'welcomeMessage',
+                'loginTitle': 'login',
+                'signupTitle': 'signup',
+                'emailLabel': 'email',
+                'passwordLabel': 'password',
+                'usernameLabel': 'username',
+                'signupEmailLabel': 'email',
+                'signupPasswordLabel': 'password',
+                'adminLabel': 'loginAsAdmin',
+                'signupAdminLabel': 'signupAsAdmin',
+                'loginBtn': 'login',
+                'signupBtn': 'signup',
+                'noAccountText': 'noAccount',
+                'haveAccountText': 'haveAccount',
+                'logoutBtn': 'logout'
+            };
+
+            Object.entries(elements).forEach(([id, key]) => {
+                const element = document.getElementById(id);
+                if (element) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'BUTTON') {
+                        element.value = lang[key] || element.value;
+                        if (element.tagName === 'BUTTON') {
+                            element.textContent = lang[key] || element.textContent;
+                        }
+                    } else {
+                        element.textContent = lang[key] || element.textContent;
+                    }
+                }
+            });
+
+            // Update navigation buttons
+            const navButtons = document.querySelectorAll('.nav-btn');
+            const navTexts = ['financialOverview', 'deposits', 'loans', 'memberChat', 'auditDashboard', 'annualReport', 'adminPanel'];
+            navButtons.forEach((btn, index) => {
+                if (navTexts[index] && lang[navTexts[index]]) {
+                    btn.textContent = lang[navTexts[index]];
+                }
+            });
+
+            // Update RTL for Arabic
+            if (currentLanguage === 'ar') {
+                document.body.classList.add('rtl');
+            } else {
+                document.body.classList.remove('rtl');
+            }
+        }
+
+        // Authentication functions
+        function handleLogin(event) {
+            event.preventDefault();
+            showLoading(true);
+
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const isAdmin = document.getElementById('isAdmin').checked;
+
+            // For demo purposes, we'll use a simple authentication
+            // In a real app, this would connect to a backend
+            if (email && password) {
+                currentUser = {
+                    id: 'user-' + Date.now(),
+                    username: email.split('@')[0],
+                    email: email,
+                    role: isAdmin ? 'admin' : 'member',
+                    balance: 0,
+                    savings: 0,
+                    status: 'active'
+                };
+                
+                showDashboard();
+            } else {
+                showMessage('Please enter email and password', 'error');
+            }
+
+            showLoading(false);
+        }
+
+        function handleSignup(event) {
+            event.preventDefault();
+            
+            if (currentRecordCount >= 999) {
+                showMessage('Maximum limit of 999 records reached. Please contact administrator.', 'error');
+                return;
+            }
+
+            showLoading(true);
+
+            const username = document.getElementById('signupUsername').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const isAdmin = document.getElementById('signupAsAdmin').checked;
+
+            if (username && email && password) {
+                currentUser = {
+                    id: 'user-' + Date.now(),
+                    username: username,
+                    email: email,
+                    role: isAdmin ? 'admin' : 'member',
+                    balance: 0,
+                    savings: 0,
+                    status: 'active'
+                };
+                
+                showMessage('Account created successfully! Please login.', 'success');
+                showLoginForm();
+            } else {
+                showMessage('Please fill all required fields', 'error');
+            }
+
+            showLoading(false);
+        }
+
+        function showDashboard() {
+            document.getElementById('homeScreen').classList.add('hidden');
+            document.getElementById('authScreen').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('hidden');
+            
+            // Show admin panel if user is admin
+            if (currentUser.role === 'admin') {
+                document.getElementById('adminPanelBtn').classList.remove('hidden');
+            }
+
+            // Update welcome message
+            document.getElementById('userWelcome').textContent = `Welcome, ${currentUser.username}`;
+            
+            // Show first section
+            showSection('overview');
+            updateUI();
+        }
+
+        function logout() {
+            currentUser = null;
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById('authScreen').classList.remove('hidden');
+            showLoginForm();
+        }
+
+        // UI functions
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            // Show selected section
+            document.getElementById(sectionName + 'Section').classList.remove('hidden');
+
+            // Update navigation
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-indigo-700');
+            });
+            document.querySelector(`[data-section="${sectionName}"]`).classList.add('bg-indigo-700');
+        }
+
+        function showLoginForm() {
+            document.getElementById('loginForm').classList.remove('hidden');
+            document.getElementById('signupForm').classList.add('hidden');
+        }
+
+        function showSignupForm() {
+            document.getElementById('loginForm').classList.add('hidden');
+            document.getElementById('signupForm').classList.remove('hidden');
+        }
+
+        function showLoading(show) {
+            document.getElementById('loadingOverlay').classList.toggle('hidden', !show);
+        }
+
+        function showMessage(message, type = 'info') {
+            // Create toast message
+            const toast = document.createElement('div');
+            toast.className = `fixed top-4 right-4 p-4 rounded-md shadow-lg z-50 ${
+                type === 'error' ? 'bg-red-500 text-white' : 
+                type === 'success' ? 'bg-green-500 text-white' : 
+                'bg-blue-500 text-white'
+            }`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        function generateId() {
+            return Date.now().toString(36) + Math.random().toString(36).substr(2);
+        }
+
+        // Update UI based on data
+        function updateUI() {
+            if (!currentUser) return;
+
+            updateFinancialOverview();
+            updateDeposits();
+            updateLoans();
+            updateRepayments();
+            updateChat();
+            updateAudit();
+            updateReport();
+            updateAdminPanel();
+        }
+
+        function updateFinancialOverview() {
+            // For demo purposes, we'll use dummy data
+            const totalBalance = 1500;
+            const totalSavings = 2000;
+            const activeLoansCount = 2;
+            const annualCashout = 100;
+
+            // Update display
+            document.getElementById('totalBalance').textContent = `${totalBalance} RF`;
+            document.getElementById('totalSavings').textContent = `${totalSavings} RF`;
+            document.getElementById('activeLoans').textContent = activeLoansCount;
+            document.getElementById('annualCashout').textContent = `${annualCashout.toFixed(2)} RF`;
+
+            // Update member summary table
+            const tbody = document.getElementById('memberSummaryBody');
+            tbody.innerHTML = '';
+            
+            // Add some dummy members
+            const dummyMembers = [
+                { username: 'John Doe', balance: 500, savings: 800, status: 'active' },
+                { username: 'Jane Smith', balance: 1000, savings: 1200, status: 'active' },
+                { username: currentUser.username, balance: currentUser.balance, savings: currentUser.savings, status: currentUser.status }
+            ];
+            
+            dummyMembers.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="px-4 py-2 border-b">${user.username}</td>
+                    <td class="px-4 py-2 border-b">${user.balance || 0} RF</td>
+                    <td class="px-4 py-2 border-b">${user.savings} RF</td>
+                    <td class="px-4 py-2 border-b">
+                        <span class="px-2 py-1 rounded-full text-xs ${
+                            user.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                        }">
+                            ${user.status}
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function updateDeposits() {
+            const depositsList = document.getElementById('depositsList');
+            depositsList.innerHTML = '';
+
+            // Add some dummy deposits
+            const dummyDeposits = [
+                { username: 'John Doe', amount: 200, description: 'Monthly savings', status: 'approved', date: new Date() },
+                { username: 'Jane Smith', amount: 150, description: 'Emergency fund', status: 'pending', date: new Date(Date.now() - 86400000) },
+                { username: currentUser.username, amount: 100, description: 'Initial deposit', status: 'approved', date: new Date(Date.now() - 172800000) }
+            ];
+
+            if (dummyDeposits.length === 0) {
+                depositsList.innerHTML = '<p class="text-gray-500 text-center py-8">No deposits found</p>';
+                return;
+            }
+
+            dummyDeposits.forEach(deposit => {
+                const depositElement = document.createElement('div');
+                depositElement.className = 'border rounded-lg p-4 flex justify-between items-center';
+                
+                depositElement.innerHTML = `
+                    <div>
+                        <h4 class="font-semibold">${deposit.username}</h4>
+                        <p class="text-gray-600">${deposit.amount} RF</p>
+                        <p class="text-sm text-gray-500">${deposit.description || 'No description'}</p>
+                        <p class="text-xs text-gray-400">${deposit.date.toLocaleDateString()}</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="px-2 py-1 rounded-full text-xs ${
+                            deposit.status === 'approved' ? 'bg-green-100 text-green-800' :
+                            deposit.status === 'rejected' ? 'bg-red-100 text-red-800' :
+                            'bg-yellow-100 text-yellow-800'
+                        }">
+                            ${deposit.status}
+                        </span>
+                        ${currentUser.role === 'admin' && deposit.status === 'pending' ? `
+                            <button class="bg-green-500 text-white px-3 py-1 rounded text-sm hover:bg-green-600">Approve</button>
+                            <button class="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600">Reject</button>
+                        ` : ''}
+                    </div>
+                `;
+                
+                depositsList.appendChild(depositElement);
+            });
+        }
+
+        function updateLoans() {
+            // Update active loans
+            const activeLoanslist = document.getElementById('activeLoanslist');
+            activeLoanslist.innerHTML = '';
+
+            // Add some dummy loans
+            const dummyLoans = [
+                { username: 'John Doe', loanAmount: 500, interestRate: 10, description: 'Home renovation', status: 'active' },
+                { username: 'Jane Smith', loanAmount: 300, interestRate: 10, description: 'Education fees', status: 'active' }
+            ];
+
+            if (dummyLoans.length === 0) {
+                activeLoanslist.innerHTML = '<p class="text-gray-500 text-center py-4">No active loans</p>';
+            } else {
+                dummyLoans.forEach(loan => {
+                    const totalOwed = loan.loanAmount + (loan.loanAmount * loan.interestRate / 100);
+                    const totalRepaid = loan.loanAmount * 0.3; // 30% repaid for demo
+                    const remaining = totalOwed - totalRepaid;
+                    
+                    const loanElement = document.createElement('div');
+                    loanElement.className = 'border rounded-lg p-4';
+                    
+                    loanElement.innerHTML = `
+                        <h4 class="font-semibold">${loan.username}</h4>
+                        <p class="text-gray-600">Amount: ${loan.loanAmount} RF</p>
+                        <p class="text-gray-600">Interest: ${loan.interestRate}%</p>
+                        <p class="text-gray-600">Total Owed: ${totalOwed} RF</p>
+                        <p class="text-gray-600">Remaining: ${remaining.toFixed(2)} RF</p>
+                        <p class="text-xs text-gray-400">Purpose: ${loan.description}</p>
+                    `;
+                    
+                    activeLoanslist.appendChild(loanElement);
+                });
+            }
+
+            // Update loan applications
+            const loanApplicationsList = document.getElementById('loanApplicationsList');
+            loanApplicationsList.innerHTML = '';
+
+            const dummyApplications = [
+                { username: 'New User', loanAmount: 200, interestRate: 10, description: 'Business startup', status: 'pending' }
+            ];
+
+            if (dummyApplications.length === 0) {
+                loanApplicationsList.innerHTML = '<p class="text-gray-500 text-center py-4">No pending applications</p>';
+            } else {
+                dummyApplications.forEach(loan => {
+                    const loanElement = document.createElement('div');
+                    loanElement.className = 'border rounded-lg p-4';
+                    
+                    loanElement.innerHTML = `
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-semibold">${loan.username}</h4>
+                                <p class="text-gray-600">Amount: ${loan.loanAmount} RF</p>
+                                <p class="text-gray-600">Interest: ${loan.interestRate}%</p>
+                                <p class="text-sm text-gray-500">Purpose: ${loan.description}</p>
+                            </div>
+                            ${currentUser.role === 'admin' ? `
+                                <div class="flex space-x-2">
+                                    <button class="bg-green-500 text-white px-3 py-1 rounded text-sm hover:bg-green-600">Approve</button>
+                                    <button class="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600">Reject</button>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                    
+                    loanApplicationsList.appendChild(loanElement);
+                });
+            }
+
+            // Update loan repayments
+            const loanRepaymentsList = document.getElementById('loanRepaymentsList');
+            loanRepaymentsList.innerHTML = '';
+
+            const dummyRepayments = [
+                { username: 'John Doe', repaymentAmount: 50, loanAmount: 500, status: 'approved', date: new Date() },
+                { username: 'Jane Smith', repaymentAmount: 30, loanAmount: 300, status: 'pending', date: new Date(Date.now() - 86400000) }
+            ];
+
+            if (dummyRepayments.length === 0) {
+                loanRepaymentsList.innerHTML = '<p class="text-gray-500 text-center py-4">No repayments found</p>';
+            } else {
+                dummyRepayments.forEach(repayment => {
+                    const repaymentElement = document.createElement('div');
+                    repaymentElement.className = 'border rounded-lg p-4';
+                    
+                    repaymentElement.innerHTML = `
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-semibold">${repayment.username}</h4>
+                                <p class="text-gray-600">Amount: ${repayment.repaymentAmount} RF</p>
+                                <p class="text-sm text-gray-500">Loan: ${repayment.loanAmount} RF</p>
+                                <p class="text-xs text-gray-400">${repayment.date.toLocaleDateString()}</p>
+                            </div>
+                            <div class="flex flex-col items-end space-y-2">
+                                <span class="px-2 py-1 rounded-full text-xs ${
+                                    repayment.status === 'approved' ? 'bg-green-100 text-green-800' :
+                                    repayment.status === 'rejected' ? 'bg-red-100 text-red-800' :
+                                    'bg-yellow-100 text-yellow-800'
+                                }">
+                                    ${repayment.status}
+                                </span>
+                                ${currentUser.role === 'admin' && repayment.status === 'pending' ? `
+                                    <div class="flex space-x-1">
+                                        <button class="bg-green-500 text-white px-2 py-1 rounded text-xs hover:bg-green-600">Approve</button>
+                                        <button class="bg-red-500 text-white px-2 py-1 rounded text-xs hover:bg-red-600">Reject</button>
+                                    </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                    `;
+                    
+                    loanRepaymentsList.appendChild(repaymentElement);
+                });
+            }
+        }
+
+        function updateRepayments() {
+            // Update My Active Loans
+            const myActiveLoans = document.getElementById('myActiveLoans');
+            myActiveLoans.innerHTML = '';
+
+            const userLoans = [
+                { id: 'loan-1', loanAmount: 500, interestRate: 10, description: 'Home renovation', date: new Date(Date.now() - 30*86400000) }
+            ];
+
+            if (userLoans.length === 0) {
+                myActiveLoans.innerHTML = '<p class="text-gray-500 text-center py-8">No active loans</p>';
+            } else {
+                userLoans.forEach(loan => {
+                    const totalOwed = loan.loanAmount + (loan.loanAmount * loan.interestRate / 100);
+                    const totalRepaid = loan.loanAmount * 0.3; // 30% repaid for demo
+                    const remaining = totalOwed - totalRepaid;
+                    const progress = (totalRepaid / totalOwed) * 100;
+                    
+                    const loanElement = document.createElement('div');
+                    loanElement.className = 'border rounded-lg p-4 bg-gradient-to-r from-blue-50 to-indigo-50';
+                    
+                    loanElement.innerHTML = `
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h4 class="font-semibold text-lg">Loan #${loan.id.slice(-6)}</h4>
+                                <p class="text-sm text-gray-600">Applied: ${loan.date.toLocaleDateString()}</p>
+                            </div>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">Active</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm text-gray-600">Original Amount</p>
+                                <p class="font-semibold">${loan.loanAmount} RF</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Interest Rate</p>
+                                <p class="font-semibold">${loan.interestRate}%</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Total Owed</p>
+                                <p class="font-semibold">${totalOwed.toFixed(2)} RF</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Remaining</p>
+                                <p class="font-semibold text-red-600">${remaining.toFixed(2)} RF</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>Repayment Progress</span>
+                                <span>${progress.toFixed(1)}%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-600 h-2 rounded-full transition-all duration-300" style="width: ${progress}%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <p class="text-sm text-gray-600 mb-1">Purpose:</p>
+                            <p class="text-sm">${loan.description}</p>
+                        </div>
+                        
+                        <button class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200 font-medium">
+                            Make Repayment
+                        </button>
+                    `;
+                    
+                    myActiveLoans.appendChild(loanElement);
+                });
+            }
+
+            // Update My Repayment History
+            const myRepaymentHistory = document.getElementById('myRepaymentHistory');
+            myRepaymentHistory.innerHTML = '';
+
+            const userRepayments = [
+                { id: 'repay-1', repaymentAmount: 50, loanId: 'loan-1', status: 'approved', date: new Date(Date.now() - 7*86400000) },
+                { id: 'repay-2', repaymentAmount: 50, loanId: 'loan-1', status: 'approved', date: new Date(Date.now() - 14*86400000) }
+            ];
+
+            if (userRepayments.length === 0) {
+                myRepaymentHistory.innerHTML = '<p class="text-gray-500 text-center py-8">No repayments made yet</p>';
+            } else {
+                userRepayments.forEach(repayment => {
+                    const repaymentElement = document.createElement('div');
+                    repaymentElement.className = 'border rounded-lg p-4';
+                    
+                    repaymentElement.innerHTML = `
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h4 class="font-semibold">Repayment #${repayment.id.slice(-6)}</h4>
+                                <p class="text-sm text-gray-600">Loan #${repayment.loanId.slice(-6)}</p>
+                            </div>
+                            <span class="px-2 py-1 rounded-full text-xs ${
+                                repayment.status === 'approved' ? 'bg-green-100 text-green-800' :
+                                repayment.status === 'rejected' ? 'bg-red-100 text-red-800' :
+                                'bg-yellow-100 text-yellow-800'
+                            }">
+                                ${repayment.status}
+                            </span>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <p class="text-sm text-gray-600">Amount Repaid</p>
+                                <p class="font-semibold text-green-600">${repayment.repaymentAmount} RF</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Date</p>
+                                <p class="font-semibold">${repayment.date.toLocaleDateString()}</p>
+                            </div>
+                        </div>
+                    `;
+                    
+                    myRepaymentHistory.appendChild(repaymentElement);
+                });
+            }
+
+            // Update Repayment Summary
+            document.getElementById('totalBorrowed').textContent = `500 RF`;
+            document.getElementById('totalRepaid').textContent = `100 RF`;
+            document.getElementById('outstandingBalance').textContent = `450 RF`;
+            document.getElementById('interestPaid').textContent = `50 RF`;
+        }
+
+        function updateChat() {
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.innerHTML = '';
+
+            // Add some dummy messages
+            const dummyMessages = [
+                { sender: 'user-1', username: 'John Doe', message: 'Hello everyone! How is the savings going?', timestamp: new Date(Date.now() - 3600000) },
+                { sender: 'user-2', username: 'Jane Smith', message: 'Great! I just made my monthly deposit.', timestamp: new Date(Date.now() - 1800000) },
+                { sender: currentUser.id, username: currentUser.username, message: 'That\'s awesome! I need to apply for a loan soon.', timestamp: new Date() }
+            ];
+
+            dummyMessages.forEach(message => {
+                const messageElement = document.createElement('div');
+                messageElement.className = `chat-message flex ${message.sender === currentUser.id ? 'justify-end' : 'justify-start'}`;
+                
+                messageElement.innerHTML = `
+                    <div class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
+                        message.sender === currentUser.id 
+                            ? 'bg-indigo-600 text-white' 
+                            : 'bg-gray-200 text-gray-800'
+                    }">
+                        <div class="flex items-center space-x-2 mb-1">
+                            <div class="w-6 h-6 bg-gray-400 rounded-full flex items-center justify-center text-xs text-white">
+                                ${message.username.charAt(0).toUpperCase()}
+                            </div>
+                            <span class="text-xs opacity-75">${message.username}</span>
+                        </div>
+                        <p class="text-sm">${message.message}</p>
+                        <p class="text-xs opacity-75 mt-1">${message.timestamp.toLocaleTimeString()}</p>
+                    </div>
+                `;
+                
+                chatMessages.appendChild(messageElement);
+            });
+
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function updateAudit() {
+            const recentTransactions = document.getElementById('recentTransactions');
+            recentTransactions.innerHTML = '';
+
+            // Add some dummy transactions
+            const dummyTransactions = [
+                { type: 'deposit', username: 'John Doe', amount: 200, date: new Date() },
+                { type: 'loan', username: 'Jane Smith', amount: 300, date: new Date(Date.now() - 86400000) },
+                { type: 'repayment', username: 'John Doe', amount: 50, date: new Date(Date.now() - 172800000) }
+            ];
+
+            dummyTransactions.forEach(transaction => {
+                const transactionElement = document.createElement('div');
+                transactionElement.className = 'border-b pb-2 mb-2';
+                
+                transactionElement.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="font-medium">${transaction.type === 'deposit' ? 'Deposit' : transaction.type === 'loan' ? 'Loan' : 'Repayment'}</p>
+                            <p class="text-sm text-gray-600">${transaction.username}</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-medium">${transaction.amount} RF</p>
+                            <p class="text-xs text-gray-500">${transaction.date.toLocaleDateString()}</p>
+                        </div>
+                    </div>
+                `;
+                
+                recentTransactions.appendChild(transactionElement);
+            });
+
+            // System activity
+            const systemActivity = document.getElementById('systemActivity');
+            systemActivity.innerHTML = `
+                <div class="space-y-2">
+                    <div class="flex justify-between">
+                        <span>Total Users:</span>
+                        <span class="font-medium">15</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Pending Deposits:</span>
+                        <span class="font-medium">2</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Pending Loans:</span>
+                        <span class="font-medium">1</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>System Status:</span>
+                        <span class="font-medium text-green-600">Online</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function updateReport() {
+            // Update report year
+            document.getElementById('reportYear').textContent = new Date().getFullYear();
+
+            // Update summary stats
+            document.getElementById('reportTotalMembers').textContent = '15';
+            document.getElementById('reportTotalSavings').textContent = `2000 RF`;
+            document.getElementById('reportTotalLoans').textContent = `800 RF`;
+            document.getElementById('reportInterestEarned').textContent = `80 RF`;
+
+            // Update member summary table
+            const tbody = document.getElementById('reportMemberSummaryBody');
+            tbody.innerHTML = '';
+
+            // Add some dummy members
+            const dummyMembers = [
+                { username: 'John Doe', totalDeposits: 800, currentBalance: 500, loansTaken: 500, status: 'active' },
+                { username: 'Jane Smith', totalDeposits: 1200, currentBalance: 1000, loansTaken: 300, status: 'active' },
+                { username: currentUser.username, totalDeposits: 500, currentBalance: 300, loansTaken: 200, status: 'active' }
+            ];
+
+            dummyMembers.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="border border-gray-300 px-4 py-2">${user.username}</td>
+                    <td class="border border-gray-300 px-4 py-2">${user.totalDeposits} RF</td>
+                    <td class="border border-gray-300 px-4 py-2">${user.currentBalance} RF</td>
+                    <td class="border border-gray-300 px-4 py-2">${user.loansTaken} RF</td>
+                    <td class="border border-gray-300 px-4 py-2">${user.status}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function updateAdminPanel() {
+            if (currentUser.role !== 'admin') return;
+
+            // Update system stats
+            document.getElementById('adminTotalMembers').textContent = '15';
+            document.getElementById('adminActiveAdmins').textContent = `1/3`;
+            document.getElementById('adminPendingDeposits').textContent = '2';
+            document.getElementById('adminPendingLoans').textContent = '1';
+
+            // Update user management list
+            const userManagementList = document.getElementById('userManagementList');
+            userManagementList.innerHTML = '';
+
+            // Add some dummy users
+            const dummyUsers = [
+                { id: 'user-1', username: 'John Doe', email: 'john@example.com', role: 'member', status: 'active', joinDate: new Date(Date.now() - 30*86400000) },
+                { id: 'user-2', username: 'Jane Smith', email: 'jane@example.com', role: 'member', status: 'active', joinDate: new Date(Date.now() - 60*86400000) }
+            ];
+
+            dummyUsers.forEach(user => {
+                if (user.id === currentUser.id) return; // Don't show current admin
+
+                const userElement = document.createElement('div');
+                userElement.className = 'flex justify-between items-center p-4 border rounded-lg';
+                
+                userElement.innerHTML = `
+                    <div>
+                        <h4 class="font-semibold">${user.username}</h4>
+                        <p class="text-sm text-gray-600">${user.email}</p>
+                        <p class="text-xs text-gray-500">Role: ${user.role} | Status: ${user.status}</p>
+                        <p class="text-xs text-gray-500">Joined: ${user.joinDate.toLocaleDateString()}</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        ${user.status === 'active' ? `
+                            <button class="bg-yellow-500 text-white px-3 py-1 rounded text-sm hover:bg-yellow-600">Suspend</button>
+                        ` : `
+                            <button class="bg-green-500 text-white px-3 py-1 rounded text-sm hover:bg-green-600">Activate</button>
+                        `}
+                        <button class="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600">Remove</button>
+                    </div>
+                `;
+                
+                userManagementList.appendChild(userElement);
+            });
+        }
+
+        // Deposit functions
+        function makeDeposit(event) {
+            event.preventDefault();
+            
+            if (currentRecordCount >= 999) {
+                showMessage('Maximum limit of 999 records reached. Cannot create new deposit.', 'error');
+                return;
+            }
+
+            showLoading(true);
+
+            const amount = parseFloat(document.getElementById('depositAmount').value);
+            const description = document.getElementById('depositDescription').value;
+            
+            if (amount && description) {
+                showMessage('Deposit submitted for approval', 'success');
+                document.getElementById('depositModal').classList.add('hidden');
+                document.getElementById('depositForm').reset();
+            } else {
+                showMessage('Please fill all required fields', 'error');
+            }
+
+            showLoading(false);
+        }
+
+        // Loan functions
+        function applyForLoan(event) {
+            event.preventDefault();
+            
+            if (currentRecordCount >= 999) {
+                showMessage('Maximum limit of 999 records reached. Cannot create new loan application.', 'error');
+                return;
+            }
+
+            showLoading(true);
+
+            const loanAmount = parseFloat(document.getElementById('loanAmount').value);
+            const purpose = document.getElementById('loanPurpose').value;
+
+            if (loanAmount && purpose) {
+                showMessage('Loan application submitted', 'success');
+                document.getElementById('loanModal').classList.add('hidden');
+                document.getElementById('loanForm').reset();
+                document.getElementById('loanCalculation').classList.add('hidden');
+            } else {
+                showMessage('Please fill all required fields', 'error');
+            }
+
+            showLoading(false);
+        }
+
+        // Chat functions
+        function sendMessage(event) {
+            event.preventDefault();
+            
+            if (currentRecordCount >= 999) {
+                showMessage('Maximum limit of 999 records reached. Cannot send message.', 'error');
+                return;
+            }
+
+            const messageText = document.getElementById('chatInput').value.trim();
+            if (!messageText) return;
+
+            // Add message to chat
+            const chatMessages = document.getElementById('chatMessages');
+            const messageElement = document.createElement('div');
+            messageElement.className = 'chat-message flex justify-end';
+            
+            messageElement.innerHTML = `
+                <div class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg bg-indigo-600 text-white">
+                    <div class="flex items-center space-x-2 mb-1">
+                        <div class="w-6 h-6 bg-gray-400 rounded-full flex items-center justify-center text-xs text-white">
+                            ${currentUser.username.charAt(0).toUpperCase()}
+                        </div>
+                        <span class="text-xs opacity-75">${currentUser.username}</span>
+                    </div>
+                    <p class="text-sm">${messageText}</p>
+                    <p class="text-xs opacity-75 mt-1">${new Date().toLocaleTimeString()}</p>
+                </div>
+            `;
+            
+            chatMessages.appendChild(messageElement);
+            document.getElementById('chatInput').value = '';
+            
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Report functions
+        function downloadPDF() {
+            showMessage('PDF download functionality would be implemented here', 'info');
+        }
+
+        function printReport() {
+            window.print();
+        }
+
+        // Home page navigation
+        function showAuthScreen() {
+            document.getElementById('homeScreen').classList.add('hidden');
+            document.getElementById('authScreen').classList.remove('hidden');
+        }
+
+        function showHomeScreen() {
+            document.getElementById('authScreen').classList.add('hidden');
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById('homeScreen').classList.remove('hidden');
+        }
+
+        // Contact form handler
+        function handleContactForm(event) {
+            event.preventDefault();
+            
+            if (currentRecordCount >= 999) {
+                showMessage('Maximum limit of 999 records reached. Cannot send message.', 'error');
+                return;
+            }
+
+            showLoading(true);
+
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const subject = document.getElementById('contactSubject').value;
+            const message = document.getElementById('contactMessage').value;
+            const consent = document.getElementById('contactConsent').checked;
+
+            if (!consent) {
+                showMessage('Please agree to the privacy policy to continue', 'error');
+                showLoading(false);
+                return;
+            }
+
+            if (name && email && subject && message) {
+                showMessage('Thank you for your message! We will get back to you within 24 hours.', 'success');
+                document.getElementById('contactForm').reset();
+            } else {
+                showMessage('Please fill all required fields', 'error');
+            }
+
+            showLoading(false);
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Language selector
+            document.getElementById('languageSelect').addEventListener('change', function() {
+                currentLanguage = this.value;
+                updateLanguage();
+            });
+
+            // Auth forms
+            document.getElementById('loginFormElement').addEventListener('submit', handleLogin);
+            document.getElementById('signupFormElement').addEventListener('submit', handleSignup);
+            document.getElementById('showSignup').addEventListener('click', showSignupForm);
+            document.getElementById('showLogin').addEventListener('click', showLoginForm);
+            document.getElementById('logoutBtn').addEventListener('click', logout);
+
+            // Navigation
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    showSection(this.dataset.section);
+                });
+            });
+
+            // Deposit modal
+            document.getElementById('makeDepositBtn').addEventListener('click', function() {
+                document.getElementById('depositModal').classList.remove('hidden');
+                document.getElementById('depositModal').classList.add('flex');
+            });
+            document.getElementById('cancelDeposit').addEventListener('click', function() {
+                document.getElementById('depositModal').classList.add('hidden');
+                document.getElementById('depositModal').classList.remove('flex');
+            });
+            document.getElementById('depositForm').addEventListener('submit', makeDeposit);
+
+            // Loan modal
+            document.getElementById('applyLoanBtn').addEventListener('click', function() {
+                document.getElementById('loanModal').classList.remove('hidden');
+                document.getElementById('loanModal').classList.add('flex');
+            });
+            document.getElementById('cancelLoan').addEventListener('click', function() {
+                document.getElementById('loanModal').classList.add('hidden');
+                document.getElementById('loanModal').classList.remove('flex');
+            });
+            document.getElementById('loanForm').addEventListener('submit', applyForLoan);
+
+            // Loan amount calculation
+            document.getElementById('loanAmount').addEventListener('input', function() {
+                const amount = parseFloat(this.value) || 0;
+                let interestRate = 10;
+                if (amount > 100) {
+                    interestRate = 20;
+                }
+                
+                const interest = amount * interestRate / 100;
+                const total = amount + interest;
+                
+                document.getElementById('calculatedInterest').textContent = interest.toFixed(2);
+                document.getElementById('totalRepayment').textContent = total.toFixed(2);
+                document.getElementById('loanCalculation').classList.remove('hidden');
+            });
+
+            // Chat
+            document.getElementById('chatForm').addEventListener('submit', sendMessage);
+
+            // Report buttons
+            document.getElementById('downloadPdfBtn').addEventListener('click', downloadPDF);
+            document.getElementById('printReportBtn').addEventListener('click', printReport);
+
+            // Admin functions
+            document.getElementById('updateInterestBtn').addEventListener('click', function() {
+                const rate = document.getElementById('interestRate').value;
+                showMessage(`Interest rate updated to ${rate}%`, 'success');
+            });
+
+            document.getElementById('exportDataBtn').addEventListener('click', function() {
+                showMessage('Data exported successfully', 'success');
+            });
+
+            document.getElementById('systemBackupBtn').addEventListener('click', function() {
+                showMessage('System backup completed', 'success');
+            });
+
+            document.getElementById('clearLogsBtn').addEventListener('click', function() {
+                showMessage('System logs cleared', 'success');
+            });
+
+            // Home page buttons
+            document.getElementById('getStartedBtn').addEventListener('click', showAuthScreen);
+            document.getElementById('joinNowBtn').addEventListener('click', showAuthScreen);
+            document.getElementById('learnMoreBtn').addEventListener('click', function() {
+                document.querySelector('#how-it-works').scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // Back to home button
+            document.getElementById('backToHomeBtn').addEventListener('click', showHomeScreen);
+
+            // Contact form
+            document.getElementById('contactForm').addEventListener('submit', handleContactForm);
+
+            // Navbar buttons
+            document.getElementById('navLoginBtn').addEventListener('click', function() {
+                showAuthScreen();
+                showLoginForm();
+            });
+            document.getElementById('navSignupBtn').addEventListener('click', function() {
+                showAuthScreen();
+                showSignupForm();
+            });
+
+            // Mobile navbar buttons
+            document.getElementById('mobileLoginBtn').addEventListener('click', function() {
+                showAuthScreen();
+                showLoginForm();
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+            document.getElementById('mobileSignupBtn').addEventListener('click', function() {
+                showAuthScreen();
+                showSignupForm();
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+
+            // Mobile menu toggle
+            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+                const mobileMenu = document.getElementById('mobileMenu');
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // Close mobile menu if open
+                        document.getElementById('mobileMenu').classList.add('hidden');
+                    }
+                });
+            });
+
+            // Initialize language
+            updateLanguage();
+        });
+    </script>
+</body>
+</html>
