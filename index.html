@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,29 +8,54 @@
     <link rel="stylesheet" href="./test.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
     <style>
         body {
             box-sizing: border-box;
         }
+
         .loading {
             opacity: 0.6;
             pointer-events: none;
         }
+
         .chat-message {
             animation: slideIn 0.3s ease-out;
         }
+
         @keyframes slideIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .rtl { direction: rtl; }
-        .print-only { display: none; }
+
+        .rtl {
+            direction: rtl;
+        }
+
+        .print-only {
+            display: none;
+        }
+
         @media print {
-            .no-print { display: none !important; }
-            .print-only { display: block !important; }
+            .no-print {
+                display: none !important;
+            }
+
+            .print-only {
+                display: block !important;
+            }
         }
     </style>
 </head>
+
 <body class="h-full bg-gradient-to-br from-blue-50 to-indigo-100 font-sans">
     <div id="app" class="h-full">
         <!-- Language Selector -->
@@ -46,40 +72,53 @@
         <div id="homeScreen" class="min-h-full">
             <!-- Navigation Bar -->
             <nav class="bg-white shadow-lg sticky top-0 z-40">
-                <div  class="max-w-7xl mx-auto px-4">
+                <div class="max-w-7xl mx-auto px-4">
                     <div class="flex justify-between items-center h-16">
                         <!-- Logo and Brand -->
                         <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-700 rounded-lg flex items-center justify-center">
+                            <div
+                                class="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-700 rounded-lg flex items-center justify-center">
                                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                                    <i class="fa-solid fa-hand-holding-dollar" style="color: #eff0f0; margin-right:7px; width:30px;"></i>
+                                    <!-- <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1">
+                                    </path> -->
                                 </svg>
                             </div>
                             <div>
-                                <h1 class="text-xl font-bold text-indigo-600">Community Savings</h1>
+                                <h1 class="text-xl font-bold text-indigo-600">CS</h1>
                                 <p class="text-xs text-gray-500">Financial Growth Together</p>
                             </div>
                         </div>
 
                         <!-- Navigation Links -->
                         <div class="hidden md:flex items-center space-x-8">
-                            <a href="#features" class="text-gray-700 hover:text-indigo-600 transition duration-200 font-medium">Features</a>
-                            <a href="#how-it-works" class="text-gray-700 hover:text-indigo-600 transition duration-200 font-medium">How It Works</a>
-                            <a href="#rates" class="text-gray-700 hover:text-indigo-600 transition duration-200 font-medium">Rates</a>
-                            <a href="#contact" class="text-gray-700 hover:text-indigo-600 transition duration-200 font-medium">Contact</a>
+                            <a href="#features"
+                                class="text-gray-700 hover:text-indigo-600 transition duration-200 font-medium">Features</a>
+                            <a href="#how-it-works"
+                                class="text-gray-700 hover:text-indigo-600 transition duration-200 font-medium">How It
+                                Works</a>
+                            <a href="#rates"
+                                class="text-gray-700 hover:text-indigo-600 transition duration-200 font-medium">Rates</a>
+                            <a href="#contact"
+                                class="text-gray-700 hover:text-indigo-600 transition duration-200 font-medium">Contact</a>
                         </div>
 
                         <!-- Auth Buttons -->
                         <div class="flex items-center space-x-3">
-                            <button id="navLoginBtn" class="text-indigo-600 hover:text-indigo-800 font-medium px-4 py-2 rounded-md hover:bg-indigo-50 transition duration-200">Login</button>
-                            <button id="navSignupBtn" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-200 font-medium">Sign Up</button>
+                            <button id="navLoginBtn"
+                                class="text-indigo-600 hover:text-indigo-800 font-medium px-4 py-2 rounded-md hover:bg-indigo-50 transition duration-200">Login</button>
+                            <button id="navSignupBtn"
+                                class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-200 font-medium">Sign
+                                Up</button>
                         </div>
 
                         <!-- Mobile Menu Button -->
                         <div class="md:hidden">
                             <button id="mobileMenuBtn" class="text-gray-700 hover:text-indigo-600 focus:outline-none">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 6h16M4 12h16M4 18h16"></path>
                                 </svg>
                             </button>
                         </div>
@@ -88,13 +127,21 @@
                     <!-- Mobile Menu -->
                     <div id="mobileMenu" class="md:hidden hidden border-t border-gray-200">
                         <div class="px-2 pt-2 pb-3 space-y-1">
-                            <a href="#features" class="block px-3 py-2 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md font-medium">Features</a>
-                            <a href="#how-it-works" class="block px-3 py-2 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md font-medium">How It Works</a>
-                            <a href="#rates" class="block px-3 py-2 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md font-medium">Rates</a>
-                            <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md font-medium">Contact</a>
+                            <a href="#features"
+                                class="block px-3 py-2 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md font-medium">Features</a>
+                            <a href="#how-it-works"
+                                class="block px-3 py-2 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md font-medium">How
+                                It Works</a>
+                            <a href="#rates"
+                                class="block px-3 py-2 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md font-medium">Rates</a>
+                            <a href="#contact"
+                                class="block px-3 py-2 text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md font-medium">Contact</a>
                             <div class="border-t border-gray-200 pt-3 mt-3">
-                                <button id="mobileLoginBtn" class="block w-full text-left px-3 py-2 text-indigo-600 hover:bg-indigo-50 rounded-md font-medium">Login</button>
-                                <button id="mobileSignupBtn" class="block w-full text-left px-3 py-2 bg-indigo-600 text-white hover:bg-indigo-700 rounded-md font-medium mt-2">Sign Up</button>
+                                <button id="mobileLoginBtn"
+                                    class="block w-full text-left px-3 py-2 text-indigo-600 hover:bg-indigo-50 rounded-md font-medium">Login</button>
+                                <button id="mobileSignupBtn"
+                                    class="block w-full text-left px-3 py-2 bg-indigo-600 text-white hover:bg-indigo-700 rounded-md font-medium mt-2">Sign
+                                    Up</button>
                             </div>
                         </div>
                     </div>
@@ -106,10 +153,16 @@
                 <div class="max-w-7xl mx-auto px-4 py-16">
                     <div class="text-center">
                         <h1 class="text-5xl font-bold mb-6 ">Community Savings Platform</h1>
-                        <p class="text-xl mb-8 max-w-3xl mx-auto ">Empowering communities through collaborative savings, transparent lending, and financial growth. Join our trusted network of savers and borrowers.</p>
+                        <p class="text-xl mb-8 max-w-3xl mx-auto ">Empowering communities through collaborative savings,
+                            transparent lending, and financial growth. Join our trusted network of savers and borrowers.
+                        </p>
                         <div class="space-x-4">
-                            <button id="getStartedBtn" class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-200">Get Started</button>
-                            <button id="learnMoreBtn" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition duration-200">Learn More</button>
+                            <button id="getStartedBtn"
+                                class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-200">Get
+                                Started</button>
+                            <button id="learnMoreBtn"
+                                class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition duration-200">Learn
+                                More</button>
                         </div>
                     </div>
                 </div>
@@ -120,62 +173,92 @@
                 <div class="max-w-7xl mx-auto px-4">
                     <div class="text-center mb-12">
                         <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Choose Community Savings?</h2>
-                        <p class="text-lg text-gray-600">Our platform provides secure, transparent, and community-driven financial services</p>
+                        <p class="text-lg text-gray-600">Our platform provides secure, transparent, and community-driven
+                            financial services</p>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 bg-gray-300 rounded-lg">
                         <div class="text-center p-6">
-                            <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                            <div
+                                class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1">
+                                    </path>
                                 </svg>
                             </div>
                             <h3 class="text-xl font-semibold mb-2">Secure Savings</h3>
-                            <p class="text-gray-600">Your deposits are tracked transparently with admin approval for maximum security and trust.</p>
+                            <p class="text-gray-600">Your deposits are tracked transparently with admin approval for
+                                maximum security and trust.</p>
                         </div>
                         <div class="text-center p-6">
-                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            <div
+                                class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z">
+                                    </path>
                                 </svg>
                             </div>
                             <h3 class="text-xl font-semibold mb-2">Fair Lending</h3>
-                            <p class="text-gray-600">Access loans with transparent interest rates and community-backed approval process.</p>
+                            <p class="text-gray-600">Access loans with transparent interest rates and community-backed
+                                approval process.</p>
                         </div>
                         <div class="text-center p-6">
-                            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            <div
+                                class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                                    </path>
                                 </svg>
                             </div>
                             <h3 class="text-xl font-semibold mb-2">Community Driven</h3>
-                            <p class="text-gray-600">Connect with fellow members through our integrated chat system and collaborative decision making.</p>
+                            <p class="text-gray-600">Connect with fellow members through our integrated chat system and
+                                collaborative decision making.</p>
                         </div>
                         <div class="text-center p-6">
-                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            <div
+                                class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                    </path>
                                 </svg>
                             </div>
                             <h3 class="text-xl font-semibold mb-2">Transparent Reports</h3>
-                            <p class="text-gray-600">Access detailed financial reports and audit trails for complete transparency and accountability.</p>
+                            <p class="text-gray-600">Access detailed financial reports and audit trails for complete
+                                transparency and accountability.</p>
                         </div>
                         <div class="text-center p-6">
-                            <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                            <div
+                                class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                    </path>
                                 </svg>
                             </div>
                             <h3 class="text-xl font-semibold mb-2">Multi-Language</h3>
-                            <p class="text-gray-600">Available in English, Arabic, Kiswahili, and Kinyarwanda to serve diverse communities.</p>
+                            <p class="text-gray-600">Available in English, Arabic, Kiswahili, and Kinyarwanda to serve
+                                diverse communities.</p>
                         </div>
                         <div class="text-center p-6">
-                            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <div
+                                class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 109.75 9.75A9.75 9.75 0 0012 2.25z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 109.75 9.75A9.75 9.75 0 0012 2.25z">
+                                    </path>
                                 </svg>
                             </div>
                             <h3 class="text-xl font-semibold mb-2">Admin Control</h3>
-                            <p class="text-gray-600">Robust admin panel with user management, interest rate control, and comprehensive oversight tools.</p>
+                            <p class="text-gray-600">Robust admin panel with user management, interest rate control, and
+                                comprehensive oversight tools.</p>
                         </div>
                     </div>
                 </div>
@@ -190,24 +273,34 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-8 ">
                         <div class="text-center">
-                            <div class="w-12 h-12 bg-indigo-700 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+                            <div
+                                class="w-12 h-12 bg-indigo-700 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                                1</div>
                             <h3 class="text-lg font-semibold mb-2">Sign Up</h3>
                             <p class="text-gray-600">Create your account as a member or admin and join our community</p>
                         </div>
                         <div class="text-center">
-                            <div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+                            <div
+                                class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                                2</div>
                             <h3 class="text-lg font-semibold mb-2">Make Deposits</h3>
                             <p class="text-gray-600">Upload payment proof and submit deposits for admin approval</p>
                         </div>
                         <div class="text-center">
-                            <div class="w-12 h-12 bg-indigo-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+                            <div
+                                class="w-12 h-12 bg-indigo-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                                3</div>
                             <h3 class="text-lg font-semibold mb-2">Apply for Loans</h3>
-                            <p class="text-gray-600">Request loans with transparent interest rates and quick approval process</p>
+                            <p class="text-gray-600">Request loans with transparent interest rates and quick approval
+                                process</p>
                         </div>
                         <div class="text-center">
-                            <div class="w-12 h-12 bg-indigo-400 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
+                            <div
+                                class="w-12 h-12 bg-indigo-400 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                                4</div>
                             <h3 class="text-lg font-semibold mb-2">Track Progress</h3>
-                            <p class="text-gray-600">Monitor your savings growth and loan repayments through detailed reports</p>
+                            <p class="text-gray-600">Monitor your savings growth and loan repayments through detailed
+                                reports</p>
                         </div>
                     </div>
                 </div>
@@ -240,7 +333,9 @@
                         </div>
                     </div>
                     <div class="mt-8 p-6 bg-yellow-50 border border-yellow-200 rounded-lg">
-                        <p class="text-yellow-800"><strong>Note:</strong> Maximum of 30 active loans allowed at any time. Interest rates are set by community admins and may be adjusted based on community needs.</p>
+                        <p class="text-yellow-800"><strong>Note:</strong> Maximum of 30 active loans allowed at any
+                            time. Interest rates are set by community admins and may be adjusted based on community
+                            needs.</p>
                     </div>
                 </div>
             </div>
@@ -249,8 +344,11 @@
             <div id="join" class="py-16  text-white">
                 <div class="max-w-4xl mx-auto px-4 text-center">
                     <h2 class="text-3xl font-bold mb-4 text-indigo-600">Ready to Start Your Financial Journey?</h2>
-                    <p class="text-xl mb-8 text-indigo-600">Join thousands of community members who trust our platform <br>for their savings and lending needs.</p>
-                    <button id="joinNowBtn" class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-200 text-lg">Join Our Community</button>
+                    <p class="text-xl mb-8 text-indigo-600">Join thousands of community members who trust our platform
+                        <br>for their savings and lending needs.</p>
+                    <button id="joinNowBtn"
+                        class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-200 text-lg">Join
+                        Our Community</button>
                 </div>
             </div>
 
@@ -267,9 +365,13 @@
                             <h3 class="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h3>
                             <div class="space-y-6">
                                 <div class="flex items-start space-x-4 ">
-                                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    <div
+                                        class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                            </path>
                                         </svg>
                                     </div>
                                     <div>
@@ -279,9 +381,12 @@
                                     </div>
                                 </div>
                                 <div class="flex items-start space-x-4">
-                                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    <div
+                                        class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                         </svg>
                                     </div>
                                     <div>
@@ -292,9 +397,13 @@
                                     </div>
                                 </div>
                                 <div class="flex items-start space-x-4">
-                                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2v-6a2 2 0 012-2h8z"></path>
+                                    <div
+                                        class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2v-6a2 2 0 012-2h8z">
+                                            </path>
                                         </svg>
                                     </div>
                                     <div>
@@ -311,16 +420,22 @@
                             <h3 class="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h3>
                             <form id="contactForm" class="space-y-6">
                                 <div>
-                                    <label for="contactName" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
-                                    <input type="text" id="contactName" required class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                                    <label for="contactName" class="block text-sm font-medium text-gray-700 mb-2">Full
+                                        Name *</label>
+                                    <input type="text" id="contactName" required
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                                 </div>
                                 <div>
-                                    <label for="contactEmail" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
-                                    <input type="email" id="contactEmail" required class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                                    <label for="contactEmail" class="block text-sm font-medium text-gray-700 mb-2">Email
+                                        Address *</label>
+                                    <input type="email" id="contactEmail" required
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                                 </div>
                                 <div>
-                                    <label for="contactSubject" class="block text-sm font-medium text-gray-700 mb-2">Subject *</label>
-                                    <select id="contactSubject" required class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                                    <label for="contactSubject"
+                                        class="block text-sm font-medium text-gray-700 mb-2">Subject *</label>
+                                    <select id="contactSubject" required
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                                         <option value="">Select a subject</option>
                                         <option value="general_inquiry">General Inquiry</option>
                                         <option value="technical_support">Technical Support</option>
@@ -333,14 +448,21 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="contactMessage" class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
-                                    <textarea id="contactMessage" required rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="Please describe your question or issue in detail..."></textarea>
+                                    <label for="contactMessage"
+                                        class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+                                    <textarea id="contactMessage" required rows="5"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                                        placeholder="Please describe your question or issue in detail..."></textarea>
                                 </div>
                                 <div class="flex items-start">
                                     <input type="checkbox" id="contactConsent" required class="mt-1 mr-3">
-                                    <label for="contactConsent" class="text-sm text-gray-600">I agree to be contacted via email regarding my inquiry and understand that my information will be handled according to our privacy policy. *</label>
+                                    <label for="contactConsent" class="text-sm text-gray-600">I agree to be contacted
+                                        via email regarding my inquiry and understand that my information will be
+                                        handled according to our privacy policy. *</label>
                                 </div>
-                                <button type="submit" id="contactSubmitBtn" class="w-full bg-indigo-600 text-white py-3 px-6 rounded-md hover:bg-indigo-700 transition duration-200 font-semibold">Send Message</button>
+                                <button type="submit" id="contactSubmitBtn"
+                                    class="w-full bg-indigo-600 text-white py-3 px-6 rounded-md hover:bg-indigo-700 transition duration-200 font-semibold">Send
+                                    Message</button>
                             </form>
                         </div>
                     </div>
@@ -353,7 +475,8 @@
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                         <div>
                             <h3 class="text-xl font-bold mb-4">Community Savings</h3>
-                            <p class="text-gray-400">Empowering communities through collaborative financial services and transparent lending practices.</p>
+                            <p class="text-gray-400">Empowering communities through collaborative financial services and
+                                transparent lending practices.</p>
                         </div>
                         <div>
                             <h4 class="text-lg font-semibold mb-4">Services</h4>
@@ -384,7 +507,7 @@
                         </div>
                     </div>
                     <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                        <p>© 2024 Community Savings Platform. All rights reserved.</p>
+                        <p>© 2025 Community Savings Platform. All rights reserved.</p>
                     </div>
                 </div>
             </footer>
@@ -393,9 +516,11 @@
         <!-- Login/Signup Screen -->
         <div id="authScreen" class="hidden flex items-center justify-center min-h-full p-4">
             <!-- Back to Home Arrow -->
-            <button id="backToHomeBtn" class="absolute top-6 left-6 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition duration-200 z-10">
+            <button id="backToHomeBtn"
+                class="absolute top-6 left-6 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition duration-200 z-10">
                 <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                 </svg>
             </button>
             <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
@@ -409,18 +534,23 @@
                     <h2 id="loginTitle" class="text-2xl font-semibold mb-6 text-center">Login</h2>
                     <form id="loginFormElement" class="space-y-4">
                         <div>
-                            <label for="loginEmail" id="emailLabel" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                            <input type="email" id="loginEmail" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <label for="loginEmail" id="emailLabel"
+                                class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="loginEmail" required
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
                         </div>
                         <div>
-                            <label for="loginPassword" id="passwordLabel" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                            <input type="password" id="loginPassword" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <label for="loginPassword" id="passwordLabel"
+                                class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                            <input type="password" id="loginPassword" required
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
                         </div>
                         <div class="flex items-center">
                             <input type="checkbox" id="isAdmin" class="mr-2">
                             <label for="isAdmin" id="adminLabel" class="text-sm text-gray-600">Login as Admin</label>
                         </div>
-                        <button type="submit" id="loginBtn" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition duration-200">Login</button>
+                        <button type="submit" id="loginBtn"
+                            class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition duration-200">Login</button>
                     </form>
                     <p class="mt-4 text-center text-sm text-gray-600">
                         <span id="noAccountText">Don't have an account?</span>
@@ -433,22 +563,31 @@
                     <h2 id="signupTitle" class="text-2xl font-semibold mb-6 text-center">Sign Up</h2>
                     <form id="signupFormElement" class="space-y-4">
                         <div>
-                            <label for="signupUsername" id="usernameLabel" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
-                            <input type="text" id="signupUsername" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <label for="signupUsername" id="usernameLabel"
+                                class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                            <input type="text" id="signupUsername" required
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
                         </div>
                         <div>
-                            <label for="signupEmail" id="signupEmailLabel" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                            <input type="email" id="signupEmail" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <label for="signupEmail" id="signupEmailLabel"
+                                class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="signupEmail" required
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
                         </div>
                         <div>
-                            <label for="signupPassword" id="signupPasswordLabel" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                            <input type="password" id="signupPassword" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <label for="signupPassword" id="signupPasswordLabel"
+                                class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                            <input type="password" id="signupPassword" required
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
                         </div>
                         <div class="flex items-center">
                             <input type="checkbox" id="signupAsAdmin" class="mr-2">
-                            <label for="signupAsAdmin" id="signupAdminLabel" class="text-sm text-gray-600">Sign up as Admin</label>
+                            <label for="signupAsAdmin" id="signupAdminLabel" class="text-sm text-gray-600">Sign up as
+                                Admin</label>
                         </div>
-                        <button type="submit" id="signupBtn" class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200">Sign Up</button>
+                        <button type="submit" id="signupBtn"
+                            class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200">Sign
+                            Up</button>
                     </form>
                     <p class="mt-4 text-center text-sm text-gray-600">
                         <span id="haveAccountText">Already have an account?</span>
@@ -467,7 +606,8 @@
                         <h1 id="dashboardTitle" class="text-2xl font-bold text-indigo-600">Community Savings</h1>
                         <span id="userWelcome" class="text-gray-600"></span>
                     </div>
-                    <button id="logoutBtn" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition duration-200">Logout</button>
+                    <button id="logoutBtn"
+                        class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition duration-200">Logout</button>
                 </div>
             </header>
 
@@ -475,14 +615,30 @@
             <nav class="bg-indigo-600 text-white">
                 <div class="px-6 py-3">
                     <div class="flex space-x-6 overflow-x-auto">
-                        <button class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200" data-section="overview">Financial Overview</button>
-                        <button class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200" data-section="deposits">Deposits</button>
-                        <button class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200" data-section="loans">Loans</button>
-                        <button class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200" data-section="repayments">Repayments</button>
-                        <button class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200" data-section="chat">Member Chat</button>
-                        <button class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200" data-section="audit">Audit Dashboard</button>
-                        <button class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200" data-section="report">Annual Report</button>
-                        <button id="adminPanelBtn" class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200 hidden" data-section="admin">Admin Panel</button>
+                        <button
+                            class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200"
+                            data-section="overview">Financial Overview</button>
+                        <button
+                            class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200"
+                            data-section="deposits">Deposits</button>
+                        <button
+                            class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200"
+                            data-section="loans">Loans</button>
+                        <button
+                            class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200"
+                            data-section="repayments">Repayments</button>
+                        <button
+                            class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200"
+                            data-section="chat">Member Chat</button>
+                        <button
+                            class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200"
+                            data-section="audit">Audit Dashboard</button>
+                        <button
+                            class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200"
+                            data-section="report">Annual Report</button>
+                        <button id="adminPanelBtn"
+                            class="nav-btn whitespace-nowrap px-3 py-2 rounded-md hover:bg-indigo-700 transition duration-200 hidden"
+                            data-section="admin">Admin Panel</button>
                     </div>
                 </div>
             </nav>
@@ -533,7 +689,9 @@
                 <div id="depositsSection" class="section hidden">
                     <div class="flex justify-between items-center mb-6">
                         <h2 class="text-2xl font-bold">Deposits</h2>
-                        <button id="makeDepositBtn" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200">Make Deposit</button>
+                        <button id="makeDepositBtn"
+                            class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200">Make
+                            Deposit</button>
                     </div>
                     <div class="bg-white rounded-lg shadow-md p-6">
                         <div id="depositsList" class="space-y-4">
@@ -541,26 +699,38 @@
                     </div>
 
                     <!-- Make Deposit Modal -->
-                    <div id="depositModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+                    <div id="depositModal"
+                        class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
                         <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full mx-4">
                             <h3 class="text-xl font-semibold mb-4">Make Deposit</h3>
                             <form id="depositForm">
                                 <div class="mb-4">
-                                    <label for="depositAmount" class="block text-sm font-medium text-gray-700 mb-1">Amount (RF)</label>
-                                    <input type="number" id="depositAmount" required min="1" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                    <label for="depositAmount"
+                                        class="block text-sm font-medium text-gray-700 mb-1">Amount (RF)</label>
+                                    <input type="number" id="depositAmount" required min="1"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
                                 </div>
                                 <div class="mb-4">
-                                    <label for="depositDescription" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                                    <textarea id="depositDescription" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" rows="3"></textarea>
+                                    <label for="depositDescription"
+                                        class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                                    <textarea id="depositDescription"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                        rows="3"></textarea>
                                 </div>
                                 <div class="mb-4">
-                                    <label for="paymentProof" class="block text-sm font-medium text-gray-700 mb-1">Payment Proof</label>
-                                    <input type="file" id="paymentProof" accept="image/*,.pdf" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                                    <p class="text-xs text-gray-500 mt-1">Upload receipt, bank statement, or payment confirmation (Image or PDF)</p>
+                                    <label for="paymentProof"
+                                        class="block text-sm font-medium text-gray-700 mb-1">Payment Proof</label>
+                                    <input type="file" id="paymentProof" accept="image/*,.pdf"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                    <p class="text-xs text-gray-500 mt-1">Upload receipt, bank statement, or payment
+                                        confirmation (Image or PDF)</p>
                                 </div>
                                 <div class="flex space-x-3">
-                                    <button type="submit" class="flex-1 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200">Submit Deposit</button>
-                                    <button type="button" id="cancelDeposit" class="flex-1 bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 transition duration-200">Cancel</button>
+                                    <button type="submit"
+                                        class="flex-1 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200">Submit
+                                        Deposit</button>
+                                    <button type="button" id="cancelDeposit"
+                                        class="flex-1 bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 transition duration-200">Cancel</button>
                                 </div>
                             </form>
                         </div>
@@ -571,7 +741,9 @@
                 <div id="loansSection" class="section hidden">
                     <div class="flex justify-between items-center mb-6">
                         <h2 class="text-2xl font-bold">Loans</h2>
-                        <button id="applyLoanBtn" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">Apply for Loan</button>
+                        <button id="applyLoanBtn"
+                            class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">Apply
+                            for Loan</button>
                     </div>
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         <div class="bg-white rounded-lg shadow-md p-6">
@@ -592,29 +764,41 @@
                     </div>
 
                     <!-- Apply for Loan Modal -->
-                    <div id="loanModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+                    <div id="loanModal"
+                        class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
                         <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full mx-4">
                             <h3 class="text-xl font-semibold mb-4">Apply for Loan</h3>
                             <div class="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-md">
-                                <p class="text-sm text-yellow-800">Interest Rate: 10% per 100RF (doubles for amounts over 100RF)</p>
+                                <p class="text-sm text-yellow-800">Interest Rate: 10% per 100RF (doubles for amounts
+                                    over 100RF)</p>
                                 <p class="text-sm text-yellow-800">Maximum 30 active loans allowed</p>
                             </div>
                             <form id="loanForm">
                                 <div class="mb-4">
-                                    <label for="loanAmount" class="block text-sm font-medium text-gray-700 mb-1">Loan Amount (RF)</label>
-                                    <input type="number" id="loanAmount" required min="1" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                    <label for="loanAmount" class="block text-sm font-medium text-gray-700 mb-1">Loan
+                                        Amount (RF)</label>
+                                    <input type="number" id="loanAmount" required min="1"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
                                 </div>
                                 <div class="mb-4">
-                                    <label for="loanPurpose" class="block text-sm font-medium text-gray-700 mb-1">Purpose</label>
-                                    <textarea id="loanPurpose" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" rows="3"></textarea>
+                                    <label for="loanPurpose"
+                                        class="block text-sm font-medium text-gray-700 mb-1">Purpose</label>
+                                    <textarea id="loanPurpose" required
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                        rows="3"></textarea>
                                 </div>
-                                <div id="loanCalculation" class="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-md hidden">
-                                    <p class="text-sm text-blue-800">Interest: <span id="calculatedInterest">0</span> RF</p>
-                                    <p class="text-sm text-blue-800">Total Repayment: <span id="totalRepayment">0</span> RF</p>
+                                <div id="loanCalculation"
+                                    class="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-md hidden">
+                                    <p class="text-sm text-blue-800">Interest: <span id="calculatedInterest">0</span> RF
+                                    </p>
+                                    <p class="text-sm text-blue-800">Total Repayment: <span id="totalRepayment">0</span>
+                                        RF</p>
                                 </div>
                                 <div class="flex space-x-3">
-                                    <button type="submit" class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200">Apply</button>
-                                    <button type="button" id="cancelLoan" class="flex-1 bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 transition duration-200">Cancel</button>
+                                    <button type="submit"
+                                        class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200">Apply</button>
+                                    <button type="button" id="cancelLoan"
+                                        class="flex-1 bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 transition duration-200">Cancel</button>
                                 </div>
                             </form>
                         </div>
@@ -672,8 +856,10 @@
                         </div>
                         <div class="p-4 border-t">
                             <form id="chatForm" class="flex space-x-2">
-                                <input type="text" id="chatInput" placeholder="Type your message..." class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                                <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-200">Send</button>
+                                <input type="text" id="chatInput" placeholder="Type your message..."
+                                    class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <button type="submit"
+                                    class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-200">Send</button>
                             </form>
                         </div>
                     </div>
@@ -701,8 +887,12 @@
                     <div class="flex justify-between items-center mb-6">
                         <h2 class="text-2xl font-bold">Annual Report</h2>
                         <div class="space-x-3">
-                            <button id="downloadPdfBtn" class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition duration-200">Download PDF</button>
-                            <button id="printReportBtn" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200">Print Report</button>
+                            <button id="downloadPdfBtn"
+                                class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition duration-200">Download
+                                PDF</button>
+                            <button id="printReportBtn"
+                                class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200">Print
+                                Report</button>
                         </div>
                     </div>
                     <div id="reportContent" class="bg-white rounded-lg shadow-md p-6">
@@ -780,18 +970,27 @@
                             <div class="space-y-4">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1">Current Rate</label>
-                                    <input type="number" id="interestRate" value="10" min="1" max="50" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                    <input type="number" id="interestRate" value="10" min="1" max="50"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
                                     <p class="text-xs text-gray-500 mt-1">% per 100RF</p>
                                 </div>
-                                <button id="updateInterestBtn" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition duration-200">Update Rate</button>
+                                <button id="updateInterestBtn"
+                                    class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition duration-200">Update
+                                    Rate</button>
                             </div>
                         </div>
                         <div class="bg-white rounded-lg shadow-md p-6">
                             <h3 class="text-xl font-semibold mb-4">Quick Actions</h3>
                             <div class="space-y-3">
-                                <button id="exportDataBtn" class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200">Export Data</button>
-                                <button id="systemBackupBtn" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200">System Backup</button>
-                                <button id="clearLogsBtn" class="w-full bg-yellow-600 text-white py-2 px-4 rounded-md hover:bg-yellow-700 transition duration-200">Clear Logs</button>
+                                <button id="exportDataBtn"
+                                    class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200">Export
+                                    Data</button>
+                                <button id="systemBackupBtn"
+                                    class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200">System
+                                    Backup</button>
+                                <button id="clearLogsBtn"
+                                    class="w-full bg-yellow-600 text-white py-2 px-4 rounded-md hover:bg-yellow-700 transition duration-200">Clear
+                                    Logs</button>
                             </div>
                         </div>
                     </div>
@@ -805,7 +1004,8 @@
         </div>
 
         <!-- Loading Overlay -->
-        <div id="loadingOverlay" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div id="loadingOverlay"
+            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
             <div class="bg-white p-6 rounded-lg shadow-lg text-center">
                 <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
                 <p class="text-gray-600">Loading...</p>
@@ -986,7 +1186,7 @@
                     savings: 0,
                     status: 'active'
                 };
-                
+
                 showDashboard();
             } else {
                 showMessage('Please enter email and password', 'error');
@@ -997,7 +1197,7 @@
 
         function handleSignup(event) {
             event.preventDefault();
-            
+
             if (currentRecordCount >= 999) {
                 showMessage('Maximum limit of 999 records reached. Please contact administrator.', 'error');
                 return;
@@ -1020,7 +1220,7 @@
                     savings: 0,
                     status: 'active'
                 };
-                
+
                 showMessage('Account created successfully! Please login.', 'success');
                 showLoginForm();
             } else {
@@ -1034,7 +1234,7 @@
             document.getElementById('homeScreen').classList.add('hidden');
             document.getElementById('authScreen').classList.add('hidden');
             document.getElementById('dashboard').classList.remove('hidden');
-            
+
             // Show admin panel if user is admin
             if (currentUser.role === 'admin') {
                 document.getElementById('adminPanelBtn').classList.remove('hidden');
@@ -1042,7 +1242,7 @@
 
             // Update welcome message
             document.getElementById('userWelcome').textContent = `Welcome, ${currentUser.username}`;
-            
+
             // Show first section
             showSection('overview');
             updateUI();
@@ -1089,11 +1289,10 @@
         function showMessage(message, type = 'info') {
             // Create toast message
             const toast = document.createElement('div');
-            toast.className = `fixed top-4 right-4 p-4 rounded-md shadow-lg z-50 ${
-                type === 'error' ? 'bg-red-500 text-white' : 
-                type === 'success' ? 'bg-green-500 text-white' : 
-                'bg-blue-500 text-white'
-            }`;
+            toast.className = `fixed top-4 right-4 p-4 rounded-md shadow-lg z-50 ${type === 'error' ? 'bg-red-500 text-white' :
+                    type === 'success' ? 'bg-green-500 text-white' :
+                        'bg-blue-500 text-white'
+                }`;
             toast.textContent = message;
             document.body.appendChild(toast);
 
@@ -1136,14 +1335,14 @@
             // Update member summary table
             const tbody = document.getElementById('memberSummaryBody');
             tbody.innerHTML = '';
-            
+
             // Add some dummy members
             const dummyMembers = [
                 { username: 'John Doe', balance: 500, savings: 800, status: 'active' },
                 { username: 'Jane Smith', balance: 1000, savings: 1200, status: 'active' },
                 { username: currentUser.username, balance: currentUser.balance, savings: currentUser.savings, status: currentUser.status }
             ];
-            
+
             dummyMembers.forEach(user => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -1151,9 +1350,8 @@
                     <td class="px-4 py-2 border-b">${user.balance || 0} RF</td>
                     <td class="px-4 py-2 border-b">${user.savings} RF</td>
                     <td class="px-4 py-2 border-b">
-                        <span class="px-2 py-1 rounded-full text-xs ${
-                            user.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-                        }">
+                        <span class="px-2 py-1 rounded-full text-xs ${user.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                    }">
                             ${user.status}
                         </span>
                     </td>
@@ -1181,7 +1379,7 @@
             dummyDeposits.forEach(deposit => {
                 const depositElement = document.createElement('div');
                 depositElement.className = 'border rounded-lg p-4 flex justify-between items-center';
-                
+
                 depositElement.innerHTML = `
                     <div>
                         <h4 class="font-semibold">${deposit.username}</h4>
@@ -1190,11 +1388,10 @@
                         <p class="text-xs text-gray-400">${deposit.date.toLocaleDateString()}</p>
                     </div>
                     <div class="flex items-center space-x-2">
-                        <span class="px-2 py-1 rounded-full text-xs ${
-                            deposit.status === 'approved' ? 'bg-green-100 text-green-800' :
-                            deposit.status === 'rejected' ? 'bg-red-100 text-red-800' :
+                        <span class="px-2 py-1 rounded-full text-xs ${deposit.status === 'approved' ? 'bg-green-100 text-green-800' :
+                        deposit.status === 'rejected' ? 'bg-red-100 text-red-800' :
                             'bg-yellow-100 text-yellow-800'
-                        }">
+                    }">
                             ${deposit.status}
                         </span>
                         ${currentUser.role === 'admin' && deposit.status === 'pending' ? `
@@ -1203,7 +1400,7 @@
                         ` : ''}
                     </div>
                 `;
-                
+
                 depositsList.appendChild(depositElement);
             });
         }
@@ -1226,10 +1423,10 @@
                     const totalOwed = loan.loanAmount + (loan.loanAmount * loan.interestRate / 100);
                     const totalRepaid = loan.loanAmount * 0.3; // 30% repaid for demo
                     const remaining = totalOwed - totalRepaid;
-                    
+
                     const loanElement = document.createElement('div');
                     loanElement.className = 'border rounded-lg p-4';
-                    
+
                     loanElement.innerHTML = `
                         <h4 class="font-semibold">${loan.username}</h4>
                         <p class="text-gray-600">Amount: ${loan.loanAmount} RF</p>
@@ -1238,7 +1435,7 @@
                         <p class="text-gray-600">Remaining: ${remaining.toFixed(2)} RF</p>
                         <p class="text-xs text-gray-400">Purpose: ${loan.description}</p>
                     `;
-                    
+
                     activeLoanslist.appendChild(loanElement);
                 });
             }
@@ -1257,7 +1454,7 @@
                 dummyApplications.forEach(loan => {
                     const loanElement = document.createElement('div');
                     loanElement.className = 'border rounded-lg p-4';
-                    
+
                     loanElement.innerHTML = `
                         <div class="flex justify-between items-start">
                             <div>
@@ -1274,7 +1471,7 @@
                             ` : ''}
                         </div>
                     `;
-                    
+
                     loanApplicationsList.appendChild(loanElement);
                 });
             }
@@ -1294,7 +1491,7 @@
                 dummyRepayments.forEach(repayment => {
                     const repaymentElement = document.createElement('div');
                     repaymentElement.className = 'border rounded-lg p-4';
-                    
+
                     repaymentElement.innerHTML = `
                         <div class="flex justify-between items-start">
                             <div>
@@ -1304,11 +1501,10 @@
                                 <p class="text-xs text-gray-400">${repayment.date.toLocaleDateString()}</p>
                             </div>
                             <div class="flex flex-col items-end space-y-2">
-                                <span class="px-2 py-1 rounded-full text-xs ${
-                                    repayment.status === 'approved' ? 'bg-green-100 text-green-800' :
-                                    repayment.status === 'rejected' ? 'bg-red-100 text-red-800' :
-                                    'bg-yellow-100 text-yellow-800'
-                                }">
+                                <span class="px-2 py-1 rounded-full text-xs ${repayment.status === 'approved' ? 'bg-green-100 text-green-800' :
+                            repayment.status === 'rejected' ? 'bg-red-100 text-red-800' :
+                                'bg-yellow-100 text-yellow-800'
+                        }">
                                     ${repayment.status}
                                 </span>
                                 ${currentUser.role === 'admin' && repayment.status === 'pending' ? `
@@ -1320,7 +1516,7 @@
                             </div>
                         </div>
                     `;
-                    
+
                     loanRepaymentsList.appendChild(repaymentElement);
                 });
             }
@@ -1332,7 +1528,7 @@
             myActiveLoans.innerHTML = '';
 
             const userLoans = [
-                { id: 'loan-1', loanAmount: 500, interestRate: 10, description: 'Home renovation', date: new Date(Date.now() - 30*86400000) }
+                { id: 'loan-1', loanAmount: 500, interestRate: 10, description: 'Home renovation', date: new Date(Date.now() - 30 * 86400000) }
             ];
 
             if (userLoans.length === 0) {
@@ -1343,10 +1539,10 @@
                     const totalRepaid = loan.loanAmount * 0.3; // 30% repaid for demo
                     const remaining = totalOwed - totalRepaid;
                     const progress = (totalRepaid / totalOwed) * 100;
-                    
+
                     const loanElement = document.createElement('div');
                     loanElement.className = 'border rounded-lg p-4 bg-gradient-to-r from-blue-50 to-indigo-50';
-                    
+
                     loanElement.innerHTML = `
                         <div class="flex justify-between items-start mb-3">
                             <div>
@@ -1394,7 +1590,7 @@
                             Make Repayment
                         </button>
                     `;
-                    
+
                     myActiveLoans.appendChild(loanElement);
                 });
             }
@@ -1404,8 +1600,8 @@
             myRepaymentHistory.innerHTML = '';
 
             const userRepayments = [
-                { id: 'repay-1', repaymentAmount: 50, loanId: 'loan-1', status: 'approved', date: new Date(Date.now() - 7*86400000) },
-                { id: 'repay-2', repaymentAmount: 50, loanId: 'loan-1', status: 'approved', date: new Date(Date.now() - 14*86400000) }
+                { id: 'repay-1', repaymentAmount: 50, loanId: 'loan-1', status: 'approved', date: new Date(Date.now() - 7 * 86400000) },
+                { id: 'repay-2', repaymentAmount: 50, loanId: 'loan-1', status: 'approved', date: new Date(Date.now() - 14 * 86400000) }
             ];
 
             if (userRepayments.length === 0) {
@@ -1414,18 +1610,17 @@
                 userRepayments.forEach(repayment => {
                     const repaymentElement = document.createElement('div');
                     repaymentElement.className = 'border rounded-lg p-4';
-                    
+
                     repaymentElement.innerHTML = `
                         <div class="flex justify-between items-start mb-2">
                             <div>
                                 <h4 class="font-semibold">Repayment #${repayment.id.slice(-6)}</h4>
                                 <p class="text-sm text-gray-600">Loan #${repayment.loanId.slice(-6)}</p>
                             </div>
-                            <span class="px-2 py-1 rounded-full text-xs ${
-                                repayment.status === 'approved' ? 'bg-green-100 text-green-800' :
-                                repayment.status === 'rejected' ? 'bg-red-100 text-red-800' :
+                            <span class="px-2 py-1 rounded-full text-xs ${repayment.status === 'approved' ? 'bg-green-100 text-green-800' :
+                            repayment.status === 'rejected' ? 'bg-red-100 text-red-800' :
                                 'bg-yellow-100 text-yellow-800'
-                            }">
+                        }">
                                 ${repayment.status}
                             </span>
                         </div>
@@ -1441,7 +1636,7 @@
                             </div>
                         </div>
                     `;
-                    
+
                     myRepaymentHistory.appendChild(repaymentElement);
                 });
             }
@@ -1467,12 +1662,11 @@
             dummyMessages.forEach(message => {
                 const messageElement = document.createElement('div');
                 messageElement.className = `chat-message flex ${message.sender === currentUser.id ? 'justify-end' : 'justify-start'}`;
-                
+
                 messageElement.innerHTML = `
-                    <div class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
-                        message.sender === currentUser.id 
-                            ? 'bg-indigo-600 text-white' 
-                            : 'bg-gray-200 text-gray-800'
+                    <div class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${message.sender === currentUser.id
+                        ? 'bg-indigo-600 text-white'
+                        : 'bg-gray-200 text-gray-800'
                     }">
                         <div class="flex items-center space-x-2 mb-1">
                             <div class="w-6 h-6 bg-gray-400 rounded-full flex items-center justify-center text-xs text-white">
@@ -1484,7 +1678,7 @@
                         <p class="text-xs opacity-75 mt-1">${message.timestamp.toLocaleTimeString()}</p>
                     </div>
                 `;
-                
+
                 chatMessages.appendChild(messageElement);
             });
 
@@ -1506,7 +1700,7 @@
             dummyTransactions.forEach(transaction => {
                 const transactionElement = document.createElement('div');
                 transactionElement.className = 'border-b pb-2 mb-2';
-                
+
                 transactionElement.innerHTML = `
                     <div class="flex justify-between items-center">
                         <div>
@@ -1519,7 +1713,7 @@
                         </div>
                     </div>
                 `;
-                
+
                 recentTransactions.appendChild(transactionElement);
             });
 
@@ -1596,8 +1790,8 @@
 
             // Add some dummy users
             const dummyUsers = [
-                { id: 'user-1', username: 'John Doe', email: 'john@example.com', role: 'member', status: 'active', joinDate: new Date(Date.now() - 30*86400000) },
-                { id: 'user-2', username: 'Jane Smith', email: 'jane@example.com', role: 'member', status: 'active', joinDate: new Date(Date.now() - 60*86400000) }
+                { id: 'user-1', username: 'John Doe', email: 'john@example.com', role: 'member', status: 'active', joinDate: new Date(Date.now() - 30 * 86400000) },
+                { id: 'user-2', username: 'Jane Smith', email: 'jane@example.com', role: 'member', status: 'active', joinDate: new Date(Date.now() - 60 * 86400000) }
             ];
 
             dummyUsers.forEach(user => {
@@ -1605,7 +1799,7 @@
 
                 const userElement = document.createElement('div');
                 userElement.className = 'flex justify-between items-center p-4 border rounded-lg';
-                
+
                 userElement.innerHTML = `
                     <div>
                         <h4 class="font-semibold">${user.username}</h4>
@@ -1622,7 +1816,7 @@
                         <button class="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600">Remove</button>
                     </div>
                 `;
-                
+
                 userManagementList.appendChild(userElement);
             });
         }
@@ -1630,7 +1824,7 @@
         // Deposit functions
         function makeDeposit(event) {
             event.preventDefault();
-            
+
             if (currentRecordCount >= 999) {
                 showMessage('Maximum limit of 999 records reached. Cannot create new deposit.', 'error');
                 return;
@@ -1640,7 +1834,7 @@
 
             const amount = parseFloat(document.getElementById('depositAmount').value);
             const description = document.getElementById('depositDescription').value;
-            
+
             if (amount && description) {
                 showMessage('Deposit submitted for approval', 'success');
                 document.getElementById('depositModal').classList.add('hidden');
@@ -1655,7 +1849,7 @@
         // Loan functions
         function applyForLoan(event) {
             event.preventDefault();
-            
+
             if (currentRecordCount >= 999) {
                 showMessage('Maximum limit of 999 records reached. Cannot create new loan application.', 'error');
                 return;
@@ -1681,7 +1875,7 @@
         // Chat functions
         function sendMessage(event) {
             event.preventDefault();
-            
+
             if (currentRecordCount >= 999) {
                 showMessage('Maximum limit of 999 records reached. Cannot send message.', 'error');
                 return;
@@ -1694,7 +1888,7 @@
             const chatMessages = document.getElementById('chatMessages');
             const messageElement = document.createElement('div');
             messageElement.className = 'chat-message flex justify-end';
-            
+
             messageElement.innerHTML = `
                 <div class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg bg-indigo-600 text-white">
                     <div class="flex items-center space-x-2 mb-1">
@@ -1707,10 +1901,10 @@
                     <p class="text-xs opacity-75 mt-1">${new Date().toLocaleTimeString()}</p>
                 </div>
             `;
-            
+
             chatMessages.appendChild(messageElement);
             document.getElementById('chatInput').value = '';
-            
+
             // Scroll to bottom
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
@@ -1739,7 +1933,7 @@
         // Contact form handler
         function handleContactForm(event) {
             event.preventDefault();
-            
+
             if (currentRecordCount >= 999) {
                 showMessage('Maximum limit of 999 records reached. Cannot send message.', 'error');
                 return;
@@ -1770,9 +1964,9 @@
         }
 
         // Event listeners
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Language selector
-            document.getElementById('languageSelect').addEventListener('change', function() {
+            document.getElementById('languageSelect').addEventListener('change', function () {
                 currentLanguage = this.value;
                 updateLanguage();
             });
@@ -1786,44 +1980,44 @@
 
             // Navigation
             document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     showSection(this.dataset.section);
                 });
             });
 
             // Deposit modal
-            document.getElementById('makeDepositBtn').addEventListener('click', function() {
+            document.getElementById('makeDepositBtn').addEventListener('click', function () {
                 document.getElementById('depositModal').classList.remove('hidden');
                 document.getElementById('depositModal').classList.add('flex');
             });
-            document.getElementById('cancelDeposit').addEventListener('click', function() {
+            document.getElementById('cancelDeposit').addEventListener('click', function () {
                 document.getElementById('depositModal').classList.add('hidden');
                 document.getElementById('depositModal').classList.remove('flex');
             });
             document.getElementById('depositForm').addEventListener('submit', makeDeposit);
 
             // Loan modal
-            document.getElementById('applyLoanBtn').addEventListener('click', function() {
+            document.getElementById('applyLoanBtn').addEventListener('click', function () {
                 document.getElementById('loanModal').classList.remove('hidden');
                 document.getElementById('loanModal').classList.add('flex');
             });
-            document.getElementById('cancelLoan').addEventListener('click', function() {
+            document.getElementById('cancelLoan').addEventListener('click', function () {
                 document.getElementById('loanModal').classList.add('hidden');
                 document.getElementById('loanModal').classList.remove('flex');
             });
             document.getElementById('loanForm').addEventListener('submit', applyForLoan);
 
             // Loan amount calculation
-            document.getElementById('loanAmount').addEventListener('input', function() {
+            document.getElementById('loanAmount').addEventListener('input', function () {
                 const amount = parseFloat(this.value) || 0;
                 let interestRate = 10;
                 if (amount > 100) {
                     interestRate = 20;
                 }
-                
+
                 const interest = amount * interestRate / 100;
                 const total = amount + interest;
-                
+
                 document.getElementById('calculatedInterest').textContent = interest.toFixed(2);
                 document.getElementById('totalRepayment').textContent = total.toFixed(2);
                 document.getElementById('loanCalculation').classList.remove('hidden');
@@ -1837,27 +2031,27 @@
             document.getElementById('printReportBtn').addEventListener('click', printReport);
 
             // Admin functions
-            document.getElementById('updateInterestBtn').addEventListener('click', function() {
+            document.getElementById('updateInterestBtn').addEventListener('click', function () {
                 const rate = document.getElementById('interestRate').value;
                 showMessage(`Interest rate updated to ${rate}%`, 'success');
             });
 
-            document.getElementById('exportDataBtn').addEventListener('click', function() {
+            document.getElementById('exportDataBtn').addEventListener('click', function () {
                 showMessage('Data exported successfully', 'success');
             });
 
-            document.getElementById('systemBackupBtn').addEventListener('click', function() {
+            document.getElementById('systemBackupBtn').addEventListener('click', function () {
                 showMessage('System backup completed', 'success');
             });
 
-            document.getElementById('clearLogsBtn').addEventListener('click', function() {
+            document.getElementById('clearLogsBtn').addEventListener('click', function () {
                 showMessage('System logs cleared', 'success');
             });
 
             // Home page buttons
             document.getElementById('getStartedBtn').addEventListener('click', showAuthScreen);
             document.getElementById('joinNowBtn').addEventListener('click', showAuthScreen);
-            document.getElementById('learnMoreBtn').addEventListener('click', function() {
+            document.getElementById('learnMoreBtn').addEventListener('click', function () {
                 document.querySelector('#how-it-works').scrollIntoView({ behavior: 'smooth' });
             });
 
@@ -1868,29 +2062,29 @@
             document.getElementById('contactForm').addEventListener('submit', handleContactForm);
 
             // Navbar buttons
-            document.getElementById('navLoginBtn').addEventListener('click', function() {
+            document.getElementById('navLoginBtn').addEventListener('click', function () {
                 showAuthScreen();
                 showLoginForm();
             });
-            document.getElementById('navSignupBtn').addEventListener('click', function() {
+            document.getElementById('navSignupBtn').addEventListener('click', function () {
                 showAuthScreen();
                 showSignupForm();
             });
 
             // Mobile navbar buttons
-            document.getElementById('mobileLoginBtn').addEventListener('click', function() {
+            document.getElementById('mobileLoginBtn').addEventListener('click', function () {
                 showAuthScreen();
                 showLoginForm();
                 document.getElementById('mobileMenu').classList.add('hidden');
             });
-            document.getElementById('mobileSignupBtn').addEventListener('click', function() {
+            document.getElementById('mobileSignupBtn').addEventListener('click', function () {
                 showAuthScreen();
                 showSignupForm();
                 document.getElementById('mobileMenu').classList.add('hidden');
             });
 
             // Mobile menu toggle
-            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mobileMenuBtn').addEventListener('click', function () {
                 const mobileMenu = document.getElementById('mobileMenu');
                 mobileMenu.classList.toggle('hidden');
             });
@@ -1913,4 +2107,5 @@
         });
     </script>
 </body>
+
 </html>
