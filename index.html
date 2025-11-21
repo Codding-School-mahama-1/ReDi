@@ -204,12 +204,13 @@
 
     /* Form Styles */
     .form-container {
-      max-width: 500px;
+      max-width: 400px;
       margin: 0 auto;
+      
     }
 
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 8px;
     }
 
     .form-group label {
@@ -635,6 +636,17 @@
       margin-bottom: 20px;
       opacity: 0.5;
     }
+    #signupPage a{
+      /* background: #4f69dd; */
+      padding: 10px 15px;
+      border-radius: 5px;
+      border: 2px solid #667eea;
+      transition: all 0.3s;
+    }
+    #signupPage a:hover{
+      background: #667eea;
+      color: white;
+    }
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
@@ -720,6 +732,7 @@
     </div>
    </div><!-- Signup Page -->
    <div class="page" id="signupPage">
+   <a href="./index.html">Back to Hompage</a>
     <div class="form-container">
      <h2 class="section-title" id="signupTitle">Create Account</h2>
      <div id="signupError"></div>
