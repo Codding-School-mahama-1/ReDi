@@ -68,6 +68,7 @@
       gap: 15px;
       align-items: center;
       flex-wrap: wrap;
+     
     }
 
     .language-selector {
@@ -136,15 +137,46 @@
     }
 
     /* Page Styles */
+    /* Fullscreen video background */
+#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Dark overlay so login form is readable */
+.bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(71, 77, 111, 0.4);
+  z-index: -1;
+} 
+
+/* Make login box float above video */
+#loginPage .form-container {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 25px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+}
+
     .page {
       display: none;
-      background: white;
+      background: url('./backgroun1\ .webm');
       border-radius: 15px;
       padding: 40px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       animation: fadeIn 0.3s;
     }
-
     .page.active {
       display: block;
     }
@@ -229,12 +261,33 @@
 
     /* Form Styles */
     .form-container {
-      max-width: 500px;
-      margin: 0 auto;
+      max-width: 400px;
+       margin: 3px auto; 
+      background: rgb(231, 230, 230);
+      border-radius: 10px;
+      padding: 30px;
+      opacity: 0.80;
     }
+    .back {
+      
+     padding: 8px 3px;
+      border: 2px solid white;
+      border-radius: 6px;
+      opacity: 15;
+      color: white;
+      
+      cursor: pointer;
+      transition: all 0.8s;
+      width: 20vh;
+      text-align: center;
+
+    }
+     .back:hover {
+      background: white;
+      color: #667eea; }
 
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 8px;
     }
 
     .form-group label {
@@ -819,6 +872,21 @@
   <style>
     @view-transition {
       navigation: auto;
+    #signupPage a{
+      /* background: #4f69dd; */
+      padding: 10px 15px;
+      border-radius: 5px;
+      border: 2px solid #f6f7fa;
+      transition: all 0.3s;
+      color: white;
+      font-weight: 400;
+    }
+    #signupPage a:hover{
+       background: white;
+      color: #667eea;
+    }
+    #signupForm{
+      padding: 20px;
     }
   </style>
   <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
@@ -900,6 +968,13 @@
     </div>
   </div><!-- Login Page -->
   <div class="page" id="loginPage">
+   </div><!-- Login Page here -->
+   <div class="page" id="loginPage">
+    <div class="back"><a href="./index.html">Back to Home</a></div>
+    <!-- Background Video -->
+<video autoplay muted loop playsinline id="bgVideo">
+  <source src="./backgroun1 .webm" type="video/mp4">
+</video>
     <div class="form-container">
       <h2 class="section-title" id="loginTitle">Login</h2>
       <div id="loginError"></div>
@@ -925,6 +1000,13 @@
     </div>
   </div><!-- Signup Page -->
   <div class="page" id="signupPage">
+   </div>
+   <!-- Signup Page -->
+   <div class="page" id="signupPage">
+    <video autoplay muted loop playsinline id="bgVideo">
+  <source src="./backgroun1 .webm" type="video/mp4">
+</video>
+   <a href="./index.html">Back to Home</a>
     <div class="form-container">
       <h2 class="section-title" id="signupTitle">Create Account</h2>
       <div id="signupError"></div>
