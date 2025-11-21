@@ -238,21 +238,28 @@
     .form-container {
       max-width: 400px;
        margin: 3px auto; 
-      background: white;
+      background: rgb(231, 230, 230);
+      border-radius: 10px;
+      padding: 30px;
+      opacity: 0.80;
     }
     .back {
       
-     padding: 10px 10px;
-      border: 3px solid white;
-      border-radius: 8px;
+     padding: 8px 3px;
+      border: 2px solid white;
+      border-radius: 6px;
       opacity: 15;
       color: white;
-      font-weight: 400;
+      
       cursor: pointer;
       transition: all 0.8s;
-      width: 25vh;
+      width: 20vh;
+      text-align: center;
 
     }
+     .back:hover {
+      background: white;
+      color: #667eea; }
 
     .form-group {
       margin-bottom: 8px;
@@ -685,12 +692,17 @@
       /* background: #4f69dd; */
       padding: 10px 15px;
       border-radius: 5px;
-      border: 2px solid #667eea;
+      border: 2px solid #f6f7fa;
       transition: all 0.3s;
+      color: white;
+      font-weight: 400;
     }
     #signupPage a:hover{
-      background: #667eea;
-      color: white;
+       background: white;
+      color: #667eea;
+    }
+    #signupForm{
+      padding: 20px;
     }
   </style>
   <style>@view-transition { navigation: auto; }</style>
@@ -759,11 +771,9 @@
       <p id="feature6Desc">Powerful administrative tools for system oversight and member management.</p>
      </div>
     </div>
-   </div><!-- Login Page -->
-
-<div class="bg-overlay"></div>
+   </div><!-- Login Page here -->
    <div class="page" id="loginPage">
-    <div class="back"><button></button>Back home page</div>
+    <div class="back"><a href="./index.html">Back to Home</a></div>
     <!-- Background Video -->
 <video autoplay muted loop playsinline id="bgVideo">
   <source src="./backgroun1 .webm" type="video/mp4">
@@ -785,7 +795,10 @@
    </div>
    <!-- Signup Page -->
    <div class="page" id="signupPage">
-   <a href="./index.html">Back to Hompage</a>
+    <video autoplay muted loop playsinline id="bgVideo">
+  <source src="./backgroun1 .webm" type="video/mp4">
+</video>
+   <a href="./index.html">Back to Home</a>
     <div class="form-container">
      <h2 class="section-title" id="signupTitle">Create Account</h2>
      <div id="signupError"></div>
