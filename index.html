@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
- <head>
+
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Community Savings Platform</title>
@@ -13,7 +14,7 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      /* background: linear-gradient(135deg, #6fa759 0%, #36692f 100%); */
       min-height: 100%;
       color: #333;
     }
@@ -22,15 +23,25 @@
       max-width: 1400px;
       margin: 0 auto;
       padding: 20px;
+      background-color: #2a2c24;
     }
 
     /* Header Styles */
     .header {
       background: white;
-      padding: 20px 0;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      margin-bottom: 30px;
-      border-radius: 10px;
+      padding: 10px 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 1.1);
+      margin-bottom: 10px;
+      border-radius: 0 0 10px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         z-index: 100;
+   
     }
 
     .header-content {
@@ -40,12 +51,13 @@
       padding: 0 30px;
       flex-wrap: wrap;
       gap: 20px;
+   
     }
 
     .logo {
       font-size: 28px;
       font-weight: bold;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #6fa759 0%, #36692f 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -61,17 +73,17 @@
 
     .language-selector {
       padding: 10px 15px;
-      border: 2px solid #667eea;
+      border: 2px solid #36692f;
       border-radius: 8px;
       background: white;
-      color: #667eea;
+      color: #6fa759;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s;
     }
 
     .language-selector:hover {
-      background: #667eea;
+      background: #36692f;
       color: white;
     }
 
@@ -86,23 +98,23 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #6fa759 0%, #36692f 100%);
       color: white;
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+      box-shadow: 0 5px 15px #36692f(102, 126, 234, 0.4);
     }
 
     .btn-secondary {
       background: white;
-      color: #667eea;
-      border: 2px solid #667eea;
+      color: #6fa759;
+      border: 2px solid #6fa759;
     }
 
     .btn-secondary:hover {
-      background: #667eea;
+      background: #6fa759;
       color: white;
     }
 
@@ -162,7 +174,7 @@
       background: url('./backgroun1\ .webm');
       border-radius: 15px;
       padding: 40px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       animation: fadeIn 0.3s;
     }
     .page.active {
@@ -170,8 +182,15 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Home Page */
@@ -181,17 +200,23 @@
       background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
       border-radius: 15px;
       margin-bottom: 40px;
+      background-image: url(/best.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      height: 70vh;
+      margin-top: 20px;
     }
 
     .hero h1 {
       font-size: 48px;
       margin-bottom: 20px;
-      color: #1f2937;
+      color: rgb(1, 15, 1);
     }
 
     .hero p {
       font-size: 20px;
-      color: #6b7280;
+      color: rgb(1, 15, 1);
       max-width: 700px;
       margin: 0 auto 30px;
     }
@@ -204,10 +229,10 @@
     }
 
     .feature-card {
-      background: white;
+      background:  rgb(209, 226, 161);
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       border: 2px solid #e5e7eb;
       transition: all 0.3s;
     }
@@ -215,7 +240,7 @@
     .feature-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
-      border-color: #667eea;
+      border-color: #6fa759;
     }
 
     .feature-icon {
@@ -230,7 +255,7 @@
     }
 
     .feature-card p {
-      color: #6b7280;
+      color: #404652;
       line-height: 1.6;
     }
 
@@ -287,7 +312,7 @@
     .form-group select:focus,
     .form-group textarea:focus {
       outline: none;
-      border-color: #667eea;
+      border-color: #6fa759;
     }
 
     .form-group textarea {
@@ -337,11 +362,11 @@
     }
 
     .stat-card {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #6fa759 0%, #36692f 100%);
       color: white;
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     .stat-card h3 {
@@ -450,7 +475,7 @@
     }
 
     .chat-user.active {
-      background: #667eea;
+      background: #6fa759;
       color: white;
     }
 
@@ -458,7 +483,7 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #6fa759 0%, #36692f 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -502,11 +527,11 @@
       padding: 12px 16px;
       border-radius: 12px;
       background: white;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
     .message.sent .message-bubble {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #6fa759 0%, #36692f 100%);
       color: white;
     }
 
@@ -548,7 +573,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0, 0, 0, 0.5);
       align-items: center;
       justify-content: center;
       z-index: 1000;
@@ -590,13 +615,15 @@
       width: 20px;
       height: 20px;
       border: 3px solid #f3f4f6;
-      border-top-color: #667eea;
+      border-top-color: #6fa759;
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
     }
 
     @keyframes spin {
-      to { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     /* Responsive Design */
@@ -605,9 +632,11 @@
         flex-direction: column;
         text-align: center;
       }
-
       .hero h1 {
         font-size: 32px;
+      }
+      .hero{
+        margin-top: 150px;
       }
 
       .features-grid {
@@ -635,7 +664,8 @@
         font-size: 12px;
       }
 
-      table th, table td {
+      table th,
+      table td {
         padding: 10px 5px;
       }
     }
@@ -661,7 +691,7 @@
     }
 
     .file-upload:hover {
-      border-color: #667eea;
+      border-color: #6fa759;
       background: #f9fafb;
     }
 
@@ -674,7 +704,7 @@
       margin-bottom: 20px;
       color: #1f2937;
       padding-bottom: 10px;
-      border-bottom: 3px solid #667eea;
+      border-bottom: 3px solid #6fa759;
     }
 
     .empty-state {
@@ -688,6 +718,160 @@
       margin-bottom: 20px;
       opacity: 0.5;
     }
+    @media (max-width: 992px) {
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .header-content {
+        padding: 0 15px;
+        margin: 0 auto;
+      }
+
+      .feature-card {
+        padding: 20px;
+      }
+
+      .dashboard-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+    }
+
+    /* ---------- Small Screens: Mobile (max-width: 768px) ---------- */
+    @media (max-width: 768px) {
+
+      body {
+        padding: 0;
+      }
+
+      .header{
+        display: block;
+        padding: 10px 0;
+      }
+
+      .header-content {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+
+      .nav-controls {
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 40px 20px;
+      }
+
+      .hero h1 {
+        font-size: 30px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .page {
+        padding: 20px;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Chat layout collapses */
+      .chat-container {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+
+      .chat-users {
+        height: auto;
+        max-height: 200px;
+      }
+
+      /* Tables */
+      table {
+        font-size: 13px;
+      }
+
+      table th,
+      table td {
+        padding: 10px 8px;
+        white-space: nowrap;
+      }
+
+      /* Buttons */
+      .btn {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 15px;
+
+
+      }
+
+      .action-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+    }
+
+    /* ---------- Very Small Screens: (max-width: 480px) ---------- */
+    @media (max-width: 480px) {
+
+      .logo {
+        font-size: 22px;
+      }
+
+      .hero h1 {
+        font-size: 26px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        font-size: 13px;
+        padding: 10px;
+      }
+
+      .message-bubble {
+        max-width: 85%;
+      }
+
+      table {
+        font-size: 11px;
+      }
+
+      .feature-card {
+        padding: 15px;
+      }
+      .header{
+        display: block;
+    margin-bottom: 20px;
+      }
+          .hero{
+        margin-top: 160px;
+      }
+
+    }
+    @media (max-width: 390px){
+            .hero{
+        margin-top: 200px;
+      }
+    }
+  </style>
+  <style>
+    @view-transition {
+      navigation: auto;
     #signupPage a{
       /* background: #4f69dd; */
       padding: 10px 15px;
@@ -705,72 +889,85 @@
       padding: 20px;
     }
   </style>
-  <style>@view-transition { navigation: auto; }</style>
   <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
- </head>
- <body>
+</head>
+
+<body>
   <div class="container"><!-- Header -->
-   <div class="header">
-    <div class="header-content">
-     <div class="logo" id="platformName">
-      Community Savings
-     </div>
-     <div class="nav-controls"><select class="language-selector" id="languageSelector"> <option value="en">English</option> <option value="ar">العربية</option> <option value="sw">Kiswahili</option> <option value="rw">Kinyarwanda</option> <option value="fr">Français</option> </select>
-      <div id="authButtons"></div>
-     </div>
+    <div class="header">
+      <div class="header-content">
+        <img src="/download.png" alt="" width="180" height="50">
+
+      </div>
+      <div class="nav-controls"><select class="language-selector" id="languageSelector">
+          <option value="en">English</option>
+          <option value="ar">العربية</option>
+          <option value="sw">Kiswahili</option>
+          <option value="rw">Kinyarwanda</option>
+          <option value="fr">Français</option>
+        </select>
+        <div id="authButtons"></div>
+      </div>
     </div>
-   </div><!-- Home Page -->
-   <div class="page active" id="homePage">
+  </div><!-- Home Page -->
+  <div class="page active" id="homePage">
     <div class="hero">
-     <h1 id="heroTitle">Building Financial Futures Together</h1>
-     <p id="heroDescription">A comprehensive community-based savings and loan platform designed to empower members through collaborative financial management and transparent operations.</p>
-     <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 30px;"><button class="btn btn-primary" onclick="showPage('loginPage')" id="getStartedBtn">Get Started</button> <button class="btn btn-secondary" onclick="showPage('contactPage')" id="contactUsBtn">Contact Us</button>
-     </div>
+      <h1 id="heroTitle">Building Financial Futures Together</h1>
+      <p id="heroDescription">A comprehensive community-based savings and loan platform designed to empower members
+        through collaborative financial management and transparent operations.</p>
+      <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 30px;"><button
+          class="btn btn-primary" onclick="showPage('loginPage')" id="getStartedBtn">Get Started</button> <button
+          class="btn btn-secondary" onclick="showPage('contactPage')" id="contactUsBtn">Contact Us</button>
+      </div>
     </div>
     <div class="features-grid">
-     <div class="feature-card">
-      <div class="feature-icon">
-       💰
+      <div class="feature-card">
+        <div class="feature-icon">
+          🔐
+        </div>
+        <h3 id="feature1Title">Secure Savings</h3>
+        <p id="feature1Desc">Safely manage your community savings with transparent tracking and secure deposit
+          verification system.</p>
       </div>
-      <h3 id="feature1Title">Secure Savings</h3>
-      <p id="feature1Desc">Safely manage your community savings with transparent tracking and secure deposit verification system.</p>
-     </div>
-     <div class="feature-card">
-      <div class="feature-icon">
-       📊
+      <div class="feature-card">
+        <div class="feature-icon">
+          📊
+        </div>
+        <h3 id="feature2Title">Financial Dashboard</h3>
+        <p id="feature2Desc">Real-time overview of total balance, savings, active loans, and annual performance metrics.
+        </p>
       </div>
-      <h3 id="feature2Title">Financial Dashboard</h3>
-      <p id="feature2Desc">Real-time overview of total balance, savings, active loans, and annual performance metrics.</p>
-     </div>
-     <div class="feature-card">
-      <div class="feature-icon">
-       🤝
+      <div class="feature-card">
+        <div class="feature-icon">
+          🤝
+        </div>
+        <h3 id="feature3Title">Community Loans</h3>
+        <p id="feature3Desc">Access affordable loans with transparent interest rates and fair repayment terms.</p>
       </div>
-      <h3 id="feature3Title">Community Loans</h3>
-      <p id="feature3Desc">Access affordable loans with transparent interest rates and fair repayment terms.</p>
-     </div>
-     <div class="feature-card">
-      <div class="feature-icon">
-       💬
+      <div class="feature-card">
+        <div class="feature-icon">
+          💬
+        </div>
+        <h3 id="feature4Title">Live Chat</h3>
+        <p id="feature4Desc">Communicate directly with members and administrators in real-time.</p>
       </div>
-      <h3 id="feature4Title">Live Chat</h3>
-      <p id="feature4Desc">Communicate directly with members and administrators in real-time.</p>
-     </div>
-     <div class="feature-card">
-      <div class="feature-icon">
-       📈
+      <div class="feature-card">
+        <div class="feature-icon">
+          📈
+        </div>
+        <h3 id="feature5Title">Annual Reports</h3>
+        <p id="feature5Desc">Comprehensive yearly financial reports with download and print capabilities.</p>
       </div>
-      <h3 id="feature5Title">Annual Reports</h3>
-      <p id="feature5Desc">Comprehensive yearly financial reports with download and print capabilities.</p>
-     </div>
-     <div class="feature-card">
-      <div class="feature-icon">
-       🔐
+      <div class="feature-card">
+        <div class="feature-icon">
+          👤
+        </div>
+        <h3 id="feature6Title">Admin Control</h3>
+        <p id="feature6Desc">Powerful administrative tools for system oversight and member management.</p>
       </div>
-      <h3 id="feature6Title">Admin Control</h3>
-      <p id="feature6Desc">Powerful administrative tools for system oversight and member management.</p>
-     </div>
     </div>
+  </div><!-- Login Page -->
+  <div class="page" id="loginPage">
    </div><!-- Login Page here -->
    <div class="page" id="loginPage">
     <div class="back"><a href="./index.html">Back to Home</a></div>
@@ -779,19 +976,30 @@
   <source src="./backgroun1 .webm" type="video/mp4">
 </video>
     <div class="form-container">
-     <h2 class="section-title" id="loginTitle">Login</h2>
-     <div id="loginError"></div>
-     <form id="loginForm" onsubmit="handleLogin(event)">
-      <div class="form-group"><label for="loginEmail" id="emailLabel">Email Address</label> <input type="email" id="loginEmail" required>
-      </div>
-      <div class="form-group"><label for="loginPassword" id="passwordLabel">Password</label>
-       <div class="password-toggle"><input type="password" id="loginPassword" required> <button type="button" class="password-toggle-btn" onclick="togglePassword('loginPassword')">👁️</button>
-       </div>
-      </div>
-      <div class="form-group"><label for="loginRole" id="roleLabel">Login As</label> <select id="loginRole" required> <option value="member" id="memberOption">Member</option> <option value="admin" id="adminOption">Admin</option> </select>
-      </div><button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 15px;" id="loginBtn"> <span id="loginBtnText">Login</span> </button> <button type="button" class="btn btn-secondary" style="width: 100%; margin-bottom: 15px;" onclick="showPage('forgotPasswordPage')" id="forgotPasswordBtn">Forgot Password?</button> <button type="button" class="btn btn-secondary" style="width: 100%;" onclick="showPage('signupPage')" id="signupLinkBtn">Create New Account</button>
-     </form>
+      <h2 class="section-title" id="loginTitle">Login</h2>
+      <div id="loginError"></div>
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="form-group"><label for="loginEmail" id="emailLabel">Email Address</label> <input type="email"
+            id="loginEmail" required>
+        </div>
+        <div class="form-group"><label for="loginPassword" id="passwordLabel">Password</label>
+          <div class="password-toggle"><input type="password" id="loginPassword" required> <button type="button"
+              class="password-toggle-btn" onclick="togglePassword('loginPassword')">👁️</button>
+          </div>
+        </div>
+        <div class="form-group"><label for="loginRole" id="roleLabel">Login As</label> <select id="loginRole" required>
+            <option value="member" id="memberOption">Member</option>
+            <option value="admin" id="adminOption">Admin</option>
+          </select>
+        </div><button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 15px;" id="loginBtn">
+          <span id="loginBtnText">Login</span> </button> <button type="button" class="btn btn-secondary"
+          style="width: 100%; margin-bottom: 15px;" onclick="showPage('forgotPasswordPage')"
+          id="forgotPasswordBtn">Forgot Password?</button> <button type="button" class="btn btn-secondary"
+          style="width: 100%;" onclick="showPage('signupPage')" id="signupLinkBtn">Create New Account</button>
+      </form>
     </div>
+  </div><!-- Signup Page -->
+  <div class="page" id="signupPage">
    </div>
    <!-- Signup Page -->
    <div class="page" id="signupPage">
@@ -800,209 +1008,246 @@
 </video>
    <a href="./index.html">Back to Home</a>
     <div class="form-container">
-     <h2 class="section-title" id="signupTitle">Create Account</h2>
-     <div id="signupError"></div>
-     <form id="signupForm" onsubmit="handleSignup(event)">
-      <div class="form-group"><label for="signupFullName" id="fullNameLabel">Full Name</label> <input type="text" id="signupFullName" required>
-      </div>
-      <div class="form-group"><label for="signupEmail" id="signupEmailLabel">Email Address</label> <input type="email" id="signupEmail" required>
-      </div>
-      <div class="form-group"><label for="signupPhone" id="phoneLabel">Phone Number</label> <input type="tel" id="signupPhone" required>
-      </div>
-      <div class="form-group"><label for="signupPassword" id="signupPasswordLabel">Password</label>
-       <div class="password-toggle"><input type="password" id="signupPassword" required minlength="6"> <button type="button" class="password-toggle-btn" onclick="togglePassword('signupPassword')">👁️</button>
-       </div>
-      </div>
-      <div class="form-group"><label for="signupRole" id="signupRoleLabel">Account Type</label> <select id="signupRole" required> <option value="member" id="signupMemberOption">Member</option> <option value="admin" id="signupAdminOption">Admin</option> </select>
-      </div><button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 15px;" id="signupBtn"> <span id="signupBtnText">Create Account</span> </button> <button type="button" class="btn btn-secondary" style="width: 100%;" onclick="showPage('loginPage')" id="loginLinkBtn">Already have an account? Login</button>
-     </form>
+      <h2 class="section-title" id="signupTitle">Create Account</h2>
+      <div id="signupError"></div>
+      <form id="signupForm" onsubmit="handleSignup(event)">
+        <div class="form-group"><label for="signupFullName" id="fullNameLabel">Full Name</label> <input type="text"
+            id="signupFullName" required>
+        </div>
+        <div class="form-group"><label for="signupEmail" id="signupEmailLabel">Email Address</label> <input type="email"
+            id="signupEmail" required>
+        </div>
+        <div class="form-group"><label for="signupPhone" id="phoneLabel">Phone Number</label> <input type="tel"
+            id="signupPhone" required>
+        </div>
+        <div class="form-group"><label for="signupPassword" id="signupPasswordLabel">Password</label>
+          <div class="password-toggle"><input type="password" id="signupPassword" required minlength="6"> <button
+              type="button" class="password-toggle-btn" onclick="togglePassword('signupPassword')">👁️</button>
+          </div>
+        </div>
+        <div class="form-group"><label for="signupRole" id="signupRoleLabel">Account Type</label> <select
+            id="signupRole" required>
+            <option value="member" id="signupMemberOption">Member</option>
+            <option value="admin" id="signupAdminOption">Admin</option>
+          </select>
+        </div><button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 15px;" id="signupBtn">
+          <span id="signupBtnText">Create Account</span> </button> <button type="button" class="btn btn-secondary"
+          style="width: 100%;" onclick="showPage('loginPage')" id="loginLinkBtn">Already have an account? Login</button>
+      </form>
     </div>
-   </div><!-- Forgot Password Page -->
-   <div class="page" id="forgotPasswordPage">
+  </div><!-- Forgot Password Page -->
+  <div class="page" id="forgotPasswordPage">
     <div class="form-container">
-     <h2 class="section-title" id="forgotPasswordTitle">Reset Password</h2>
-     <div id="forgotPasswordMessage"></div>
-     <form id="forgotPasswordForm" onsubmit="handleForgotPassword(event)">
-      <div class="form-group"><label for="forgotEmail" id="forgotEmailLabel">Email Address</label> <input type="email" id="forgotEmail" required>
-      </div>
-      <div class="form-group"><label for="newPassword" id="newPasswordLabel">New Password</label>
-       <div class="password-toggle"><input type="password" id="newPassword" required minlength="6"> <button type="button" class="password-toggle-btn" onclick="togglePassword('newPassword')">👁️</button>
-       </div>
-      </div><button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 15px;" id="resetPasswordBtn"> <span id="resetPasswordBtnText">Reset Password</span> </button> <button type="button" class="btn btn-secondary" style="width: 100%;" onclick="showPage('loginPage')" id="backToLoginBtn">Back to Login</button>
-     </form>
+      <h2 class="section-title" id="forgotPasswordTitle">Reset Password</h2>
+      <div id="forgotPasswordMessage"></div>
+      <form id="forgotPasswordForm" onsubmit="handleForgotPassword(event)">
+        <div class="form-group"><label for="forgotEmail" id="forgotEmailLabel">Email Address</label> <input type="email"
+            id="forgotEmail" required>
+        </div>
+        <div class="form-group"><label for="newPassword" id="newPasswordLabel">New Password</label>
+          <div class="password-toggle"><input type="password" id="newPassword" required minlength="6"> <button
+              type="button" class="password-toggle-btn" onclick="togglePassword('newPassword')">👁️</button>
+          </div>
+        </div><button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 15px;"
+          id="resetPasswordBtn"> <span id="resetPasswordBtnText">Reset Password</span> </button> <button type="button"
+          class="btn btn-secondary" style="width: 100%;" onclick="showPage('loginPage')" id="backToLoginBtn">Back to
+          Login</button>
+      </form>
     </div>
-   </div><!-- Dashboard Page -->
-   <div class="page" id="dashboardPage">
+  </div><!-- Dashboard Page -->
+  <div class="page" id="dashboardPage">
     <h2 class="section-title" id="dashboardTitle">Financial Overview</h2>
     <div class="dashboard-grid">
-     <div class="stat-card">
-      <h3 id="totalBalanceLabel">Total Balance</h3>
-      <div class="stat-value" id="totalBalance">
-       0 RWF
+      <div class="stat-card">
+        <h3 id="totalBalanceLabel">Total Balance</h3>
+        <div class="stat-value" id="totalBalance">
+          0 RWF
+        </div>
+        <div class="stat-label" id="totalBalanceDesc">
+          Community Funds
+        </div>
       </div>
-      <div class="stat-label" id="totalBalanceDesc">
-       Community Funds
+      <div class="stat-card">
+        <h3 id="totalSavingsLabel">Total Savings</h3>
+        <div class="stat-value" id="totalSavings">
+          0 RWF
+        </div>
+        <div class="stat-label" id="totalSavingsDesc">
+          Accumulated
+        </div>
       </div>
-     </div>
-     <div class="stat-card">
-      <h3 id="totalSavingsLabel">Total Savings</h3>
-      <div class="stat-value" id="totalSavings">
-       0 RWF
+      <div class="stat-card">
+        <h3 id="activeLoansLabel">Active Loans</h3>
+        <div class="stat-value" id="activeLoans">
+          0
+        </div>
+        <div class="stat-label" id="activeLoansDesc">
+          Members
+        </div>
       </div>
-      <div class="stat-label" id="totalSavingsDesc">
-       Accumulated
+      <div class="stat-card">
+        <h3 id="annualCashOutLabel">Annual Cash-Out</h3>
+        <div class="stat-value" id="annualCashOut">
+          0 RWF
+        </div>
+        <div class="stat-label" id="annualCashOutDesc">
+          This Year
+        </div>
       </div>
-     </div>
-     <div class="stat-card">
-      <h3 id="activeLoansLabel">Active Loans</h3>
-      <div class="stat-value" id="activeLoans">
-       0
-      </div>
-      <div class="stat-label" id="activeLoansDesc">
-       Members
-      </div>
-     </div>
-     <div class="stat-card">
-      <h3 id="annualCashOutLabel">Annual Cash-Out</h3>
-      <div class="stat-value" id="annualCashOut">
-       0 RWF
-      </div>
-      <div class="stat-label" id="annualCashOutDesc">
-       This Year
-      </div>
-     </div>
     </div>
     <div id="dashboardContent"></div>
-   </div><!-- Deposits Page -->
-   <div class="page" id="depositsPage">
-    <h2 class="section-title" id="depositsTitle">Deposit Management</h2><button class="btn btn-primary" style="margin-bottom: 20px;" onclick="showModal('depositModal')" id="newDepositBtn">New Deposit</button>
+  </div><!-- Deposits Page -->
+  <div class="page" id="depositsPage">
+    <h2 class="section-title" id="depositsTitle">Deposit Management</h2><button class="btn btn-primary"
+      style="margin-bottom: 20px;" onclick="showModal('depositModal')" id="newDepositBtn">New Deposit</button>
     <div class="table-container">
-     <table id="depositsTable">
-      <thead>
-       <tr>
-        <th id="depositMemberHeader">Member</th>
-        <th id="depositAmountHeader">Amount</th>
-        <th id="depositDateHeader">Date</th>
-        <th id="depositProofHeader">Proof</th>
-        <th id="depositStatusHeader">Status</th>
-        <th id="depositActionsHeader">Actions</th>
-       </tr>
-      </thead>
-      <tbody id="depositsTableBody">
-      </tbody>
-     </table>
+      <table id="depositsTable">
+        <thead>
+          <tr>
+            <th id="depositMemberHeader">Member</th>
+            <th id="depositAmountHeader">Amount</th>
+            <th id="depositDateHeader">Date</th>
+            <th id="depositProofHeader">Proof</th>
+            <th id="depositStatusHeader">Status</th>
+            <th id="depositActionsHeader">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="depositsTableBody">
+        </tbody>
+      </table>
     </div>
-   </div><!-- Loans Page -->
-   <div class="page" id="loansPage">
-    <h2 class="section-title" id="loansTitle">Loans Management</h2><button class="btn btn-primary" style="margin-bottom: 20px;" onclick="showModal('loanModal')" id="applyLoanBtn">Apply for Loan</button>
+  </div><!-- Loans Page -->
+  <div class="page" id="loansPage">
+    <h2 class="section-title" id="loansTitle">Loans Management</h2><button class="btn btn-primary"
+      style="margin-bottom: 20px;" onclick="showModal('loanModal')" id="applyLoanBtn">Apply for Loan</button>
     <div class="table-container">
-     <table id="loansTable">
-      <thead>
-       <tr>
-        <th id="loanMemberHeader">Member</th>
-        <th id="loanAmountHeader">Amount</th>
-        <th id="loanInterestHeader">Interest</th>
-        <th id="loanTotalHeader">Total Due</th>
-        <th id="loanDateHeader">Date</th>
-        <th id="loanStatusHeader">Status</th>
-        <th id="loanActionsHeader">Actions</th>
-       </tr>
-      </thead>
-      <tbody id="loansTableBody">
-      </tbody>
-     </table>
+      <table id="loansTable">
+        <thead>
+          <tr>
+            <th id="loanMemberHeader">Member</th>
+            <th id="loanAmountHeader">Amount</th>
+            <th id="loanInterestHeader">Interest</th>
+            <th id="loanTotalHeader">Total Due</th>
+            <th id="loanDateHeader">Date</th>
+            <th id="loanStatusHeader">Status</th>
+            <th id="loanActionsHeader">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="loansTableBody">
+        </tbody>
+      </table>
     </div>
-   </div><!-- Chat Page -->
-   <div class="page" id="chatPage">
+  </div><!-- Chat Page -->
+  <div class="page" id="chatPage">
     <h2 class="section-title" id="chatTitle">Community Chat</h2>
     <div class="chat-container">
-     <div class="chat-users" id="chatUsers"></div>
-     <div class="chat-main">
-      <div class="chat-header">
-       <h3 id="chatWithName">Select a member to chat</h3>
+      <div class="chat-users" id="chatUsers"></div>
+      <div class="chat-main">
+        <div class="chat-header">
+          <h3 id="chatWithName">Select a member to chat</h3>
+        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input"><input type="text" id="messageInput" placeholder="Type a message..." disabled> <button
+            class="btn btn-primary" onclick="sendMessage()" disabled id="sendMessageBtn">Send</button>
+        </div>
       </div>
-      <div class="chat-messages" id="chatMessages"></div>
-      <div class="chat-input"><input type="text" id="messageInput" placeholder="Type a message..." disabled> <button class="btn btn-primary" onclick="sendMessage()" disabled id="sendMessageBtn">Send</button>
-      </div>
-     </div>
     </div>
-   </div><!-- Audit Page -->
-   <div class="page" id="auditPage">
+  </div><!-- Audit Page -->
+  <div class="page" id="auditPage">
     <h2 class="section-title" id="auditTitle">Audit Dashboard</h2>
     <div class="table-container">
-     <table id="auditTable">
-      <thead>
-       <tr>
-        <th id="auditTypeHeader">Type</th>
-        <th id="auditDescHeader">Description</th>
-        <th id="auditDateHeader">Date &amp; Time</th>
-       </tr>
-      </thead>
-      <tbody id="auditTableBody">
-      </tbody>
-     </table>
+      <table id="auditTable">
+        <thead>
+          <tr>
+            <th id="auditTypeHeader">Type</th>
+            <th id="auditDescHeader">Description</th>
+            <th id="auditDateHeader">Date &amp; Time</th>
+          </tr>
+        </thead>
+        <tbody id="auditTableBody">
+        </tbody>
+      </table>
     </div>
-   </div><!-- Annual Report Page -->
-   <div class="page" id="reportPage">
+  </div><!-- Annual Report Page -->
+  <div class="page" id="reportPage">
     <h2 class="section-title" id="reportTitle">Annual Report</h2>
-    <div style="display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap;"><button class="btn btn-primary" onclick="downloadReport()" id="downloadReportBtn">📥 Download PDF</button> <button class="btn btn-secondary" onclick="printReport()" id="printReportBtn">🖨️ Print Report</button>
+    <div style="display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap;"><button class="btn btn-primary"
+        onclick="downloadReport()" id="downloadReportBtn">📥 Download PDF</button> <button class="btn btn-secondary"
+        onclick="printReport()" id="printReportBtn">🖨️ Print Report</button>
     </div>
     <div id="reportContent"></div>
-   </div><!-- Admin Panel Page -->
-   <div class="page" id="adminPage">
+  </div><!-- Admin Panel Page -->
+  <div class="page" id="adminPage">
     <h2 class="section-title" id="adminPanelTitle">Admin Panel</h2>
     <div id="adminContent"></div>
-   </div><!-- Contact Page -->
-   <div class="page" id="contactPage">
+  </div><!-- Contact Page -->
+  <div class="page" id="contactPage">
     <div class="form-container">
-     <h2 class="section-title" id="contactTitle">Contact Us</h2>
-     <div id="contactMessage"></div>
-     <form id="contactForm" onsubmit="handleContact(event)">
-      <div class="form-group"><label for="contactName" id="contactNameLabel">Full Name</label> <input type="text" id="contactName" required>
-      </div>
-      <div class="form-group"><label for="contactEmail" id="contactEmailLabel">Email Address</label> <input type="email" id="contactEmail" required>
-      </div>
-      <div class="form-group"><label for="contactPhone" id="contactPhoneLabel">Phone Number</label> <input type="tel" id="contactPhone" required>
-      </div>
-      <div class="form-group"><label for="contactSubject" id="contactSubjectLabel">Subject</label> <input type="text" id="contactSubject" required>
-      </div>
-      <div class="form-group"><label for="contactMessageText" id="contactMessageLabel">Message</label> <textarea id="contactMessageText" required></textarea>
-      </div><button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 15px;" id="contactSubmitBtn"> <span id="contactSubmitBtnText">Send Message</span> </button> <button type="button" class="btn btn-secondary" style="width: 100%;" onclick="showPage('homePage')" id="backToHomeBtn">Back to Home</button>
-     </form>
+      <h2 class="section-title" id="contactTitle">Contact Us</h2>
+      <div id="contactMessage"></div>
+      <form id="contactForm" onsubmit="handleContact(event)">
+        <div class="form-group"><label for="contactName" id="contactNameLabel">Full Name</label> <input type="text"
+            id="contactName" required>
+        </div>
+        <div class="form-group"><label for="contactEmail" id="contactEmailLabel">Email Address</label> <input
+            type="email" id="contactEmail" required>
+        </div>
+        <div class="form-group"><label for="contactPhone" id="contactPhoneLabel">Phone Number</label> <input type="tel"
+            id="contactPhone" required>
+        </div>
+        <div class="form-group"><label for="contactSubject" id="contactSubjectLabel">Subject</label> <input type="text"
+            id="contactSubject" required>
+        </div>
+        <div class="form-group"><label for="contactMessageText" id="contactMessageLabel">Message</label> <textarea
+            id="contactMessageText" required></textarea>
+        </div><button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 15px;"
+          id="contactSubmitBtn"> <span id="contactSubmitBtnText">Send Message</span> </button> <button type="button"
+          class="btn btn-secondary" style="width: 100%;" onclick="showPage('homePage')" id="backToHomeBtn">Back to
+          Home</button>
+      </form>
     </div>
-   </div>
+  </div>
   </div><!-- Deposit Modal -->
   <div class="modal" id="depositModal">
-   <div class="modal-content">
-    <div class="modal-header">
-     <h3 id="depositModalTitle">New Deposit</h3><button class="modal-close" onclick="closeModal('depositModal')">×</button>
-    </div>
-    <form id="depositForm" onsubmit="handleDeposit(event)">
-     <div class="form-group"><label for="depositAmount" id="depositAmountLabel">Amount (RWF)</label> <input type="number" id="depositAmount" required min="1">
-     </div>
-     <div class="form-group"><label id="depositProofLabel">Proof of Deposit</label>
-      <div class="file-upload" onclick="document.getElementById('depositProof').click()">
-       <p id="uploadProofText">📎 Click to upload proof</p><input type="file" id="depositProof" accept="image/*,.pdf" required>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="depositModalTitle">New Deposit</h3><button class="modal-close"
+          onclick="closeModal('depositModal')">×</button>
       </div>
-     </div><button type="submit" class="btn btn-primary" style="width: 100%;" id="submitDepositBtn"> <span id="submitDepositBtnText">Submit Deposit</span> </button>
-    </form>
-   </div>
+      <form id="depositForm" onsubmit="handleDeposit(event)">
+        <div class="form-group"><label for="depositAmount" id="depositAmountLabel">Amount (RWF)</label> <input
+            type="number" id="depositAmount" required min="1">
+        </div>
+        <div class="form-group"><label id="depositProofLabel">Proof of Deposit</label>
+          <div class="file-upload" onclick="document.getElementById('depositProof').click()">
+            <p id="uploadProofText">📎 Click to upload proof</p><input type="file" id="depositProof"
+              accept="image/*,.pdf" required>
+          </div>
+        </div><button type="submit" class="btn btn-primary" style="width: 100%;" id="submitDepositBtn"> <span
+            id="submitDepositBtnText">Submit Deposit</span> </button>
+      </form>
+    </div>
   </div><!-- Loan Modal -->
   <div class="modal" id="loanModal">
-   <div class="modal-content">
-    <div class="modal-header">
-     <h3 id="loanModalTitle">Apply for Loan</h3><button class="modal-close" onclick="closeModal('loanModal')">×</button>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="loanModalTitle">Apply for Loan</h3><button class="modal-close"
+          onclick="closeModal('loanModal')">×</button>
+      </div>
+      <div id="loanModalMessage"></div>
+      <form id="loanForm" onsubmit="handleLoanApplication(event)">
+        <div class="form-group"><label for="loanAmount" id="loanAmountLabel">Loan Amount (RWF)</label> <input
+            type="number" id="loanAmount" required min="1" oninput="calculateLoanInterest()">
+        </div>
+        <div class="form-group"><label id="loanInterestLabel">Interest (10% per 100 RWF)</label> <input type="text"
+            id="loanInterest" readonly>
+        </div>
+        <div class="form-group"><label id="loanTotalLabel">Total to Repay</label> <input type="text" id="loanTotal"
+            readonly>
+        </div><button type="submit" class="btn btn-primary" style="width: 100%;" id="submitLoanBtn"> <span
+            id="submitLoanBtnText">Apply for Loan</span> </button>
+      </form>
     </div>
-    <div id="loanModalMessage"></div>
-    <form id="loanForm" onsubmit="handleLoanApplication(event)">
-     <div class="form-group"><label for="loanAmount" id="loanAmountLabel">Loan Amount (RWF)</label> <input type="number" id="loanAmount" required min="1" oninput="calculateLoanInterest()">
-     </div>
-     <div class="form-group"><label id="loanInterestLabel">Interest (10% per 100 RWF)</label> <input type="text" id="loanInterest" readonly>
-     </div>
-     <div class="form-group"><label id="loanTotalLabel">Total to Repay</label> <input type="text" id="loanTotal" readonly>
-     </div><button type="submit" class="btn btn-primary" style="width: 100%;" id="submitLoanBtn"> <span id="submitLoanBtnText">Apply for Loan</span> </button>
-    </form>
-   </div>
   </div>
 
   <script>
@@ -1015,7 +1260,7 @@
         handler.onDataChanged(this.data);
         return { isOk: true };
       },
-      
+
       async create(item) {
         item.__backendId = Date.now().toString();
         this.data.push(item);
@@ -1024,7 +1269,7 @@
         }
         return { isOk: true };
       },
-      
+
       async update(item) {
         const index = this.data.findIndex(d => d.__backendId === item.__backendId);
         if (index !== -1) {
@@ -1036,7 +1281,7 @@
         }
         return { isOk: false };
       },
-      
+
       async delete(item) {
         const index = this.data.findIndex(d => d.__backendId === item.__backendId);
         if (index !== -1) {
@@ -1057,14 +1302,14 @@
         this.onConfigChange = config.onConfigChange;
         this.mapToCapabilities = config.mapToCapabilities;
         this.mapToEditPanelValues = config.mapToEditPanelValues;
-        
+
         // Apply initial config
         if (this.onConfigChange) {
           this.onConfigChange(this.config);
         }
         return { isOk: true };
       },
-      
+
       async setConfig(newConfig) {
         this.config = { ...this.config, ...newConfig };
         if (this.onConfigChange) {
@@ -1475,14 +1720,14 @@
         onConfigChange: async (config) => {
           document.getElementById('platformName').textContent = config.platform_name || defaultConfig.platform_name;
           document.body.style.background = `linear-gradient(135deg, ${config.background_color || defaultConfig.background_color} 0%, ${config.secondary_action_color || defaultConfig.secondary_action_color} 100%)`;
-          
+
           const customFont = config.font_family || defaultConfig.font_family;
           const baseFontStack = 'Tahoma, Geneva, Verdana, sans-serif';
           document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
-          
+
           const baseSize = config.font_size || defaultConfig.font_size;
           document.body.style.fontSize = `${baseSize}px`;
-          
+
           const allButtons = document.querySelectorAll('.btn-primary');
           allButtons.forEach(btn => {
             btn.style.background = `linear-gradient(135deg, ${config.primary_action_color || defaultConfig.primary_action_color} 0%, ${config.secondary_action_color || defaultConfig.secondary_action_color} 100%)`;
@@ -1556,7 +1801,7 @@
     function showPage(pageId) {
       document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
       document.getElementById(pageId).classList.add('active');
-      
+
       if (pageId === 'dashboardPage' && currentUser) {
         updateDashboard();
       } else if (pageId === 'depositsPage' && currentUser) {
@@ -1577,7 +1822,7 @@
     // Authentication
     function updateAuthButtons() {
       const authButtonsDiv = document.getElementById('authButtons');
-      
+
       if (currentUser) {
         const navItems = [
           { page: 'dashboardPage', label: 'Dashboard', key: 'dashboardTitle' },
@@ -1585,7 +1830,7 @@
           { page: 'loansPage', label: 'Loans', key: 'loansTitle' },
           { page: 'chatPage', label: 'Chat', key: 'chatTitle' }
         ];
-        
+
         if (currentUser.role === 'admin') {
           navItems.push(
             { page: 'auditPage', label: 'Audit', key: 'auditTitle' },
@@ -1593,8 +1838,8 @@
             { page: 'adminPage', label: 'Admin', key: 'adminPanelTitle' }
           );
         }
-        
-        authButtonsDiv.innerHTML = navItems.map(item => 
+
+        authButtonsDiv.innerHTML = navItems.map(item =>
           `<button class="btn btn-secondary" onclick="showPage('${item.page}')">${translations[currentLanguage][item.key]}</button>`
         ).join('') + `<button class="btn btn-danger" onclick="logout()">${translations[currentLanguage].logout}</button>`;
       } else {
@@ -1610,34 +1855,34 @@
       const email = document.getElementById('loginEmail').value;
       const password = document.getElementById('loginPassword').value;
       const role = document.getElementById('loginRole').value;
-      
+
       const loginBtn = document.querySelector('#loginForm button[type="submit"]');
       loginBtn.disabled = true;
       loginBtn.innerHTML = '<span class="loading"></span>';
-      
+
       const users = allData.filter(d => d.__type === 'user');
       const user = users.find(u => u.email === email && u.password === password && u.role === role);
-      
+
       if (!user) {
         showError('loginError', 'Invalid email, password, or role');
         loginBtn.disabled = false;
         loginBtn.innerHTML = translations[currentLanguage].loginBtn;
         return;
       }
-      
+
       if (role === 'member' && !user.approved) {
         showError('loginError', 'Your account is pending admin approval');
         loginBtn.disabled = false;
         loginBtn.innerHTML = translations[currentLanguage].loginBtn;
         return;
       }
-      
+
       currentUser = user;
       await logActivity('login', `${user.fullName} logged in as ${user.role}`);
-      
+
       updateAuthButtons();
       showPage('dashboardPage');
-      
+
       loginBtn.disabled = false;
       loginBtn.innerHTML = translations[currentLanguage].loginBtn;
       document.getElementById('loginForm').reset();
@@ -1650,20 +1895,20 @@
       const phone = document.getElementById('signupPhone').value;
       const password = document.getElementById('signupPassword').value;
       const role = document.getElementById('signupRole').value;
-      
+
       const signupBtn = document.querySelector('#signupForm button[type="submit"]');
       signupBtn.disabled = true;
       signupBtn.innerHTML = '<span class="loading"></span>';
-      
+
       const users = allData.filter(d => d.__type === 'user');
-      
+
       if (users.find(u => u.email === email)) {
         showError('signupError', 'Email already registered');
         signupBtn.disabled = false;
         signupBtn.innerHTML = translations[currentLanguage].signupBtn;
         return;
       }
-      
+
       if (role === 'admin') {
         const adminCount = users.filter(u => u.role === 'admin').length;
         if (adminCount >= 3) {
@@ -1673,7 +1918,7 @@
           return;
         }
       }
-      
+
       const newUser = {
         __type: 'user',
         id: Date.now().toString(),
@@ -1686,9 +1931,9 @@
         profilePhoto: fullName.charAt(0).toUpperCase(),
         createdAt: new Date().toISOString()
       };
-      
+
       const result = await window.dataSdk.create(newUser);
-      
+
       if (result.isOk) {
         await logActivity('signup', `${fullName} created ${role} account`);
         showSuccess('signupError', role === 'member' ? 'Account created! Awaiting admin approval' : 'Admin account created successfully!');
@@ -1696,7 +1941,7 @@
       } else {
         showError('signupError', 'Failed to create account');
       }
-      
+
       signupBtn.disabled = false;
       signupBtn.innerHTML = translations[currentLanguage].signupBtn;
     }
@@ -1705,24 +1950,24 @@
       event.preventDefault();
       const email = document.getElementById('forgotEmail').value;
       const newPassword = document.getElementById('newPassword').value;
-      
+
       const resetBtn = document.querySelector('#forgotPasswordForm button[type="submit"]');
       resetBtn.disabled = true;
       resetBtn.innerHTML = '<span class="loading"></span>';
-      
+
       const users = allData.filter(d => d.__type === 'user');
       const user = users.find(u => u.email === email);
-      
+
       if (!user) {
         showError('forgotPasswordMessage', 'Email not found');
         resetBtn.disabled = false;
         resetBtn.innerHTML = translations[currentLanguage].resetPasswordBtn;
         return;
       }
-      
+
       user.password = newPassword;
       const result = await window.dataSdk.update(user);
-      
+
       if (result.isOk) {
         await logActivity('password_reset', `Password reset for ${user.email}`);
         showSuccess('forgotPasswordMessage', 'Password reset successfully!');
@@ -1730,7 +1975,7 @@
       } else {
         showError('forgotPasswordMessage', 'Failed to reset password');
       }
-      
+
       resetBtn.disabled = false;
       resetBtn.innerHTML = translations[currentLanguage].resetPasswordBtn;
     }
@@ -1746,22 +1991,22 @@
     function updateDashboard() {
       const deposits = allData.filter(d => d.__type === 'deposit' && d.depositStatus === 'approved');
       const loans = allData.filter(d => d.__type === 'loan' && d.loanStatus === 'active');
-      
+
       const totalSavings = deposits.reduce((sum, d) => sum + (d.depositAmount || 0), 0);
       const totalLoansAmount = loans.reduce((sum, l) => sum + (l.loanAmount || 0) + (l.loanInterest || 0), 0);
       const totalBalance = totalSavings - totalLoansAmount;
-      
+
       document.getElementById('totalBalance').textContent = `${totalBalance.toLocaleString()} RWF`;
       document.getElementById('totalSavings').textContent = `${totalSavings.toLocaleString()} RWF`;
       document.getElementById('activeLoans').textContent = loans.length;
-      
+
       const currentYear = new Date().getFullYear();
-      const yearlyWithdrawals = allData.filter(d => 
-        d.__type === 'loan' && 
-        d.loanStatus === 'active' && 
+      const yearlyWithdrawals = allData.filter(d =>
+        d.__type === 'loan' &&
+        d.loanStatus === 'active' &&
         new Date(d.loanDate).getFullYear() === currentYear
       ).reduce((sum, l) => sum + (l.loanAmount || 0), 0);
-      
+
       document.getElementById('annualCashOut').textContent = `${yearlyWithdrawals.toLocaleString()} RWF`;
     }
 
@@ -1770,17 +2015,17 @@
       const deposits = allData.filter(d => d.__type === 'deposit');
       const users = allData.filter(d => d.__type === 'user');
       const tbody = document.getElementById('depositsTableBody');
-      
+
       if (deposits.length === 0) {
         tbody.innerHTML = '<tr><td colspan="6" class="empty-state"><div class="empty-state-icon">📭</div><p>No deposits yet</p></td></tr>';
         return;
       }
-      
+
       tbody.innerHTML = deposits.map(deposit => {
         const user = users.find(u => u.id === deposit.depositFrom);
         const userName = user ? user.fullName : 'Unknown';
         const canManage = currentUser.role === 'admin' && deposit.depositStatus === 'pending';
-        
+
         return `
           <tr>
             <td>${userName}</td>
@@ -1805,16 +2050,16 @@
       event.preventDefault();
       const amount = parseFloat(document.getElementById('depositAmount').value);
       const proofFile = document.getElementById('depositProof').files[0];
-      
+
       if (allData.filter(d => d.__type === 'deposit').length >= 999) {
         showError('depositForm', 'Maximum limit of 999 deposits reached');
         return;
       }
-      
+
       const submitBtn = document.querySelector('#depositForm button[type="submit"]');
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<span class="loading"></span>';
-      
+
       const deposit = {
         __type: 'deposit',
         id: Date.now().toString(),
@@ -1824,15 +2069,15 @@
         depositDate: new Date().toISOString(),
         depositStatus: 'pending'
       };
-      
+
       const result = await window.dataSdk.create(deposit);
-      
+
       if (result.isOk) {
         await logActivity('deposit_created', `${currentUser.fullName} submitted deposit of ${amount} RWF`);
         closeModal('depositModal');
         document.getElementById('depositForm').reset();
       }
-      
+
       submitBtn.disabled = false;
       submitBtn.innerHTML = translations[currentLanguage].submitDepositBtn;
     }
@@ -1840,10 +2085,10 @@
     async function approveDeposit(backendId) {
       const deposit = allData.find(d => d.__backendId === backendId);
       if (!deposit) return;
-      
+
       deposit.depositStatus = 'approved';
       const result = await window.dataSdk.update(deposit);
-      
+
       if (result.isOk) {
         await logActivity('deposit_approved', `Admin approved deposit of ${deposit.depositAmount} RWF`);
       }
@@ -1852,10 +2097,10 @@
     async function rejectDeposit(backendId) {
       const deposit = allData.find(d => d.__backendId === backendId);
       if (!deposit) return;
-      
+
       deposit.depositStatus = 'rejected';
       const result = await window.dataSdk.update(deposit);
-      
+
       if (result.isOk) {
         await logActivity('deposit_rejected', `Admin rejected deposit of ${deposit.depositAmount} RWF`);
       }
@@ -1866,18 +2111,18 @@
       const loans = allData.filter(d => d.__type === 'loan');
       const users = allData.filter(d => d.__type === 'user');
       const tbody = document.getElementById('loansTableBody');
-      
+
       if (loans.length === 0) {
         tbody.innerHTML = '<tr><td colspan="7" class="empty-state"><div class="empty-state-icon">💰</div><p>No loans yet</p></td></tr>';
         return;
       }
-      
+
       tbody.innerHTML = loans.map(loan => {
         const user = users.find(u => u.id === loan.loanFrom);
         const userName = user ? user.fullName : 'Unknown';
         const total = (loan.loanAmount || 0) + (loan.loanInterest || 0);
         const canManage = currentUser.role === 'admin' && loan.loanStatus === 'pending';
-        
+
         return `
           <tr>
             <td>${userName}</td>
@@ -1902,15 +2147,15 @@
     function calculateLoanInterest() {
       const amount = parseFloat(document.getElementById('loanAmount').value) || 0;
       let interest = 0;
-      
+
       if (amount <= 100) {
         interest = amount * 0.1;
       } else {
         interest = 100 * 0.1 + (amount - 100) * 0.2;
       }
-      
+
       const total = amount + interest;
-      
+
       document.getElementById('loanInterest').value = `${interest.toFixed(2)} RWF`;
       document.getElementById('loanTotal').value = `${total.toFixed(2)} RWF`;
     }
@@ -1918,30 +2163,30 @@
     async function handleLoanApplication(event) {
       event.preventDefault();
       const amount = parseFloat(document.getElementById('loanAmount').value);
-      
+
       const activeLoans = allData.filter(d => d.__type === 'loan' && d.loanStatus === 'active');
-      
+
       if (activeLoans.length >= 30) {
         showError('loanModalMessage', 'Maximum 30 active loans reached. Wait for a loan to be repaid.');
         return;
       }
-      
+
       if (allData.filter(d => d.__type === 'loan').length >= 999) {
         showError('loanModalMessage', 'Maximum limit of 999 loan records reached');
         return;
       }
-      
+
       const submitBtn = document.querySelector('#loanForm button[type="submit"]');
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<span class="loading"></span>';
-      
+
       let interest = 0;
       if (amount <= 100) {
         interest = amount * 0.1;
       } else {
         interest = 100 * 0.1 + (amount - 100) * 0.2;
       }
-      
+
       const loan = {
         __type: 'loan',
         id: Date.now().toString(),
@@ -1951,15 +2196,15 @@
         loanDate: new Date().toISOString(),
         loanStatus: 'pending'
       };
-      
+
       const result = await window.dataSdk.create(loan);
-      
+
       if (result.isOk) {
         await logActivity('loan_applied', `${currentUser.fullName} applied for loan of ${amount} RWF`);
         closeModal('loanModal');
         document.getElementById('loanForm').reset();
       }
-      
+
       submitBtn.disabled = false;
       submitBtn.innerHTML = translations[currentLanguage].submitLoanBtn;
     }
@@ -1967,10 +2212,10 @@
     async function approveLoan(backendId) {
       const loan = allData.find(d => d.__backendId === backendId);
       if (!loan) return;
-      
+
       loan.loanStatus = 'active';
       const result = await window.dataSdk.update(loan);
-      
+
       if (result.isOk) {
         await logActivity('loan_approved', `Admin approved loan of ${loan.loanAmount} RWF`);
       }
@@ -1979,10 +2224,10 @@
     async function rejectLoan(backendId) {
       const loan = allData.find(d => d.__backendId === backendId);
       if (!loan) return;
-      
+
       loan.loanStatus = 'rejected';
       const result = await window.dataSdk.update(loan);
-      
+
       if (result.isOk) {
         await logActivity('loan_rejected', `Admin rejected loan of ${loan.loanAmount} RWF`);
       }
@@ -1992,12 +2237,12 @@
     function updateChatUsers() {
       const users = allData.filter(d => d.__type === 'user' && d.id !== currentUser.id);
       const chatUsersDiv = document.getElementById('chatUsers');
-      
+
       if (users.length === 0) {
         chatUsersDiv.innerHTML = '<div class="empty-state"><div class="empty-state-icon">👥</div><p>No other members yet</p></div>';
         return;
       }
-      
+
       chatUsersDiv.innerHTML = users.map(user => `
         <div class="chat-user ${selectedChatUser && selectedChatUser.id === user.id ? 'active' : ''}" onclick="selectChatUser('${user.id}')">
           <div class="chat-avatar">${user.profilePhoto}</div>
@@ -2012,7 +2257,7 @@
     function selectChatUser(userId) {
       const users = allData.filter(d => d.__type === 'user');
       selectedChatUser = users.find(u => u.id === userId);
-      
+
       if (selectedChatUser) {
         document.getElementById('chatWithName').textContent = selectedChatUser.fullName;
         document.getElementById('messageInput').disabled = false;
@@ -2024,24 +2269,24 @@
 
     function loadMessages() {
       if (!selectedChatUser) return;
-      
-      const messages = allData.filter(d => 
-        d.__type === 'message' && 
+
+      const messages = allData.filter(d =>
+        d.__type === 'message' &&
         ((d.messageFrom === currentUser.id && d.messageTo === selectedChatUser.id) ||
-         (d.messageFrom === selectedChatUser.id && d.messageTo === currentUser.id))
+          (d.messageFrom === selectedChatUser.id && d.messageTo === currentUser.id))
       ).sort((a, b) => new Date(a.messageDate) - new Date(b.messageDate));
-      
+
       const messagesDiv = document.getElementById('chatMessages');
-      
+
       if (messages.length === 0) {
         messagesDiv.innerHTML = '<div class="empty-state"><div class="empty-state-icon">💬</div><p>No messages yet. Start the conversation!</p></div>';
         return;
       }
-      
+
       messagesDiv.innerHTML = messages.map(msg => {
         const isSent = msg.messageFrom === currentUser.id;
         const sender = isSent ? currentUser : selectedChatUser;
-        
+
         return `
           <div class="message ${isSent ? 'sent' : ''}">
             <div class="chat-avatar">${sender.profilePhoto}</div>
@@ -2053,25 +2298,25 @@
           </div>
         `;
       }).join('');
-      
+
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
 
     async function sendMessage() {
       const input = document.getElementById('messageInput');
       const text = input.value.trim();
-      
+
       if (!text || !selectedChatUser) return;
-      
+
       if (allData.filter(d => d.__type === 'message').length >= 999) {
         showError('chatMessages', 'Maximum limit of 999 messages reached');
         return;
       }
-      
+
       const sendBtn = document.getElementById('sendMessageBtn');
       sendBtn.disabled = true;
       sendBtn.innerHTML = '<span class="loading"></span>';
-      
+
       const message = {
         __type: 'message',
         id: Date.now().toString(),
@@ -2080,14 +2325,14 @@
         messageTo: selectedChatUser.id,
         messageDate: new Date().toISOString()
       };
-      
+
       const result = await window.dataSdk.create(message);
-      
+
       if (result.isOk) {
         input.value = '';
         loadMessages();
       }
-      
+
       sendBtn.disabled = false;
       sendBtn.innerHTML = translations[currentLanguage].sendMessageBtn;
     }
@@ -2097,12 +2342,12 @@
       const activities = allData.filter(d => d.__type === 'activity')
         .sort((a, b) => new Date(b.activityDate) - new Date(a.activityDate));
       const tbody = document.getElementById('auditTableBody');
-      
+
       if (activities.length === 0) {
         tbody.innerHTML = '<tr><td colspan="3" class="empty-state"><div class="empty-state-icon">📋</div><p>No activities yet</p></td></tr>';
         return;
       }
-      
+
       tbody.innerHTML = activities.map(activity => `
         <tr>
           <td><span class="status-badge status-active">${activity.activityType}</span></td>
@@ -2116,7 +2361,7 @@
       if (allData.filter(d => d.__type === 'activity').length >= 999) {
         return;
       }
-      
+
       const activity = {
         __type: 'activity',
         id: Date.now().toString(),
@@ -2124,28 +2369,28 @@
         activityDescription: description,
         activityDate: new Date().toISOString()
       };
-      
+
       await window.dataSdk.create(activity);
     }
 
     // Annual Report
     function updateAnnualReport() {
       const currentYear = new Date().getFullYear();
-      const deposits = allData.filter(d => 
-        d.__type === 'deposit' && 
+      const deposits = allData.filter(d =>
+        d.__type === 'deposit' &&
         d.depositStatus === 'approved' &&
         new Date(d.depositDate).getFullYear() === currentYear
       );
-      const loans = allData.filter(d => 
-        d.__type === 'loan' && 
+      const loans = allData.filter(d =>
+        d.__type === 'loan' &&
         new Date(d.loanDate).getFullYear() === currentYear
       );
-      
+
       const totalDeposits = deposits.reduce((sum, d) => sum + (d.depositAmount || 0), 0);
       const totalLoans = loans.reduce((sum, l) => sum + (l.loanAmount || 0), 0);
       const totalInterest = loans.reduce((sum, l) => sum + (l.loanInterest || 0), 0);
       const activeLoans = loans.filter(l => l.loanStatus === 'active').length;
-      
+
       const reportContent = document.getElementById('reportContent');
       reportContent.innerHTML = `
         <div style="padding: 40px; background: white; border-radius: 12px;">
@@ -2202,12 +2447,12 @@
     // Admin Panel
     function updateAdminPanel() {
       if (currentUser.role !== 'admin') return;
-      
+
       const users = allData.filter(d => d.__type === 'user');
       const pendingMembers = users.filter(u => u.role === 'member' && !u.approved);
       const allMembers = users.filter(u => u.role === 'member');
       const admins = users.filter(u => u.role === 'admin');
-      
+
       const adminContent = document.getElementById('adminContent');
       adminContent.innerHTML = `
         <div style="margin-bottom: 40px;">
@@ -2242,9 +2487,9 @@
                 </tr>
               </thead>
               <tbody>
-                ${pendingMembers.length === 0 ? 
-                  '<tr><td colspan="5" class="empty-state"><p>No pending approvals</p></td></tr>' :
-                  pendingMembers.map(member => `
+                ${pendingMembers.length === 0 ?
+          '<tr><td colspan="5" class="empty-state"><p>No pending approvals</p></td></tr>' :
+          pendingMembers.map(member => `
                     <tr>
                       <td>${member.fullName}</td>
                       <td>${member.email}</td>
@@ -2258,7 +2503,7 @@
                       </td>
                     </tr>
                   `).join('')
-                }
+        }
               </tbody>
             </table>
           </div>
@@ -2305,10 +2550,10 @@
     async function approveMember(backendId) {
       const member = allData.find(d => d.__backendId === backendId);
       if (!member) return;
-      
+
       member.approved = true;
       const result = await window.dataSdk.update(member);
-      
+
       if (result.isOk) {
         await logActivity('member_approved', `Admin approved member ${member.fullName}`);
         updateAdminPanel();
@@ -2318,9 +2563,9 @@
     async function deleteMember(backendId) {
       const member = allData.find(d => d.__backendId === backendId);
       if (!member) return;
-      
+
       const result = await window.dataSdk.delete(member);
-      
+
       if (result.isOk) {
         await logActivity('member_deleted', `Admin deleted member ${member.email}`);
         updateAdminPanel();
@@ -2329,7 +2574,7 @@
 
     async function deleteMyAccount() {
       if (!currentUser || currentUser.role !== 'admin') return;
-      
+
       const confirmDiv = document.createElement('div');
       confirmDiv.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 1001;';
       confirmDiv.innerHTML = `
@@ -2345,12 +2590,12 @@
 
     async function confirmDeleteAccount() {
       const result = await window.dataSdk.delete(currentUser);
-      
+
       if (result.isOk) {
         await logActivity('admin_deleted', `Admin ${currentUser.email} deleted their account`);
         logout();
       }
-      
+
       document.querySelectorAll('body > div[style*="position: fixed"]').forEach(el => el.remove());
     }
 
@@ -2362,16 +2607,16 @@
       const phone = document.getElementById('contactPhone').value;
       const subject = document.getElementById('contactSubject').value;
       const message = document.getElementById('contactMessageText').value;
-      
+
       if (allData.filter(d => d.__type === 'contact').length >= 999) {
         showError('contactMessage', 'Maximum limit of 999 contact messages reached');
         return;
       }
-      
+
       const submitBtn = document.querySelector('#contactForm button[type="submit"]');
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<span class="loading"></span>';
-      
+
       const contact = {
         __type: 'contact',
         id: Date.now().toString(),
@@ -2382,16 +2627,16 @@
         contactMessage: message,
         contactDate: new Date().toISOString()
       };
-      
+
       const result = await window.dataSdk.create(contact);
-      
+
       if (result.isOk) {
         showSuccess('contactMessage', 'Thank you! Your message has been sent successfully.');
         document.getElementById('contactForm').reset();
       } else {
         showError('contactMessage', 'Failed to send message. Please try again.');
       }
-      
+
       submitBtn.disabled = false;
       submitBtn.innerHTML = translations[currentLanguage].contactSubmitBtn;
     }
@@ -2404,7 +2649,7 @@
 
     function updateLanguage() {
       const t = translations[currentLanguage];
-      
+
       Object.keys(t).forEach(key => {
         const element = document.getElementById(key);
         if (element) {
@@ -2424,7 +2669,7 @@
           }
         }
       });
-      
+
       updateAuthButtons();
     }
 
@@ -2457,5 +2702,6 @@
     // Initialize app
     initializeApp();
   </script>
- </body>
+</body>
+
 </html>
